@@ -3,7 +3,36 @@
   <component name="ChangeListManager">
     <list default="true" id="a3a2231d-7dd6-4462-8cc0-0deb2419bd16" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/css/layui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/css/layui.mobile.css" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/css/layui.mobile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/css/modules/code.css" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/css/modules/code.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/css/modules/laydate/default/laydate.css" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/css/modules/laydate/default/laydate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/css/modules/layer/default/layer.css" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/css/modules/layer/default/layer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/carousel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/code.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/code.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/colorpicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/colorpicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/element.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/element.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/flow.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/flow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/laydate.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/laydate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/layedit.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/layedit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/layer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/laypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/laypage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/laytpl.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/laytpl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/mobile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/rate.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/rate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/transfer.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/transfer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/tree.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/lay/modules/util.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/layui.all.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/layui/layui.js" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/layui/layui.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iframe/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/未混淆代码/admin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/未混淆代码/index.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,19 +45,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/iframe/index.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iframe/skyworth-pms.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+            <state relative-caret-position="254">
+              <caret line="146" column="25" lean-forward="true" selection-start-line="146" selection-start-column="25" selection-end-line="146" selection-end-column="25" />
               <folding>
+                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#cite#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/Export-pin.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="179" column="79" selection-start-line="179" selection-start-column="79" selection-end-line="179" selection-end-column="79" />
+              <folding>
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>.layui-layout-admin .layui-body</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,17 +95,26 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/说明.txt" />
+        <option value="$PROJECT_DIR$/未混淆代码/一些学习上的经验文件/layui学习笔记.txt" />
         <option value="$PROJECT_DIR$/iframe/index.html" />
+        <option value="$PROJECT_DIR$/iframe/page/New-product-items/Import-pin.html" />
+        <option value="$PROJECT_DIR$/iframe/page/New-product-items/B2B-pin.html" />
+        <option value="$PROJECT_DIR$/iframe/assets/libs/layui/css/layui.css" />
+        <option value="$PROJECT_DIR$/iframe/page/New-product-items/Export-pin.html" />
+        <option value="$PROJECT_DIR$/iframe/assets/module/index.js" />
+        <option value="$PROJECT_DIR$/iframe/skyworth-pms.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
+    <option name="x" value="427" />
+    <option name="y" value="140" />
     <option name="width" value="1040" />
     <option name="height" value="745" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="添加" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -65,6 +132,51 @@
               <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
               <item name="iframe" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+              <item name="iframe" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+              <item name="iframe" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+              <item name="iframe" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+              <item name="layui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+              <item name="iframe" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+              <item name="iframe" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+              <item name="未混淆代码" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+              <item name="未混淆代码" type="462c0819:PsiDirectoryNode" />
+              <item name="一些学习上的经验文件" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -73,11 +185,17 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\apache-tomcat-9.0.20\webapps\SKYWORTH_PMS\iframe\page" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -104,30 +222,44 @@
       <workItem from="1560009462856" duration="60000" />
       <workItem from="1560009749675" duration="58000" />
       <workItem from="1560013810027" duration="1710000" />
+      <workItem from="1560054776956" duration="604000" />
+      <workItem from="1560063720457" duration="3294000" />
+      <workItem from="1560079829265" duration="4180000" />
+      <workItem from="1560096539065" duration="2458000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1828000" />
+    <option name="totallyTimeSpent" value="12364000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12630208" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17578125" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="调试" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32991204" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="调试" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -137,16 +269,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/iframe/assets/module/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="257" column="34" lean-forward="true" selection-start-line="257" selection-start-column="34" selection-end-line="257" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/说明.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -154,12 +276,128 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/未混淆代码/admin.js" />
+    <entry file="file://$PROJECT_DIR$/未混淆代码/一些学习上的经验文件/layui学习笔记.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/assets/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="42" lean-forward="true" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/assets/module/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6426">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#1;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#1;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/iframe/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+        <state relative-caret-position="1575">
+          <caret line="75" column="25" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
           <folding>
             <element signature="n#style#0;n#cite#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/Export-pin" />
+    <entry file="file://$PROJECT_DIR$/iframe/page/template/form/form-advance.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/assets/libs/layui/css/layui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="38" lean-forward="true" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/B2B-pin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/Import-pin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <caret line="187" column="42" selection-start-line="187" selection-start-column="42" selection-end-line="187" selection-end-column="42" />
+          <caret line="188" column="42" selection-start-line="188" selection-start-column="42" selection-end-line="188" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/assets/libs/layui/layui.all.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/assets/module/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/skyworth-pms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="146" column="25" lean-forward="true" selection-start-line="146" selection-start-column="25" selection-end-line="146" selection-end-column="25" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#cite#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/Export-pin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="179" column="79" selection-start-line="179" selection-start-column="79" selection-end-line="179" selection-end-column="79" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
