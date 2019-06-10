@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="../../assets/libs/layui/css/layui.css"/>
     <link rel="stylesheet" href="../../assets/module/admin.css?v=312"/>
     <style>
-        .layui-form-item {
+        #export-pin .layui-form-item {
             margin-bottom: 0;
             margin-top: 20px;
         }
 
-        .layui-form-item .layui-inline {
+        #export-pin .layui-form-item .layui-inline {
             margin-bottom: 25px;
             margin-right: 0;
         }
@@ -39,7 +39,7 @@
 <!--</div>-->
 
 <!-- 正文开始 -->
-<form class="layui-form" lay-filter="Export-pin">
+<form class="layui-form" lay-filter="Export-pin" id="export-pin">
     <div class="layui-fluid" style="padding-bottom: 75px;">
 
 <!--        项目名称和项目定位-->
@@ -228,20 +228,102 @@
     </div>
 
 </form>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">效果演示</div>
+        <div class="layui-card-body text-center" style="padding: 80px 0px;">
+            <button id="btnDialog1" class="layui-btn">表单弹窗</button>
+            <button id="btnDialog2" class="layui-btn">最大最小化</button>
+            <button id="btnDialog3" class="layui-btn">确认弹窗</button>
+            <br><br>
+            <button id="btnDialog4" class="layui-btn">输入弹窗</button>
+            <button id="btnDialog5" class="layui-btn">更改主题</button>
+            <br><br>
+            <button id="btnDialog6" class="layui-btn layui-btn-normal">地图选择位置经纬度</button>
+            <button id="btnDialog7" class="layui-btn layui-btn-normal">裁剪图片弹窗</button>
+            <br><br>
+            <button id="btnDialog8" class="layui-btn layui-btn-normal">表单固定底部按钮</button>
+            <button id="btnDialog9" class="layui-btn layui-btn-normal">表单双排并列样式</button>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="modelPtInfo">
+    <form id="modelFormPtInfo" lay-filter="modelFormPtInfo" class="layui-form model-form no-padding">
+        <input name="ptId" type="hidden"/>
+        <div class="model-form-body" style="max-height: 320px;">
+            <div class="layui-form-item">
+                <label class="layui-form-label">实习公司</label>
+                <div class="layui-input-block">
+                    <input name="companyName" placeholder="请输入实习公司" type="text" class="layui-input"
+                           lay-verType="tips" lay-verify="required" required/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">实习岗位</label>
+                <div class="layui-input-block">
+                    <input name="jobName" placeholder="请输入实习岗位" type="text" class="layui-input"
+                           lay-verType="tips" lay-verify="required" required/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">实习类型</label>
+                <div class="layui-input-block">
+                    <select name="ptTypeId" lay-verType="tips" lay-verify="required" required>
+                        <option value="">请选择</option>
+                        <option value="1">顶岗实习</option>
+                        <option value="2">跟岗实习</option>
+                        <option value="3">毕业实习</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">公司地址</label>
+                <div class="layui-input-block">
+                    <input name="companyAddress" placeholder="请输入公司地址" type="text" class="layui-input"
+                           lay-verType="tips" lay-verify="required" required/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">公司联系人</label>
+                <div class="layui-input-block">
+                    <input name="companyContact" placeholder="请输入公司联系人" type="text" class="layui-input"
+                           lay-verType="tips" lay-verify="required" required/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">起止日期</label>
+                <div class="layui-input-block">
+                    <input name="dateRange" placeholder="请选择起止日期" type="text" class="layui-input" autocomplete="off"
+                           lay-verType="tips" lay-verify="required" required/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+                    <textarea name="comments" placeholder="请输入备注" class="layui-textarea" maxlength="500"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item text-right model-form-footer">
+            <button class="layui-btn layui-btn-primary" type="button" ew-event="closePageDialog">取消</button>
+            <button class="layui-btn" lay-filter="modelSubmitPtInfo" lay-submit>保存</button>
+        </div>
+    </form>
+</script>
 
 <!-- js部分 -->
 <script type="text/javascript" src="../../assets/libs/layui/layui.js"></script>
 <script type="text/javascript" src="../../assets/js/common.js?v=312"></script>
 
 <script>
-    layui.use(['layer', 'form', 'table', 'util', 'laydate'], function () {
+    layui.use(['layer', 'form', 'table', 'util', 'laydate','admin'], function () {
         var $ = layui.jquery;
         var layer = layui.layer;
         var form = layui.form;
         var table = layui.table;
         var util = layui.util;
         var laydate = layui.laydate;
-
+        var admin = layui.admin;
         // 渲染表格
         table.render({
             elem: '#tableFormAdv',
@@ -342,6 +424,32 @@
             return false;
         });
 
+        // 固定底部按钮
+        $('#btnDialog8').click(function () {
+            admin.open({
+                id: 'pswForm',
+                type: 2,
+                title: '添加学生实习信息',
+                area: ['360px', '470px'],
+                content: getProjectUrl() + 'page/addPeople/addPeople-all.html',
+                success: function (layero, dIndex) {
+                    $(layero).children('.layui-layer-content').css('overflow', 'visible');
+                    // 时间范围选择
+                    laydate.render({
+                        elem: '#modelFormPtInfo input[name="dateRange"]',
+                        range: true
+                    });
+                    form.render('select');
+                    // 表单提交事件
+                    form.on('submit(modelSubmitPtInfo)', function (data) {
+                        layer.msg(JSON.stringify(data.field), {icon: 1});
+                        return false;
+                    });
+
+                }
+            });
+
+        });
     });
 </script>
 </body>
