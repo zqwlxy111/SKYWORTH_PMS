@@ -10,4 +10,5 @@
     $("#bar").click(function(event){
     event.stopPropagation();
     });
-10.
+10. dtree默认接收的是一个json的对象。
+11. 
