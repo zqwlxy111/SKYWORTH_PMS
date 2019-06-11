@@ -117,7 +117,17 @@
         <div class="layui-card">
             <div class="layui-card-header">产品进度计划</div>
             <div class="layui-card-body">
-
+<!--                增加删除按钮-->
+                <div class="layui-btn-group" style="margin: 15px 0px -6px 40px;">
+                    <div class="site-demo-button" id="layerDemo1" style="margin-bottom: 0;">
+                        <!--增加按钮-->
+                        <div data-method="newProduct" class="layui-btn layui-btn-sm">增加</div>
+                        <!--编辑按钮-->
+                        <!--<div data-method="setTop" class="layui-btn layui-btn-sm ">编辑</div>-->
+                        <!--删除按钮-->
+                        <div data-method="newProduct" class="layui-btn layui-btn-sm">删除</div>
+                    </div>
+                </div>
                 <div class="layui-form-item layui-row">
                     <div class="layui-inline layui-col-md12">
 <!--                        <label class="layui-form-label">功能描述和要求:</label>-->
@@ -170,14 +180,14 @@
                         <label class="layui-form-label">项目组长 :</label>
                         <div class="layui-input-block">
                             <input name="Progress-target" type="text" class="layui-input"
-                                   lay-verType="tips" lay-verify="required" required/>
+                                   lay-verType="tips" lay-verify="required" required id="libinglin"/>
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md6">
                         <label class="layui-form-label">项目负责人 :</label>
                         <div class="layui-input-block">
                             <input name="Quality-target" type="text" class="layui-input"
-                                   lay-verType="tips" lay-verify="required" required/>
+                                   lay-verType="tips" lay-verify="required" required id="libinglin1"/>
                         </div>
                     </div>
                 </div>
@@ -224,93 +234,9 @@
         <button class="layui-btn" lay-filter="formSubmitAdv3" lay-submit>&emsp;上传&emsp;</button>
         <button class="layui-btn" lay-filter="formSubmitAdv4" lay-submit>&emsp;导出&emsp;</button>
         <button class="layui-btn" lay-filter="formSubmitAdv" lay-submit>&emsp;提交&emsp;</button>
-
     </div>
 
 </form>
-<div class="layui-fluid">
-    <div class="layui-card">
-        <div class="layui-card-header">效果演示</div>
-        <div class="layui-card-body text-center" style="padding: 80px 0px;">
-            <button id="btnDialog1" class="layui-btn">表单弹窗</button>
-            <button id="btnDialog2" class="layui-btn">最大最小化</button>
-            <button id="btnDialog3" class="layui-btn">确认弹窗</button>
-            <br><br>
-            <button id="btnDialog4" class="layui-btn">输入弹窗</button>
-            <button id="btnDialog5" class="layui-btn">更改主题</button>
-            <br><br>
-            <button id="btnDialog6" class="layui-btn layui-btn-normal">地图选择位置经纬度</button>
-            <button id="btnDialog7" class="layui-btn layui-btn-normal">裁剪图片弹窗</button>
-            <br><br>
-            <button id="btnDialog8" class="layui-btn layui-btn-normal">表单固定底部按钮</button>
-            <button id="btnDialog9" class="layui-btn layui-btn-normal">表单双排并列样式</button>
-        </div>
-    </div>
-</div>
-<script type="text/html" id="modelPtInfo">
-    <form id="modelFormPtInfo" lay-filter="modelFormPtInfo" class="layui-form model-form no-padding">
-        <input name="ptId" type="hidden"/>
-        <div class="model-form-body" style="max-height: 320px;">
-            <div class="layui-form-item">
-                <label class="layui-form-label">实习公司</label>
-                <div class="layui-input-block">
-                    <input name="companyName" placeholder="请输入实习公司" type="text" class="layui-input"
-                           lay-verType="tips" lay-verify="required" required/>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">实习岗位</label>
-                <div class="layui-input-block">
-                    <input name="jobName" placeholder="请输入实习岗位" type="text" class="layui-input"
-                           lay-verType="tips" lay-verify="required" required/>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">实习类型</label>
-                <div class="layui-input-block">
-                    <select name="ptTypeId" lay-verType="tips" lay-verify="required" required>
-                        <option value="">请选择</option>
-                        <option value="1">顶岗实习</option>
-                        <option value="2">跟岗实习</option>
-                        <option value="3">毕业实习</option>
-                    </select>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">公司地址</label>
-                <div class="layui-input-block">
-                    <input name="companyAddress" placeholder="请输入公司地址" type="text" class="layui-input"
-                           lay-verType="tips" lay-verify="required" required/>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">公司联系人</label>
-                <div class="layui-input-block">
-                    <input name="companyContact" placeholder="请输入公司联系人" type="text" class="layui-input"
-                           lay-verType="tips" lay-verify="required" required/>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">起止日期</label>
-                <div class="layui-input-block">
-                    <input name="dateRange" placeholder="请选择起止日期" type="text" class="layui-input" autocomplete="off"
-                           lay-verType="tips" lay-verify="required" required/>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">备注</label>
-                <div class="layui-input-block">
-                    <textarea name="comments" placeholder="请输入备注" class="layui-textarea" maxlength="500"></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item text-right model-form-footer">
-            <button class="layui-btn layui-btn-primary" type="button" ew-event="closePageDialog">取消</button>
-            <button class="layui-btn" lay-filter="modelSubmitPtInfo" lay-submit>保存</button>
-        </div>
-    </form>
-</script>
-
 <!-- js部分 -->
 <script type="text/javascript" src="../../assets/libs/layui/layui.js"></script>
 <script type="text/javascript" src="../../assets/js/common.js?v=312"></script>
@@ -324,64 +250,59 @@
         var util = layui.util;
         var laydate = layui.laydate;
         var admin = layui.admin;
-        // 渲染表格
-        table.render({
-            elem: '#tableFormAdv',
-            url: '../../../json/user.json',
-            page: true,
-            cellMinWidth: 100,
-            cols: [[
-                {type: 'checkbox'},
-                {field: 'username', sort: true, title: '账号'},
-                {field: 'nickName', sort: true, title: '用户名'},
-                {field: 'phone', sort: true, title: '手机号'},
-                {field: 'sex', sort: true, title: '性别'},
-                {
-                    field: 'createTime', sort: true, templet: function (d) {
-                        return util.toDateString(d.createTime);
-                    }, title: '创建时间'
-                }
-            ]]
-        });
 
         //表单初始赋值
         form.val('Export-pin', {
-            "Item-category": "外销产品",
-            "username": "外销产品" // "name": "value"
-            ,
-            "password": "123456",
-            "interest": 1,
-            "like[write]": true //复选框选中状态
-            ,
-            "close": true //开关状态
-            ,
-            "sex": "女",
-            "desc": "我爱 layui"
-        });
-
-        // 渲染laydate
-        laydate.render({
-            elem: '#edtDateFormAdv1',
-            range: true
-        });
-        laydate.render({
-            elem: '#edtDateFormAdv2'
+            "Item-category": "外销产品"
         });
 
         //触发事件
         var active = {
             setTop: function () {
-                layer.open({
+                top.layui.admin.open({
                     type: 2, //此处以iframe举例
                     title: '添加项目模块人员',
                     area: ['460px', '550px'],
                     shade: 0.8,
-                    maxmin: true,
+                    maxmin: false,
                     anim: 0,
-                    closeBtn: 2,
+                    closeBtn: 1,
                     offset: 'auto',
                     //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                    content: '../addPeople/addPeople-pin.html',
+                    content: getProjectUrl() + 'page/add/addPeople-pin.html',
+                    // btn2: function () {
+                    //     layer.closeAll();
+                    // }
+
+                    zIndex: layer.zIndex //重点1
+                    ,
+                    success: function (layero,index) {
+                        console.log(layero);
+                        var body = layer.getChildFrame('body', index);
+                        var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+                        // console.log(body); //得到iframe页的body内容
+                        // body.find('input').val('Hi，我是从父页来的');
+                    },
+                    cancel: function (index, layero) {
+                        // if (confirm('确定要关闭么')) { //只有当点击confirm框的确定时，该层才会关闭
+                        //     layer.close(index);
+                        // }
+                        // return false;
+                    }
+                });
+            },
+            newProduct: function () {
+                top.layui.admin.open({
+                    type: 2, //此处以iframe举例
+                    title: '添加产品进度计划',
+                    area: ['785px', '750px'],
+                    shade: 0.8,
+                    maxmin: false,
+                    anim: 0,
+                    closeBtn: 1,
+                    offset: 'auto',
+                    //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                    content: getProjectUrl() + 'page/add/addModel.html',
                     // btn2: function () {
                     //     layer.closeAll();
                     // }
@@ -410,6 +331,25 @@
             active[method] ? active[method].call(this, othis) : '';
         });
 
+        // 添加组长和负责人点击框事件
+        $('#libinglin,#libinglin1').on("mouseover",function () {
+            $(this).css("cursor","pointer");
+        });
+        $('#libinglin,#libinglin1').on("click",function () {
+            top.layui.admin.open({
+                type: 2, //此处以iframe举例
+                title: '添加项目模块人员',
+                area: ['460px', '450px'],
+                shade: 0.8,
+                maxmin: false,
+                anim: 0,
+                closeBtn: 1,
+                offset: 'auto',
+                //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                content: getProjectUrl() + 'page/add/addPeople-all.html'
+            });
+        });
+
         // 监听表单提交
         form.on('submit(formSubmitAdv)', function (data) {
             // 验证表格选择
@@ -422,33 +362,6 @@
             data.field.checkUsers = checkRows;
             layer.msg(JSON.stringify(data.field));
             return false;
-        });
-
-        // 固定底部按钮
-        $('#btnDialog8').click(function () {
-            admin.open({
-                id: 'pswForm',
-                type: 2,
-                title: '添加学生实习信息',
-                area: ['360px', '470px'],
-                content: getProjectUrl() + 'page/addPeople/addPeople-all.html',
-                success: function (layero, dIndex) {
-                    $(layero).children('.layui-layer-content').css('overflow', 'visible');
-                    // 时间范围选择
-                    laydate.render({
-                        elem: '#modelFormPtInfo input[name="dateRange"]',
-                        range: true
-                    });
-                    form.render('select');
-                    // 表单提交事件
-                    form.on('submit(modelSubmitPtInfo)', function (data) {
-                        layer.msg(JSON.stringify(data.field), {icon: 1});
-                        return false;
-                    });
-
-                }
-            });
-
         });
     });
 </script>

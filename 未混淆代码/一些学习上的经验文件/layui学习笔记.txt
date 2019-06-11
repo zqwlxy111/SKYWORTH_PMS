@@ -11,4 +11,5 @@
     event.stopPropagation();
     });
 10. dtree默认接收的是一个json的对象。
-11. 
+11. top.layui.admin.open()使得弹出窗口在最外层的父页面。
+12.
