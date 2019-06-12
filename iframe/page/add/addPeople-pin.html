@@ -112,7 +112,7 @@
 <!--        </div>-->
         <div class="form-group-bottom text-right" style="margin: 0 auto; width: 96%;">
             <button type="reset" class="layui-btn layui-btn-primary">&emsp;重置&emsp;</button>
-            <button class="layui-btn" lay-filter="formSubmitAdv" lay-submit>&emsp;提交&emsp;</button>
+            <button class="layui-btn" lay-filter="modelSubmitUser" lay-submit>&emsp;提交&emsp;</button>
         </div>
     </form>
 </div>
@@ -254,23 +254,23 @@
         });
 
         // 提交监听
-        form.on('submit(Personnel-submission)', function (selectdata) {
-            // console.log(selectdata.field);
-            layer.msg('提交成功！', {
-                time: 680
-            },function () {
-                var qwe = JSON.stringify(selectdata.field);
-                console.log(qwe);
-                console.log(parent);
-                // 通过index将iframe层关闭
-                // var index = parent.layer.getFrameIndex(window.name);
-                // parent.layer.close(index);
-                // // 关闭后刷新父页面
-                // parent.location.reload();
-                // parent.table.reload();
-            });
-            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-        });
+        // form.on('submit(modelSubmitUser)', function (selectdata) {
+        //     // console.log(selectdata.field);
+        //     layer.msg('提交成功！', {
+        //         time: 680
+        //     },function () {
+        //         var qwe = JSON.stringify(selectdata.field);
+        //         console.log(qwe);
+        //         console.log(parent);
+        //         // 通过index将iframe层关闭
+        //         // var index = parent.layer.getFrameIndex(window.name);
+        //         // parent.layer.close(index);
+        //         // // 关闭后刷新父页面
+        //         // parent.location.reload();
+        //         // parent.table.reload();
+        //     });
+        //     return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        // });
     });
 </script>
 
