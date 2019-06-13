@@ -14,7 +14,8 @@ layui.config({
     citypicker: 'city-picker/city-picker',
     tableSelect: 'tableSelect/tableSelect',
     cropper: 'cropper/cropper',
-    zTree: 'zTree/zTree'
+    zTree: 'zTree/zTree',
+    treeSelect: 'treeSelect/treeSelect',
 }).use(['layer', 'admin'], function () {
     var $ = layui.jquery;
     var layer = layui.layer;

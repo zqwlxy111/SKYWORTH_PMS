@@ -80,21 +80,20 @@
 </div>
 
 <script type="text/javascript" src="../../assets/libs/layui/layui.js"></script>
-<script src="./js/util.js" charset="utf-8"></script>
-<script src="./js/api.js" charset="utf-8"></script>
+<script src="../../assets/js/util.js" charset="utf-8"></script>
+<script src="../../assets/js/api.js" charset="utf-8"></script>
 <script>
     layui.use(['layer', 'form'], function () {
         var $ = layui.jquery;
         var layer = layui.layer;
         var form = layui.form;
 
-        // 表单提交
+        // 监听表单提交
         form.on('submit(login-submit)', function (obj) {
             $.get('http://172.20.248.' + '220:8088/dms/safe_usercenter/safe/user/login?systemId=2&username=' + $(
                 "#username")
                 .val() + '&password=' + $("#password").val(),
-                function (d) {
-                    var m = eval('(' + d + ')');
+                function (m) {
                     if (m && m.success) {
                         layer.msg('登录成功', {
                             time: 550

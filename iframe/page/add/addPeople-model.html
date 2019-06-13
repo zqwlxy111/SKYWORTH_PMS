@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>添加项目模块人员</title>
+    <link rel="stylesheet" href="../../assets/libs/layui/css/layui.css"/>
+    <link rel="stylesheet" href="../../assets/module/admin.css?v=312"/>
+    <link rel="stylesheet" href="../../assets/module/dtree/dtree.css" media="all">
+    <link rel="stylesheet" href="../../assets/module/dtree/font/dtreefont.css" media="all">
+    <style>
+        #export-pin .layui-form-item {
+            margin-bottom: 0;
+            margin-top: 20px;
+        }
+
+        #export-pin .layui-form-item .layui-inline {
+            margin-bottom: 25px;
+            margin-right: 0;
+        }
+
+        .form-group-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, .05);
+        }
+        .layui-form-label{
+            padding: 9px 0px;
+            width: 66px;
+        }
+        .layui-input-block{
+            margin-left: 80px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 正文开始 -->
+<form class="layui-form" lay-filter="Export-pin" id="export-pin">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+
+        <!--        模块选择-->
+        <div class="layui-card">
+<!--                        <div class="layui-card-header">模块选择</div>-->
+            <div class="layui-card-body">
+
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">所属模块 :</label>
+                        <div class="layui-input-block">
+                            <select name="productCategory" lay-filter="productCategoryChoice" lay-verify="productCategory">
+                                <option value=""></option>
+                                <option value="业务模块" selected="">业务模块</option>
+                                <option value="计划模块">计划模块</option>
+                                <option value="质量模块">质量模块</option>
+                                <option value="工程模块">工程模块</option>
+                                <option value="生产模块">生产模块</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--        部门选择-->
+        <div class="layui-card">
+<!--            <div class="layui-card-header">部门选择</div>-->
+            <div class="layui-card-body">
+
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">所属部门 :</label>
+                        <div class="layui-input-block">
+<!--                            <input name="ckName" type="text" placeholder="请输入机型" class="layui-input"-->
+<!--                                   lay-verType="tips" lay-verify="required" required/>-->
+                            <input type="text" id="tree" lay-filter="tree" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--        人员选择-->
+        <div class="layui-card">
+<!--                        <div class="layui-card-header">人员选择</div>-->
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">人员选择 :</label>
+                        <div class="layui-input-block">
+                            <select name="productCategory" lay-filter="productCategoryChoice" lay-verify="productCategory">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择权限</label>
+            <div class="layui-input-block">
+                <div id="LAY-auth-tree-index"></div>
+            </div>
+        </div>
+
+
+        <!--        备注-->
+        <div class="layui-card">
+<!--                        <div class="layui-card-header">职责负责</div>-->
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">职责负责 :</label>
+                        <div class="layui-input-block">
+                            <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group-bottom text-right" style="margin: 0 auto; width: 96%;">
+        <button type="reset" class="layui-btn layui-btn-primary">&emsp;重置&emsp;</button>
+        <button class="layui-btn" lay-filter="formSubmitAdv" lay-submit>&emsp;提交&emsp;</button>
+    </div>
+
+</form>
+<!-- js部分 -->
+<script type="text/javascript" src="../../assets/libs/layui/layui.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js?v=312"></script>
+
+<script>
+    layui.use(['layer', 'form', 'table', 'util', 'laydate','admin','dtree','treeSelect','jquery',], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var table = layui.table;
+        var util = layui.util;
+        var laydate = layui.laydate;
+        var admin = layui.admin;
+        var dtree = layui.dtree;
+        var treeSelect = layui.treeSelect;
+
+
+//         treeSelect.render({
+//             // 选择器
+//             elem: '#tree',
+//             // 数据
+//             data: 'http://172.20.248.220:8088/dms/safe_usercenter/safe/department/getDepartmentTree',
+//             // 异步加载方式：get/post，默认get
+//             type: 'get',
+//             headers:{
+//                 "token":'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVG9rZW4iOiJ7XCJpZFwiOjUxLFwibmFtZVwiOlwibGliaW5nbGluXCIsXCJjb2RlXCI6XCJza3kyMDYxOTNcIixcImZpbHRlclwiOm51bGx9In0.ARKC424DcHGGTTQiiO7V6HVCq5Zj1yBMu2JHZTbKjjs'
+//             },
+//             // 占位符
+//             placeholder: '请选择部门',
+//             // 是否开启搜索功能：true/false，默认false
+//             search: true,
+//             // 一些可定制的样式
+//             style: {
+//                 folder: {
+//                     enable: true
+//                 },
+//                 line: {
+//                     enable: true
+//                 }
+//             },
+//             // 点击回调
+//             click: function(d){
+//                 console.log(d);
+//                 console.log(d.treeId); // 得到组件的id
+//                 console.log(d.current); // 得到点击节点的treeObj对象
+//                 console.log(d.data); // 得到组成树的数据
+//                 $("#tree").val("asd")
+//             }
+//             ,
+//             // 加载完成后的回调函数
+//             success: function (d) {
+//                 console.log(d);
+// //                选中节点，根据id筛选
+//                 treeSelect.checkNode('tree', 15);
+//                 console.log($('#tree').val());
+// //                获取zTree对象，可以调用zTree方法
+//                 var treeObj = treeSelect.zTree('tree');
+//                 console.log(treeObj);
+// //                刷新树结构
+//                 treeSelect.refresh('tree');
+//             }
+//         });
+
+
+    });
+</script>
+</body>
+
+</html>

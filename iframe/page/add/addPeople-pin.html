@@ -146,12 +146,12 @@
                 // console.log(res);
 
                 // 将res对象转换成json对象
-                var resjson = $.parseJSON(res);
+                // var resjson = $.parseJSON(res);
 
                 //初始化树
                 var DTree = dtree.render({
                     elem: "#slTree1",
-                    data: [resjson],
+                    data: [res],
                     response: {title: 'text'}, // 这里指定了返回的数据格式，组件会根据这些值来替换返回JSON中的指定格式，从而读取信息
                     // ficon: "-1",  // 隐藏一级图标
                     // dot: false,  // 隐藏小圆点
