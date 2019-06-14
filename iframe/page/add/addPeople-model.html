@@ -93,8 +93,9 @@
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">人员选择 :</label>
                         <div class="layui-input-block">
-                            <select name="productCategory" lay-filter="productCategoryChoice" lay-verify="required">
-                                <option value=""></option>
+                            <select name="productCategory1" lay-filter="productCategoryChoice" lay-verify="required">
+                                <option value="">123</option>
+                                <option value="as">as</option>
                             </select>
                         </div>
                     </div>
@@ -110,7 +111,7 @@
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">职责负责 :</label>
                         <div class="layui-input-block">
-                            <textarea placeholder="请输入内容" class="layui-textarea" lay-verify="required"></textarea>
+                            <textarea name="productCategory2" placeholder="请输入内容" class="layui-textarea" lay-verify="required"></textarea>
                         </div>
                     </div>
                 </div>
@@ -141,6 +142,8 @@
         var treeSelect = layui.treeSelect;
         var eleTree = layui.eleTree;
 
+        var ll = null;
+        var bb = null;
         // var libinglin = null;
         $.ajax({
             type: "GET",
@@ -193,11 +196,25 @@
             $("[name='title']").val(d.data.currentData.text);
             $(".ele5").hide();
             clickstatus = false;
+            ll = d.data.currentData.text;
+            parent.data = ll;
         });
         $(document).on("click",function() {
             $(".ele5").hide();
             clickstatus = false;
-        })
+        });
+        // 监听表单提交
+        form.on('submit(formSubmitAdv)', function (data) {
+            // 表格选择的数据放到data.field中
+            // data.field.checkUsers = checkRows;
+            console.log(data);
+            layer.msg(JSON.stringify(data.field));
+            // layer.closeAll(dIndex);
+            bb = data;
+            parent.data = bb;
+            parent.libinglin = '1';
+            return false;
+        });
     });
 </script>
 </body>
