@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../assets/module/admin.css?v=312"/>
     <link rel="stylesheet" href="../../assets/module/dtree/dtree.css" media="all">
     <link rel="stylesheet" href="../../assets/module/dtree/font/dtreefont.css" media="all">
+    <link rel="stylesheet" href="../../assets/module/eleTree/eleTree.css">
     <style>
         #export-pin .layui-form-item {
             margin-bottom: 0;
@@ -78,7 +79,8 @@
                         <div class="layui-input-block">
 <!--                            <input name="ckName" type="text" placeholder="请输入机型" class="layui-input"-->
 <!--                                   lay-verType="tips" lay-verify="required" required/>-->
-                            <input type="text" id="tree" lay-filter="tree" class="layui-input">
+                            <input type="text" name="title" required="" lay-verify="required" placeholder="请输入标题" readonly="" autocomplete="off" class="layui-input">
+                            <div class="eleTree ele5" lay-filter="data5" style="display: none"></div>
                         </div>
                     </div>
                 </div>
@@ -132,13 +134,25 @@
         <button class="layui-btn" lay-filter="formSubmitAdv" lay-submit>&emsp;提交&emsp;</button>
     </div>
 
+
+<!--    -->
+<!--    -->
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入框</label>
+            <div class="layui-input-block">
+
+            </div>
+        </div>
+    </div>
+    <div class="eleTree ele1"></div>
 </form>
 <!-- js部分 -->
 <script type="text/javascript" src="../../assets/libs/layui/layui.js"></script>
 <script type="text/javascript" src="../../assets/js/common.js?v=312"></script>
 
 <script>
-    layui.use(['layer', 'form', 'table', 'util', 'laydate','admin','dtree','treeSelect','jquery',], function () {
+    layui.use(['layer', 'form', 'table', 'util', 'laydate','admin','dtree','treeSelect','jquery','eleTree'], function () {
         var $ = layui.jquery;
         var layer = layui.layer;
         var form = layui.form;
@@ -148,7 +162,7 @@
         var admin = layui.admin;
         var dtree = layui.dtree;
         var treeSelect = layui.treeSelect;
-
+        var eleTree = layui.eleTree;
 
 //         treeSelect.render({
 //             // 选择器
@@ -196,7 +210,55 @@
 //             }
 //         });
 
+        var libinglin = null;
+        $.ajax({
+            type: "GET",
+            headers:{
+                "token":'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVG9rZW4iOiJ7XCJpZFwiOjUxLFwibmFtZVwiOlwibGliaW5nbGluXCIsXCJjb2RlXCI6XCJza3kyMDYxOTNcIixcImZpbHRlclwiOm51bGx9In0.ARKC424DcHGGTTQiiO7V6HVCq5Zj1yBMu2JHZTbKjjs'
+            },
+            url: "http://172.20.248.220:8088/dms/safe_usercenter/safe/department/getDepartmentTree",
+            success: function (res) {
+                // console.log(res);
+                    libinglin = res;
+                // 将res对象转换成json对象
+                // var resjson = $.parseJSON(res)
+                // 初始化树
+                eleTree.render({
+                    elem: '.ele5',
+                    data: [libinglin],
+                    defaultExpandAll: true,
+                    expandOnClickNode: false,
+                    highlightCurrent: true,
+                    request: {
+                        name: "text",
+                        key: "id",
+                        children: "children",
+                        checked: "checked",
+                        disabled: "disabled",
+                        isLeaf: "isLeaf"
+                    },
+                    showLine:true
+                });
+            }
+        });
+        var clickstatus = false;
+        $("[name='title']").on("mouseover",function (e) {
+            $(this).css("cursor","pointer")
 
+        });
+        $("[name='title']").on("click",function (e) {
+            e.stopPropagation();
+            $(".ele5").toggle();
+
+        });
+        eleTree.on("nodeClick(data5)",function(d) {
+            console.log(d);
+            $("[name='title']").val(d.data.currentData.text);
+            $(".ele5").hide();
+        });
+        $(document).on("click",function() {
+            $(".ele5").hide();
+        })
     });
 </script>
 </body>

@@ -1,20 +1,76 @@
 {
-  "code": 0,
-  "msg": "获取成功",
-  "data": {
-    "trees":[
-    	{"name": "用户管理", "value": "yhgl", "checked": true, "disabled": false},
-    	{"name": "用户组管理", "value": "yhzgl", "checked": true, "disabled": false, "list": [
-    		{"name": "角色管理", "value": "yhzgl-jsgl", "checked": true, "disabled": false, "list":[
-    			{"name": "添加角色", "value": "yhzgl-jsgl-tjjs", "checked": true, "disabled": false},
-    			{"name": "角色列表", "value": "yhzgl-jsgl-jslb", "checked": false, "disabled": false}
-    		]},
-        {"name": "管理员管理", "value": "glygl-tjgly", "checked": false, "disabled": false, "list":[
-          {"name": "添加管理员", "value": "glygl-tjgly", "checked": false, "disabled": false},
-          {"name": "管理员列表", "value": "glygl-glylb", "checked": false, "disabled": true},
-          {"name": "管理员管理", "value": "glygl-glylb", "checked": false, "disabled": true}
-        ]}
-      ]}
+    "code": 0,
+    "data": [
+        {
+            "id": 1,
+            "label": "安徽省",
+            "children": [
+                {
+                    "id": 2,
+                    "label": "马鞍山市",
+                    "disabled": true,
+                    "children": [
+                        {
+                            "id": 3,
+                            "label": "和县"
+                        },
+                        {
+                            "id": 4,
+                            "label": "花山区",
+                            "checked": true
+                        }
+                    ]
+                },
+                {
+                    "id": 22,
+                    "label": "淮北市",
+                    "children": [
+                        {
+                            "id": 23,
+                            "label": "濉溪县"
+                        },
+                        {
+                            "id": 24,
+                            "label": "相山区",
+                            "checked": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "label": "河南省",
+            "children": [
+                {
+                    "id": 6,
+                    "label": "郑州市"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "label": "江苏省",
+            "children": [
+                {
+                    "id": 11,
+                    "label": "苏州市"
+                },
+                {
+                    "id": 12,
+                    "label": "南京市",
+                    "children": [
+                        {
+                            "id": 13,
+                            "label": "姑苏区"
+                        },
+                        {
+                            "id": 14,
+                            "label": "相城区"
+                        }
+                    ]
+                }
+            ]
+        }
     ]
-  }
 }

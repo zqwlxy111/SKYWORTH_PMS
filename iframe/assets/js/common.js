@@ -16,6 +16,7 @@ layui.config({
     cropper: 'cropper/cropper',
     zTree: 'zTree/zTree',
     treeSelect: 'treeSelect/treeSelect',
+    eleTree: 'eleTree/eleTree'
 }).use(['layer', 'admin'], function () {
     var $ = layui.jquery;
     var layer = layui.layer;
