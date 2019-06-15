@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>添加项目模块人员</title>
-    <link rel="stylesheet" href="../../assets/libs/layui/css/layui.css"/>
-    <link rel="stylesheet" href="../../assets/module/admin.css?v=312"/>
-    <link rel="stylesheet" href="../../assets/module/dtree/dtree.css" media="all">
-    <link rel="stylesheet" href="../../assets/module/dtree/font/dtreefont.css" media="all">
-    <link rel="stylesheet" href="../../assets/module/eleTree/eleTree.css">
+    <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/libs/layui/css/layui.css"/>
+    <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/admin.css?v=312"/>
+    <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/dtree/dtree.css" media="all">
+    <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/dtree/font/dtreefont.css" media="all">
+    <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/eleTree/eleTree.css">
     <style>
         #export-pin .layui-form-item {
             margin-bottom: 0;
@@ -30,11 +30,13 @@
             padding: 10px 20px;
             box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, .05);
         }
-        .layui-form-label{
+
+        .layui-form-label {
             padding: 9px 0px;
             width: 66px;
         }
-        .layui-input-block{
+
+        .layui-input-block {
             margin-left: 80px;
         }
     </style>
@@ -47,14 +49,14 @@
 
         <!--        模块选择-->
         <div class="layui-card">
-<!--                        <div class="layui-card-header">模块选择</div>-->
+            <!--                        <div class="layui-card-header">模块选择</div>-->
             <div class="layui-card-body">
 
                 <div class="layui-form-item layui-row">
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">所属模块 :</label>
                         <div class="layui-input-block">
-                            <select name="productCategory" lay-verify="required" lay-verify="productCategory">
+                            <select name="productCategory" lay-verify="required" lay-verType="tips">
                                 <option value=""></option>
                                 <option value="业务模块" selected="">业务模块</option>
                                 <option value="计划模块">计划模块</option>
@@ -70,14 +72,15 @@
 
         <!--        部门选择-->
         <div class="layui-card">
-<!--            <div class="layui-card-header">部门选择</div>-->
+            <!--            <div class="layui-card-header">部门选择</div>-->
             <div class="layui-card-body">
 
                 <div class="layui-form-item layui-row">
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">所属部门 :</label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" required="" lay-verify="required" placeholder="请选择部门" readonly="" autocomplete="off" class="layui-input">
+                            <input type="text" name="department" required="" lay-verify="required" placeholder="请选择部门"
+                                   readonly="" autocomplete="off" class="layui-input" lay-verType="tips">
                             <div class="eleTree ele5" lay-filter="data5" style="display: none"></div>
                         </div>
                     </div>
@@ -87,13 +90,14 @@
 
         <!--        人员选择-->
         <div class="layui-card">
-<!--                        <div class="layui-card-header">人员选择</div>-->
+            <!--                        <div class="layui-card-header">人员选择</div>-->
             <div class="layui-card-body">
                 <div class="layui-form-item layui-row">
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">人员选择 :</label>
                         <div class="layui-input-block">
-                            <select name="productCategory1" lay-filter="productCategoryChoice" lay-verify="required">
+                            <select name="departmentPeople" lay-filter="productCategoryChoice" lay-verify="required"
+                                    lay-verType="tips">
                                 <option value="">123</option>
                                 <option value="as">as</option>
                             </select>
@@ -103,15 +107,16 @@
             </div>
         </div>
 
-        <!--        备注-->
+        <!--        职责-->
         <div class="layui-card">
-<!--                        <div class="layui-card-header">职责负责</div>-->
+            <!--                        <div class="layui-card-header">职责负责</div>-->
             <div class="layui-card-body">
                 <div class="layui-form-item layui-row">
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">职责负责 :</label>
                         <div class="layui-input-block">
-                            <textarea name="productCategory2" placeholder="请输入内容" class="layui-textarea" lay-verify="required"></textarea>
+                            <textarea name="responsibility" placeholder="请输入内容" class="layui-textarea"
+                                      lay-verify="required" lay-verType="tips"></textarea>
                         </div>
                     </div>
                 </div>
@@ -126,11 +131,16 @@
 
 </form>
 <!-- js部分 -->
-<script type="text/javascript" src="../../assets/libs/layui/layui.js"></script>
-<script type="text/javascript" src="../../assets/js/common.js?v=312"></script>
-
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/libs/layui/layui.js"></script>
+<script
+        src="http://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/common.js?v=312"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/util.js"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/api.js"></script>
 <script>
-    layui.use(['layer', 'form', 'table', 'util', 'laydate','admin','dtree','treeSelect','jquery','eleTree'], function () {
+    layui.use(['layer', 'form', 'table', 'util', 'laydate', 'admin', 'dtree', 'treeSelect', 'jquery', 'eleTree'], function () {
         var $ = layui.jquery;
         var layer = layui.layer;
         var form = layui.form;
@@ -142,19 +152,27 @@
         var treeSelect = layui.treeSelect;
         var eleTree = layui.eleTree;
 
+        var libinglin = api.project.getList({}, function (data) {
+            console.log(data);
+            var libinglin = api.project.getPerson({projectid: data[0].id}, function (data1) {
+                console.log(data1);
+            });
+        });
+
+
         var ll = null;
         var bb = null;
         // var libinglin = null;
         $.ajax({
             type: "GET",
-            headers:{
-                "token":'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVG9rZW4iOiJ7XCJpZFwiOjUxLFwibmFtZVwiOlwibGliaW5nbGluXCIsXCJjb2RlXCI6XCJza3kyMDYxOTNcIixcImZpbHRlclwiOm51bGx9In0.ARKC424DcHGGTTQiiO7V6HVCq5Zj1yBMu2JHZTbKjjs'
+            headers: {
+                "token": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVG9rZW4iOiJ7XCJpZFwiOjUxLFwibmFtZVwiOlwibGliaW5nbGluXCIsXCJjb2RlXCI6XCJza3kyMDYxOTNcIixcImZpbHRlclwiOm51bGx9In0.ARKC424DcHGGTTQiiO7V6HVCq5Zj1yBMu2JHZTbKjjs'
             },
-            // url: "http://172.20.248.220:8088/dms/safe_usercenter/safe/department/getDepartmentTree",
-            url:"https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/department/getDepartmentTree",
+            url: "http://172.20.248.220:8088/dms/safe_usercenter/safe/department/getDepartmentTree",
+            // url:"https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/department/getDepartmentTree",
             success: function (res) {
                 // console.log(res);
-                    libinglin = res;
+                libinglin = res;
                 // 将res对象转换成json对象
                 // var resjson = $.parseJSON(res)
                 // 初始化树
@@ -172,34 +190,34 @@
                         disabled: "disabled",
                         isLeaf: "isLeaf"
                     },
-                    showLine:true
+                    showLine: true
                 });
             }
         });
         var clickstatus = false;
-        $("[name='title']").on("mouseover",function (e) {
-            $(this).css("cursor","pointer")
+        $("[name='department']").on("mouseover", function (e) {
+            $(this).css("cursor", "pointer")
         });
-        $("[name='title']").on("click",function (e) {
+        $("[name='department']").on("click", function (e) {
             e.stopPropagation();
-            if (clickstatus == false){
+            if (clickstatus == false) {
                 $(".ele5").slideDown(300);
                 clickstatus = true;
-            } else{
+            } else {
                 $(".ele5").slideUp(300);
                 clickstatus = false;
             }
 
         });
-        eleTree.on("nodeClick(data5)",function(d) {
+        eleTree.on("nodeClick(data5)", function (d) {
             console.log(d);
-            $("[name='title']").val(d.data.currentData.text);
+            $("[name='department']").val(d.data.currentData.text);
             $(".ele5").hide();
             clickstatus = false;
             ll = d.data.currentData.text;
             parent.data = ll;
         });
-        $(document).on("click",function() {
+        $(document).on("click", function () {
             $(".ele5").hide();
             clickstatus = false;
         });
@@ -213,6 +231,15 @@
             bb = data;
             parent.data = bb;
             parent.libinglin = '1';
+            window.mDataList = [];
+            window.mDataList.push(data.field);
+            window.parent.libinglinn();
+            // parent.insTb.reload({data: window.mDataList});
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            parent.layer.close(index); //再执行关闭
+            // 关闭后刷新父页面
+            // parent.location.reload();
+            // parent.table.reload();
             return false;
         });
     });

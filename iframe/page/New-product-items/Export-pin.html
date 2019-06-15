@@ -339,9 +339,10 @@
             cellMinWidth: 100,
             cols: [[
                 {type: 'numbers', title: '#'},
-                {field: 'name', title: '姓名'},
-                {field: 'phone', title: '手机号'},
-                {field: 'sex', title: '性别'}
+                {field: 'productCategory', title: '模块'},
+                {field: 'department', title: '部门'},
+                {field: 'departmentPeople', title: '人员'},
+                {field: 'responsibility', title: '职责'}
             ]]
         });
         $("#libinglin-btn").click(function () {
@@ -364,15 +365,15 @@
                 // ,
                 success: function (layero,dIndex) {
                     // console.log(layero);
-                    form.on('submit(modelSubmitUser)', function (data) {
-                        console.log(data);
-                        mDataList.push(data.field);
-                        console.log(mDataList);
-                        insTb.reload({data: mDataList});
-                        layer.close(dIndex);
-                        // $(".layui-table-view").css("display","block");
-                        return false;
-                    });
+                    // form.on('submit(modelSubmitUser)', function (data) {
+                    //     console.log(data);
+                    //     mDataList.push(data.field);
+                    //     console.log(mDataList);
+                    //     insTb.reload({data: mDataList});
+                    //     // layer.close(dIndex);
+                    //     // $(".layui-table-view").css("display","block");
+                    //     return false;
+                    // });
                 },
                 cancel: function (index, layero) {
                     // if (confirm('确定要关闭么')) { //只有当点击confirm框的确定时，该层才会关闭
@@ -416,10 +417,14 @@
         //     return false;
         // });
 
+        var libinglinn = function () {
+            insTb.reload({data: window.mDataList});
+        };
+
         var li = parent.data;
         var bi = parent.data;
         console.log(li);
-        console.log(bi.field.title);
+        console.log(bi);
         console.log(parent.libinglin);
     });
 </script>

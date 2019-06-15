@@ -35,9 +35,8 @@ window.util = {
     },
     getFileState: function (e) {
         if (!e || e === 0) return "未上传";
-        else if (e === 1) return "未审批";
-        else if (e === 2) return "等待审批";
-        else if (e === 3) return "已审批";
+        else if (e === 1) return "等待审批";
+        else if (e === 2) return "已审批";
         return "";
     },
     getExLevel: function (e) {
@@ -54,13 +53,18 @@ window.util = {
         else if (e === 3) return "PVT";
         else if (e === 4) return "PMP";
         else if (e === 5) return "MP";
-        return "";
+        return "--";
     },
     getProState: function (e) {
         if (e === 0) return "待立项";
         if (e === 1) return "待立项审批";
         if (e === 2) return "未完成";
         if (e === 3) return "已完成";
+    },
+    getFormType:function(e){
+        if(e===1) return "项目审批";
+        if(e===2) return "阶段审批";
+        if(e===3) return "文件审批";
     },
     getDatetime: function (d) {
         var date = new Date();
@@ -109,31 +113,31 @@ window.util = {
 
         //console.log("开始请求！"+e.url);
         $.ajax({
-            url: 'http://172.20.248.220:8088/dms/pms' + url,
-            //url: 'http://172.20.73.7:8888/pms' + url,
-            headers: {
-                token: global.userIdentity.token,
-                user: global.userIdentity.user.id,
-            },
-            method: 'post',
-            data: data,
-            dataType: 'Json',
-            //contentType:'application/json',
-            success: function (msg) {
-                 
-                if (msg.success) {
-                    if (cb) cb(msg.result);
-                }
-                else
-                    alert(msg.msg);
-            },
+                url: 'http://172.20.248.220:8088/dms/pms' + url,
+                //url: 'http://172.20.73.7:8888/pms' + url,
+                headers: {
+                    token: global.userIdentity.token,
+                    user: global.userIdentity.user.id,
+                },
+                method: 'post',
+                data: data,
+                dataType: 'Json',
+                //contentType:'application/json',
+                success: function (msg) {
 
-            //complete: function (e) {
-            //    console.log("请求完成！");
-            //    console.log(e);
-            //    console.log("-------------------------");
-            //}
-        }
+                    if (msg.success) {
+                        if (cb) cb(msg.result);
+                    }
+                    else
+                        alert(msg.msg);
+                },
+
+                //complete: function (e) {
+                //    console.log("请求完成！");
+                //    console.log(e);
+                //    console.log("-------------------------");
+                //}
+            }
         );
     },
     request2: function (url, data, cb) {
@@ -176,7 +180,7 @@ window.util = {
 
         $.ajax({
             type: "POST",
-            url: 'http://172.20.248.220:8088/dms/pms/task/upload',
+            url: 'http://172.20.248.220:8088/dms/pms/milepost/upload',
             headers: {
                 token: global.userIdentity.token,
                 user: global.userIdentity.user.id,
@@ -197,59 +201,27 @@ window.util = {
     downLoad: function (e, cb) {
         $.ajax({
             type: "POST",
-            url: 'http://172.20.248.220:8088/dms/pms/task/download?id=' + e.id,
+            url: 'http://172.20.248.220:8088/dms/pms/milepost/download?id=' + e.id,
             headers: {
                 token: global.userIdentity.token,
                 user: global.userIdentity.user.id,
-                'Accept': 'application/json',
-                'Content-Type': 'utf-8'
+                // 'Accept': 'application/json',
+                // 'Content-Type': 'utf-8'
             },
-            success: function (msg) {
-                if (msg.success) {
-                    if (cb) cb(msg);
+            complete:function(msg){
+                if(msg.readyState===4&&msg.status===200){
+                    if(cb) cb(msg.responseText);
                 }
-                else alert(msg.msg);
+            },
+            success:function(msg){
+                console.log(msg);
             }
+
         });
     },
-    // commit: function (flowid, project, cb) {
-    //     var that = this;
-    //     this.selectUser(project, function (args) {
-    //         var commitParam = { id: flowid };
-    //         commitParam.toid = args.param.id,
-    //         commitParam.toname = args.param.name,
-    //         commitParam.commond = args.param.commond,
-    //         that.request2("flow/commit", commitParam , function (e1) {
-    //              args.dialog.close();
-    //              if (cb) cb();
-    //         });
-    //     });
-    // },
-    // selectUser: function (project, cb) {
-    //     this.dialog({
-    //         url: '/web/selectUser.html',
-    //         title: '选择审批人员',
-    //         param: project,
-    //         width: 500,
-    //         height: 350,
-    //         onOk: function (args) {
-    //             if (cb) cb(args);
-    //         },
-    //     });
-    // },
-    getParam: function () {
-        return window.top.sysParam;
-    },
-    setParam: function (param) {
-        window.top.sysParam = param;
-    },
-    openParamPage: function (url, param) {
-        window.top.openCommandPage(url);
-        this.setParam(param);
-    }
-    // ,
-    // dialog: function (e) { return window.top.MDialog(e); }
-}
+
+
+};
 
 
 

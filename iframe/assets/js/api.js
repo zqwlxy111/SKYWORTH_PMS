@@ -18,13 +18,12 @@
         getPerson: function (e, cb) {
             util.request("project/getPerson", e, cb);
         },
-
+        getAllPerson: function (e, cb) {
+            util.request2("project/getAllPerson", e, cb);
+        },
     },
-//api.project.getList({},function(msg){
-// 
-// });
     machine: {
-        adMachine: function (e, cb) {
+        addMachine: function (e, cb) {
             util.request2("/machine/add", e, cb);
         },
         updateMachine: function (e, cb) {
@@ -38,38 +37,38 @@
         },
     },
     flow: {
-        getMyFlow: function (e, cb) {
-            util.request("flow/getMyFlow", e, cb);
+        getMyFlow: function (cb) {
+            util.request("flow/getMyFlow", {}, cb);
         },
-        getNodesByFlow: function (e, cb) {
-            util.request("flow/getNodeByFlow", e,cb);
+        getFlowById: function (e, cb) {
+            util.request("flow/getFlowById", e,cb);
         },
         commit: function (e, cb) {
             util.request2("flow/commit", e, cb);
         },
-        getUnFinishTask: function (e, cb) {
-            util.request("task/getUnfinishTask", e, cb);
+        getUnFinishNodeTask: function (e, cb) {
+            util.request("milepost/getUnfinishTask", e, cb);
         },
-        getTaskList: function (e, cb) {
-            util.request2("/task/getList", e, cb);
+        getNodeTasks: function (e, cb) {
+            util.request2("/milepost/getList", e, cb);
         },
-        startTask: function (e, cb) {
-            util.request("task/commit", e, cb);
+        startFileTask: function (e, cb) {
+            util.request("milepost/commit", e, cb);
         },
-        taskFileUpload: function (e, cb) {
+        nodeFileUpload: function (e, cb) {
             util.uploadFile(e, cb);
         },
-        downLoadTaskFile: function (e, cb) {
+        downLoadNodeFile: function (e, cb) {
             util.downLoad(e, cb);
         },
         addFlowFile: function (e, cb) {
-            util.request("task/addFlowFile", e, cb);
+            util.request("milepost/addFlowFile", e, cb);
         },
         addFlowEx: function (e, cb) {
-            util.request("/task/addFlowEx", e, cb);
+            util.request("/milepost/addFlowEx", e, cb);
         },
         closeFlowEx: function (e, cb) {
-            util.request("task/closeEx", e, cb);
+            util.request("milepost/closeEx", e, cb);
         },
         getExTypes: function (e, cb) {
             util.request("exception/getExTypes", e, cb);
@@ -80,5 +79,15 @@
         getFlowByRecord: function (e, cb) {
             util.request("flow/getFlowByRecord", e, cb);
         }
+    },
+    node: {
+        getDutys: function (cb) {
+            util.request("node/getDutys", {}, cb);
+        }
+    },
+    task:{
+        getList:function(e,cb){
+            util.request2("task/getList", e, cb);
+        },
     }
 }
