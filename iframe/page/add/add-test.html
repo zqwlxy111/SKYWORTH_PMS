@@ -87,8 +87,10 @@
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">人员选择 :</label>
                         <div class="layui-input-block">
-                            <select name="departmentPeople"  lay-verify="required" lay-verType="tips" id="departmentPeopleChoice">
-                                <option value="">请选择人员</option>
+                            <select name="departmentPeople" lay-filter="productCategoryChoice" lay-verify="required"
+                                    lay-verType="tips">
+                                <option value="">123</option>
+                                <option value="as">as</option>
                             </select>
                         </div>
                     </div>
@@ -148,6 +150,10 @@
         //     });
         // });
 
+
+        var ll = null;
+        var bb = null;
+        // var libinglin = null;
         $.ajax({
             type: "GET",
             headers: {
@@ -186,82 +192,40 @@
         $("[name='department']").on("click", function (e) {
             e.stopPropagation();
             if (clickstatus == false) {
-                $(".ele5").slideDown(100);
+                $(".ele5").slideDown(300);
                 clickstatus = true;
             } else {
-                $(".ele5").slideUp(100);
+                $(".ele5").slideUp(300);
                 clickstatus = false;
             }
 
+        });
+        eleTree.on("nodeClick(data5)", function (d) {
+            // console.log(d);
+            $("[name='department']").val(d.data.currentData.text);
+            $(".ele5").hide();
+            clickstatus = false;
+            ll = d.data.currentData.text;
+            parent.data = ll;
         });
         $(document).on("click", function () {
             $(".ele5").hide();
             clickstatus = false;
         });
-
-        eleTree.on("nodeClick(data5)", function (d) {
-            console.log(d.data.currentData.id);
-            $("[name='department']").val(d.data.currentData.text);
-            $(".ele5").hide();
-            clickstatus = false;
-            $.ajax({
-                type: "GET",
-                headers:{
-                    "token":'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVG9rZW4iOiJ7XCJpZFwiOjUxLFwibmFtZVwiOlwibGliaW5nbGluXCIsXCJjb2RlXCI6XCJza3kyMDYxOTNcIixcImZpbHRlclwiOm51bGx9In0.ARKC424DcHGGTTQiiO7V6HVCq5Zj1yBMu2JHZTbKjjs'
-                },
-                url: "http://172.20.248.220:8088/dms/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId=" + d.data.currentData.id + "&start=0&limit=100",
-                success: function (res1json) {
-                    // 将res对象转换成json对象
-                    // var res1json = $.parseJSON(res1);
-                    // console.log(res1json);
-                    $("#departmentPeopleChoice").empty();
-                    $("#departmentPeopleChoice").append("<option value=''>请选择人员</option>");
-                    for (var i = 0; i < res1json.result.length; i++) {
-
-                        $("#departmentPeopleChoice").append("<option value='" + res1json.result[i].realName + "' type='text'>" + res1json.result[i].realName + "</option>");
-
-                    }
-
-                    // 对目标form表单进行动态的重新渲染
-                    form.render();
-
-                }
-            });
-        });
         // 监听表单提交
         form.on('submit(formSubmitAdv)', function (data) {
             // 表格选择的数据放到data.field中
             // data.field.checkUsers = checkRows;
-            console.log(data.field.productCategory);
+            console.log(data);
             // layer.msg(JSON.stringify(data.field));
 
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 
             // alert(JSON.stringify(data.field));
 
-            // 条件判断
-            switch(data.field.productCategory){
-                case '业务模块':
-                    parent.mDataList1.push(data.field);
-                    parent.insTb1.reload({data: parent.mDataList1});
-                    break;
-                case '计划模块':
-                    parent.mDataList2.push(data.field);
-                    parent.insTb2.reload({data: parent.mDataList2});
-                    break;
-                case '质量模块':
-                    parent.mDataList3.push(data.field);
-                    parent.insTb3.reload({data: parent.mDataList3});
-                    break;
-                case '工程模块':
-                    parent.mDataList4.push(data.field);
-                    parent.insTb4.reload({data: parent.mDataList4});
-                    break;
-                case '生产模块':
-                    parent.mDataList5.push(data.field);
-                    parent.insTb5.reload({data: parent.mDataList5});
-                    break;
-            }
+            parent.mDataList.push(data.field);
+
+            parent.insTb.reload({data: parent.mDataList});
 
             parent.layer.close(index); //再执行关闭
 
