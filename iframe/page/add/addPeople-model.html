@@ -121,10 +121,7 @@
 </form>
 <!-- js部分 -->
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/libs/layui/layui.js"></script>
-<script
-        src="http://code.jquery.com/jquery-2.2.4.js"
-        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/common.js?v=312"></script>
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/util.js"></script>
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/api.js"></script>
@@ -137,7 +134,6 @@
         var util = layui.util;
         var laydate = layui.laydate;
         var admin = layui.admin;
-        var dtree = layui.dtree;
         var treeSelect = layui.treeSelect;
         var eleTree = layui.eleTree;
 
@@ -147,6 +143,7 @@
         //         console.log(data1);
         //     });
         // });
+
 
         $.ajax({
             type: "GET",
@@ -234,7 +231,7 @@
             // data.field.checkUsers = checkRows;
             console.log(data.field.productCategory);
             // layer.msg(JSON.stringify(data.field));
-
+            console.log(parent);
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 
             // alert(JSON.stringify(data.field));

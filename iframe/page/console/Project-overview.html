@@ -11,11 +11,11 @@
         .layui-form-label{
             padding: 9px 5px;
         }
-        .layui-inline{
-           margin-right: 16px;
-        }
+        /*.layui-inline{*/
+        /*   margin-right: 16px;*/
+        /*}*/
         .layui-form-item .layui-input-inline{
-            width: 160px;
+            width: 110px;
         }
     </style>
 </head>
@@ -24,14 +24,19 @@
 <!-- 正文开始 -->
 <div class="layui-fluid">
     <div class="layui-card">
-        <div class="layui-card-header">项目查询</div>
+        <div class="layui-card-header">
+            <div class="layui-inline layui-col-lg10" style="margin-right: 0px">项目查询</div>
+            <div class="layui-inline layui-col-lg2 text-right" style="margin-right: 0px">
+                <button class="layui-btn layui-btn-sm " lay-event="add" id="chaxunanniu"><i class="layui-icon layui-icon-add-1"></i>新建查询</button>
+            </div>
+        </div>
         <div class="layui-card-body">
-            <div class="layui-form toolbar">
+            <div class="layui-form toolbar layui-hide" id="toolbarShow">
                 <div class="layui-form-item">
-                    <div class="layui-inline ">
+                    <div class="layui-inline">
                         <label class="layui-form-label w-auto">项目类别：</label>
                         <div class="layui-input-inline mr0">
-                            <select name="xiangmulb">
+                            <select name="xiangmulb">-->
                                 <option value=""></option>
                                 <option value="待立项审核">all</option>
                                 <option value="已完成">内销项目</option>
@@ -40,34 +45,34 @@
                             </select>
                         </div>
                     </div>
-                    <div class="layui-inline ">
+                    <div class="layui-inline">
                         <label class="layui-form-label w-auto">项目名称：</label>
                         <div class="layui-input-inline mr0">
-                            <input name="username" class="layui-input" type="text" placeholder="请输入"/>
+                            <input name="xiangmumc" class="layui-input" type="text" placeholder="项目名称"/>
                         </div>
                     </div>
-                    <div class="layui-inline ">
+                    <div class="layui-inline">
                         <label class="layui-form-label w-auto">项目组长：</label>
                         <div class="layui-input-inline mr0">
-                            <input name="username" class="layui-input" type="text" placeholder="请输入"/>
+                            <input name="xiangmuzz" class="layui-input" type="text" placeholder="项目名称"/>
                         </div>
                     </div>
-                    <div class="layui-inline ">
+                    <div class="layui-inline">
                         <label class="layui-form-label w-auto">项目负责人：</label>
                         <div class="layui-input-inline mr0">
-                            <input name="username" class="layui-input" type="text" placeholder="请输入"/>
+                            <input name="xiangmufzr" class="layui-input" type="text" placeholder="项目名称"/>
                         </div>
                     </div>
-                    <div class="layui-inline ">
+                    <div class="layui-inline">
                         <label class="layui-form-label w-auto">立项时间：</label>
                         <div class="layui-input-inline mr0" style="width: 175px;">
                             <input type="text" class="layui-input" id="lixiangTime" placeholder="选择范围时间">
                         </div>
                     </div>
-                    <div class="layui-inline ">
+                    <div class="layui-inline">
                         <label class="layui-form-label w-auto">项目状态：</label>
                         <div class="layui-input-inline mr0">
-                            <select name="projectStatus">
+                            <select name="xiangmuzt">
                                 <option value=""></option>
                                 <option value="待立项审核">待立项审核</option>
                                 <option value="已完成">已完成</option>
@@ -76,11 +81,10 @@
                             </select>
                         </div>
                     </div>
-                    <div class="layui-inline ">
+                    <div class="layui-inline">
                         <button class="layui-btn icon-btn" lay-filter="formSubSearchUser" lay-submit>
                             <i class="layui-icon">&#xe615;</i>搜索
                         </button>
-<!--                        <button id="btnAddUser" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>-->
                     </div>
                 </div>
             </div>
@@ -112,15 +116,14 @@
 
 <!-- js部分 -->
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/libs/layui/layui.js"></script>
-<script
-        src="http://code.jquery.com/jquery-2.2.4.js"
-        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/common.js?v=312"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/util.js"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/api.js"></script>
 
 <!--自定义js-->
 <script>
-    layui.use(['layer', 'form', 'table', 'util', 'laydate','admin','index'], function () {
+    layui.use(['layer', 'form', 'table', 'util', 'laydate','admin','index','jquery'], function () {
         var $ = layui.jquery;
         var layer = layui.layer;
         var form = layui.form;
@@ -130,6 +133,24 @@
         var admin = layui.admin;
         var index = layui.index;
 
+
+
+        /**
+         *  查询按钮事件
+         */
+        var openstatus = false; // 设置默认状态为关闭
+        $("#chaxunanniu").on("click",function () {
+           if (!openstatus){
+               $("#toolbarShow").removeClass("layui-hide");
+               $("#toolbarShow").addClass("layui-show");
+               openstatus = true;
+           } else{
+               $("#toolbarShow").removeClass("layui-show");
+               $("#toolbarShow").addClass("layui-hide");
+               openstatus = false;
+           }
+        });
+
         /**
          * 范围时间选择
          */
@@ -137,33 +158,47 @@
             elem: '#lixiangTime'
             ,range: true
         });
-        var insTb = table.render({
-            elem: '#projectOverview',
-            data:[{numbers:20,username:"456"}],
-            page: true,
-            cellMinWidth: 100,
-            toolbar: '#toolbarDemo',
-            cols: [[
-                {type:'radio'},
-                {type: 'numbers', title: '#' ,align:"center"},
-                {field: 'username', sort: true, title: '项目类别' ,align:"center"},
-                {field: 'nickName', title: '项目名称' ,align:"center"},
-                {field: 'sex', title: '项目组长' ,align:"center"},
-                {field: 'sex', title: '项目负责人' ,align:"center"},
-                {field: 'sex', sort: true, title: '项目立项时间' ,align:"center"},
-                {field: 'sex', sort: true, title: '项目状态' ,align:"center"},
-                {field: 'sex', title: '产品立项书' ,align:"center"},
-                {field: 'sex', title: '甘特图' ,toolbar: '#barDemo2',align:"center"},
-                {field: 'right', title:'操作', toolbar: '#barDemo1', width:150,align:"center"}
-                // {
-                //     field: 'createTime', sort: true, templet: function (d) {
-                //         return util.toDateString(d.createTime);
-                //     }, title: '创建时间'
+
+
+        /**
+         * table渲染
+         */
+        window.tbdata = null;
+        api.project.getList({},function (e) {
+            console.log(e);
+            tbdata = e;
+            table.render({
+                elem: '#projectOverview',
+                data:tbdata,
+                page: true,
+                cellMinWidth: 100,
+                toolbar: '#toolbarDemo',
+                // parseData: function(e){ //res 即为原始返回的数据
+                //     return {
+                //         "msg": e.msg, //解析提示文本
+                //         "data": e.result //解析数据列表
+                //     };
                 // },
-                // {field: 'state', sort: true, templet: '#tableStateUser', title: '状态' ,align:"center"},
-                // {align: 'center', toolbar: '#tableBarUser', title: '操作', minWidth: 200}
-            ]]
+                // response: {
+                //     statusCode: 1 //规定成功的状态码，默认：0
+                //     ,dataName: 'result' //规定数据列表的字段名称，默认：data
+                // },
+                cols: [[
+                    {type:'radio'},
+                    {type: 'numbers', title: '#' ,align:"center"},
+                    {field: 'type', sort: true, title: '项目类别' ,align:"center"},
+                    {field: 'name', title: '项目名称' ,align:"center"},
+                    {field: 'personname', title: '项目组长' ,align:"center"},
+                    {field: 'leadername', title: '项目负责人' ,align:"center"},
+                    {field: 'createtime', sort: true, title: '项目立项时间' ,align:"center"},
+                    {field: 'state', sort: true, title: '项目状态' ,align:"center"},
+                    {field: 'sex', title: '产品立项书' ,toolbar: '#barDemo2',align:"center"},
+                    {field: 'sex', title: '甘特图' ,toolbar: '#barDemo2',align:"center"},
+                    {field: 'right', title:'操作', toolbar: '#barDemo1', width:150,align:"center"}
+                ]]
+            });
         });
+
 
         /**
          * 头工具栏事件
@@ -187,7 +222,7 @@
                     console.log(table.checkStatus("projectOverview"));
                     console.log(checkStatus);
                     layer.confirm('确认删除所选项目吗？', function(index){
-                        obj.del(table.checkStatus("projectOverview"));
+
                         layer.close(index);
                     });
                     // var data = checkStatus.data;

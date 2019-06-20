@@ -55,15 +55,26 @@
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">项目名称 :</label>
                         <div class="layui-input-block">
-                            <input name="ckName" type="text" placeholder="请输入项目名称" class="layui-input"
+                            <input name="name" type="text" placeholder="请输入项目名称" class="layui-input"
                                    lay-verType="tips" lay-verify="required" required/>
                         </div>
                     </div>
-                    <div class="layui-inline layui-col-md12">
+                    <div class="layui-inline layui-col-md6">
                         <label class="layui-form-label">项目类型 :</label>
                         <div class="layui-input-block">
-                            <input name="Item-category" type="text" class="layui-input"
+                            <input name="type" type="text" class="layui-input"
                                    lay-verType="tips" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md6">
+                        <label class="layui-form-label">产品定位 :</label>
+                        <div class="layui-input-block">
+                            <select name="position" lay-filter="productCategoryChoice" lay-verType="tips" lay-verify="required">
+                                <option value=""></option>
+                                <option value="高端产品">高端产品</option>
+                                <option value="中端产品">中端产品</option>
+                                <option value="低端产品">低端产品</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -74,26 +85,25 @@
         <div class="layui-card">
             <div class="layui-card-header">新内容描述</div>
             <div class="layui-card-body">
-
                 <div class="layui-form-item layui-row">
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">新功能 :</label>
                         <div class="layui-input-block">
-                            <input name="newFunction" type="text" class="layui-input"
+                            <input name="newfunc" type="text" class="layui-input"
                                    lay-verType="tips" lay-verify="required" required/>
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">新工艺 :</label>
                         <div class="layui-input-block">
-                            <input name="newProcess" type="text" class="layui-input"
+                            <input name="newtech" type="text" class="layui-input"
                                    lay-verType="tips" lay-verify="required" required/>
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">新材料 :</label>
                         <div class="layui-input-block">
-                            <input name="newMaterial" type="text" class="layui-input"
+                            <input name="newmate" type="text" class="layui-input"
                                    lay-verType="tips" lay-verify="required" required/>
                         </div>
                     </div>
@@ -110,7 +120,7 @@
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">功能描述和要求 :</label>
                         <div class="layui-input-block">
-                            <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                            <textarea placeholder="请输入内容" class="layui-textarea" name="describe"></textarea>
                         </div>
                     </div>
                 </div>
@@ -143,21 +153,21 @@
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">进度目标 :</label>
                         <div class="layui-input-block">
-                            <input name="Progress-target" type="text" class="layui-input"
+                            <input name="jdmb" type="text" class="layui-input"
                                    lay-verType="tips" lay-verify="required" required/>
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">质量目标 :</label>
                         <div class="layui-input-block">
-                            <input name="Quality-target" type="text" class="layui-input"
+                            <input name="zlmb" type="text" class="layui-input"
                                    lay-verType="tips" lay-verify="required" required/>
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">效率目标 :</label>
                         <div class="layui-input-block">
-                            <input name="Efficiency-target" type="text" class="layui-input"
+                            <input name="xlmb" type="text" class="layui-input"
                                    lay-verType="tips" lay-verify="required" required/>
                         </div>
                     </div>
@@ -174,14 +184,14 @@
                     <div class="layui-inline layui-col-md6">
                         <label class="layui-form-label">项目组长 :</label>
                         <div class="layui-input-block">
-                            <input name="Progress-target" type="text" class="layui-input"
+                            <input name="personname" type="text" class="layui-input"
                                    lay-verType="tips" lay-verify="required" required id="libinglin"/>
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md6">
                         <label class="layui-form-label">项目负责人 :</label>
                         <div class="layui-input-block">
-                            <input name="Quality-target" type="text" class="layui-input"
+                            <input name="leadername" type="text" class="layui-input"
                                    lay-verType="tips" lay-verify="required" required id="libinglin1"/>
                         </div>
                     </div>
@@ -225,39 +235,38 @@
     </div>
 
     <div class="form-group-bottom text-right" style="margin: 0 auto; width: 96%;">
-        <button type="reset" class="layui-btn layui-btn-primary">&emsp;重置&emsp;</button>
-        <button class="layui-btn" lay-filter="formSubmitAdv2" lay-submit>&emsp;保存&emsp;</button>
-        <button class="layui-btn" lay-filter="formSubmitAdv3" lay-submit>&emsp;上传&emsp;</button>
-        <button class="layui-btn" lay-filter="formSubmitAdv4" lay-submit>&emsp;导出&emsp;</button>
-        <button class="layui-btn" lay-filter="formSubmitAdv" lay-submit>&emsp;提交&emsp;</button>
+<!--        <button type="reset" class="layui-btn layui-btn-primary">&emsp;重置&emsp;</button>-->
+<!--        <button class="layui-btn" lay-filter="formSubmitAdv2" lay-submit>&emsp;保存&emsp;</button>-->
+<!--        <button class="layui-btn" lay-filter="formSubmitAdv3" lay-submit>&emsp;上传&emsp;</button>-->
+<!--        <button class="layui-btn" lay-filter="formSubmitAdv4" lay-submit>&emsp;导出&emsp;</button>-->
+        <button class="layui-btn" lay-filter="exportsubmit" lay-submit>&emsp;提交&emsp;</button>
     </div>
 
 </form>
 <!-- js部分 -->
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/libs/layui/layui.js"></script>
-<script
-        src="http://code.jquery.com/jquery-2.2.4.js"
-        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/common.js?v=312"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/util.js"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/api.js"></script>
 
 <script>
-    layui.use(['layer', 'form', 'table', 'util', 'laydate','admin'], function () {
-        var $ = layui.jquery;
+    layui.use(['layer', 'form', 'jquery','table', 'util', 'laydate','admin'], function () {
         var layer = layui.layer;
         var form = layui.form;
         var table = layui.table;
         var util = layui.util;
         var laydate = layui.laydate;
         var admin = layui.admin;
+        parent.$ = layui.jquery;
+
+
 
         //表单初始赋值
         form.val('Export-pin', {
-            "Item-category": "外销产品"
+            "xiangmulx": "外销产品"
         });
 
-        parent.asd = "asdasdasdasdasdasdasdasdasd";
-        //
         /**
          * 项目主要人员弹出层
          *
@@ -267,7 +276,6 @@
         parent.mDataList3 = [];
         parent.mDataList4 = [];
         parent.mDataList5 = [];
-
         parent.insTb1 = table.render({
             elem: '#tb1',
             data: [],
@@ -350,23 +358,9 @@
                 offset: 'auto',
                 //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
                 content: getProjectUrl() + 'page/add/addPeople-model.html',
-                // btn2: function () {
-                //     layer.closeAll();
-                // }
 
-                // zIndex: layer.zIndex //重点1
-                // ,
                 success: function (layero,dIndex) {
-                    // console.log(layero);
-                    // form.on('submit(modelSubmitUser)', function (data) {
-                    //     console.log(data);
-                    //     mDataList.push(data.field);
-                    //     console.log(mDataList);
-                    //     insTb.reload({data: mDataList});
-                    //     // layer.close(dIndex);
-                    //     // $(".layui-table-view").css("display","block");
-                    //     return false;
-                    // });
+
                     var body = layer.getChildFrame('body', dIndex); // 获取弹出层iframe层的对象
                     // console.log(body.html());
                 },
@@ -383,7 +377,6 @@
          * 产品进度计划表格
          */
         parent.productPlanData = [];
-
         parent.productPlanEle = table.render({
             elem: '#productPlan',
             data: [],
@@ -406,7 +399,6 @@
             ]]
         });
 
-
         /**
          * 产品计划弹出层
          */
@@ -422,25 +414,9 @@
                 offset: 'auto',
                 //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
                 content: getProjectUrl() + 'page/add/addModel.html',
-                // btn2: function () {
-                //     layer.closeAll();
-                // }
-
-                // zIndex: layer.zIndex //重点1
-                // ,
                 success: function (layero,dIndex) {
-                    // console.log(layero);
-                    // form.on('submit(modelSubmitUser)', function (data) {
-                    //     console.log(data);
-                    //     mDataList.push(data.field);
-                    //     console.log(mDataList);
-                    //     insTb.reload({data: mDataList});
-                    //     // layer.close(dIndex);
-                    //     // $(".layui-table-view").css("display","block");
-                    //     return false;
-                    // });
                     var body = layer.getChildFrame('body', dIndex); // 获取弹出层iframe层的对象
-                    // console.log(body.html());
+
                 },
                 cancel: function (index, layero) {
                     // if (confirm('确定要关闭么')) { //只有当点击confirm框的确定时，该层才会关闭
@@ -450,6 +426,11 @@
                 }
             });
         });
+
+        api.project.getList({},function (e) {
+            console.log(e);
+        });
+
 
         /**
          * 添加组长和负责人点击框事件
@@ -470,6 +451,29 @@
                 //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
                 content: getProjectUrl() + 'page/add/addPeople-all.html'
             });
+        });
+
+        /**
+         * 表单提交监听事件
+         */
+        parent.groupleader = null;
+        parent.personalbar = null;
+        form.on('submit(exportsubmit)', function (data) {
+
+            var exportdata = data.field;
+            if (exportdata.position == '高端产品') {
+                exportdata.position = 3;
+            }else if (exportdata.position == '中端产品') {
+                exportdata.position = 2;
+            }else{
+                exportdata.position = 1;
+            }
+            exportdata.groupleader = parent.groupleader;
+            exportdata.person = parent.person;
+            console.log(exportdata);
+            api.project.addProject(exportdata);
+            console.log(data);
+            return false;
         });
     });
 </script>
