@@ -123,12 +123,12 @@
 
 <!--自定义js-->
 <script>
-    layui.use(['layer', 'form', 'table', 'util', 'laydate','admin','index','jquery'], function () {
+    layui.use(['layer', 'form', 'table',  'laydate','admin','index','jquery'], function () {
         var $ = layui.jquery;
         var layer = layui.layer;
         var form = layui.form;
         var table = layui.table;
-        var util = layui.util;
+        // var util = layui.util;
         var laydate = layui.laydate;
         var admin = layui.admin;
         var index = layui.index;
@@ -165,7 +165,10 @@
          */
         window.tbdata = null;
         api.project.getList({},function (e) {
-            console.log(e);
+            for (var i = 0; i < e.length; i++) {
+                e[i].type = util.getProType(e[i].type);
+                // console.log(e[i].type);
+            }
             tbdata = e;
             table.render({
                 elem: '#projectOverview',

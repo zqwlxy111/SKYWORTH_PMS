@@ -160,11 +160,11 @@ window.util = {
             //contentType:'application/json',
             success: function (msg) {
                 if (msg.success) {
-                    alert(msg.msg);
+                    // alert(msg.msg);
                     if (cb) cb(msg.result);
                 }
                 else{}
-                    alert(msg.msg);
+                    // alert(msg.msg);
             },
 
             //complete: function (e) {
