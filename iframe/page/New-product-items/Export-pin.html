@@ -408,14 +408,14 @@
             top.layui.admin.open({
                 type: 2, //此处以iframe举例
                 title: '添加项目模块人员',
-                area: ['860px', '800px'],
+                area: ['860px', '710px'],
                 shade: 0.8,
                 maxmin: false,
                 anim: 0,
                 closeBtn: 1,
                 offset: 'auto',
                 //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                content: getProjectUrl() + 'page/add/addModel.html',
+                content: getProjectUrl() + 'page/add/add-test.html',
                 success: function (layero,dIndex) {
                     var body = layer.getChildFrame('body', dIndex); // 获取弹出层iframe层的对象
 
@@ -429,9 +429,9 @@
             });
         });
 
-        api.project.getList({},function (e) {
-            console.log(e);
-        });
+        // api.project.getList({},function (e) {
+        //     console.log(e);
+        // });
 
 
         /**
@@ -440,7 +440,7 @@
         $('#libinglin,#libinglin1').on("mouseover",function () {
             $(this).css("cursor","pointer");
         });
-        $('#libinglin,#libinglin1').on("click",function () {
+        $('#libinglin').on("click",function () {
             top.layui.admin.open({
                 type: 2, //此处以iframe举例
                 title: '添加项目模块人员',
@@ -451,7 +451,21 @@
                 closeBtn: 1,
                 offset: 'auto',
                 //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                content: getProjectUrl() + 'page/add/addPeople-all.html'
+                content: getProjectUrl() + 'page/add/add-xmzz.html'
+            });
+        });
+        $('#libinglin1').on("click",function () {
+            top.layui.admin.open({
+                type: 2, //此处以iframe举例
+                title: '添加项目模块人员',
+                area: ['600px', '550px'],
+                shade: 0.8,
+                maxmin: false,
+                anim: 0,
+                closeBtn: 1,
+                offset: 'auto',
+                //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                content: getProjectUrl() + 'page/add/add-xmfzr.html'
             });
         });
 
@@ -461,7 +475,8 @@
         parent.groupleader = null;
         parent.personalbar = null;
         form.on('submit(exportsubmit)', function (data) {
-
+            console.log( typeof data.field);
+            console.log( data.field);
             var exportdata = data.field;
             if (exportdata.position == '高端产品') {
                 exportdata.position = 3;
@@ -474,6 +489,7 @@
             exportdata.person = parent.person;
             exportdata.type = 2;
             console.log(exportdata);
+            // 此处的e为返回的接口数据msg.result 为成功的状态值 1 = 成功；
             api.project.addProject(exportdata,function (e) {
                 console.log(e);
                 if (e == 1) {
