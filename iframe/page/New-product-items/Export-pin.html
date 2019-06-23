@@ -288,8 +288,9 @@
                 {type: 'numbers', title: '#',width:'3%'},
                 {field: 'productCategory', title: '模块',width:'10%',align:'center'},
                 {field: 'department', title: '部门' ,width:'13%',align:'center'},
+                {field: 'peopleId', title: '工号' ,width:'13%',align:'center'},
                 {field: 'departmentPeople', title: '人员' ,width:'12%',align:'center'},
-                {field: 'responsibility', title: '职责',align:'center' }
+                {field: 'responsibility', title: '职责',width:'46.2%',align:'center' }
             ]]
         });
         parent.insTb2 = table.render({
@@ -302,8 +303,9 @@
                 {type: 'numbers', title: '#',width:'3%'},
                 {field: 'productCategory', title: '模块',width:'10%',align:'center'},
                 {field: 'department', title: '部门' ,width:'13%',align:'center'},
+                {field: 'peopleId', title: '工号' ,width:'13%',align:'center'},
                 {field: 'departmentPeople', title: '人员' ,width:'12%',align:'center'},
-                {field: 'responsibility', title: '职责',align:'center' }
+                {field: 'responsibility', title: '职责',width:'46.2%',align:'center' }
             ]]
         });
         parent.insTb3 = table.render({
@@ -316,8 +318,9 @@
                 {type: 'numbers', title: '#',width:'3%'},
                 {field: 'productCategory', title: '模块',width:'10%',align:'center'},
                 {field: 'department', title: '部门' ,width:'13%',align:'center'},
+                {field: 'peopleId', title: '工号' ,width:'13%',align:'center'},
                 {field: 'departmentPeople', title: '人员' ,width:'12%',align:'center'},
-                {field: 'responsibility', title: '职责',align:'center' }
+                {field: 'responsibility', title: '职责',width:'46.2%',align:'center' }
             ]]
         });
         parent.insTb4 = table.render({
@@ -330,8 +333,9 @@
                 {type: 'numbers', title: '#',width:'3%'},
                 {field: 'productCategory', title: '模块',width:'10%',align:'center'},
                 {field: 'department', title: '部门' ,width:'13%',align:'center'},
+                {field: 'peopleId', title: '工号' ,width:'13%',align:'center'},
                 {field: 'departmentPeople', title: '人员' ,width:'12%',align:'center'},
-                {field: 'responsibility', title: '职责',align:'center' }
+                {field: 'responsibility', title: '职责',width:'46.2%',align:'center' }
             ]]
         });
         parent.insTb5 = table.render({
@@ -344,15 +348,16 @@
                 {type: 'numbers', title: '#',width:'3%'},
                 {field: 'productCategory', title: '模块',width:'10%',align:'center'},
                 {field: 'department', title: '部门' ,width:'13%',align:'center'},
+                {field: 'peopleId', title: '工号' ,width:'13%',align:'center'},
                 {field: 'departmentPeople', title: '人员' ,width:'12%',align:'center'},
-                {field: 'responsibility', title: '职责',align:'center' }
+                {field: 'responsibility', title: '职责',width:'46.2%',align:'center' }
             ]]
         });
         $("#libinglin-btn-departmentPeople").click(function () {
             top.layui.admin.open({
                 type: 2, //此处以iframe举例
                 title: '添加项目模块人员',
-                area: ['560px', '600px'],
+                area: ['860px', '695px'],
                 shade: 0.8,
                 maxmin: false,
                 anim: 0,
@@ -401,21 +406,28 @@
             ]]
         });
 
+        table.on('rowDouble(productPlan)', function(obj){
+            console.log(obj.tr); //得到当前行元素对象
+            console.log(obj.data); //得到当前行数据
+            console.log(obj);
+            obj.del(); //删除当前行
+            //obj.update(fields) //修改当前行数据
+        });
         /**
          * 产品计划弹出层
          */
         $("#libinglin-btn-productPlanning").click(function () {
             top.layui.admin.open({
                 type: 2, //此处以iframe举例
-                title: '添加项目模块人员',
-                area: ['860px', '710px'],
+                title: '添加产品计划',
+                area: ['780px', '700px'],
                 shade: 0.8,
                 maxmin: false,
                 anim: 0,
                 closeBtn: 1,
                 offset: 'auto',
                 //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                content: getProjectUrl() + 'page/add/add-test.html',
+                content: getProjectUrl() + 'page/add/addModel.html',
                 success: function (layero,dIndex) {
                     var body = layer.getChildFrame('body', dIndex); // 获取弹出层iframe层的对象
 
@@ -443,7 +455,7 @@
         $('#libinglin').on("click",function () {
             top.layui.admin.open({
                 type: 2, //此处以iframe举例
-                title: '添加项目模块人员',
+                title: '项目总成员分配',
                 area: ['860px', '695px'],
                 shade: 0.8,
                 maxmin: false,
@@ -457,7 +469,7 @@
         $('#libinglin1').on("click",function () {
             top.layui.admin.open({
                 type: 2, //此处以iframe举例
-                title: '添加项目模块人员',
+                title: '项目总成员分配',
                 area: ['860px', '695px'],
                 shade: 0.8,
                 maxmin: false,

@@ -31,16 +31,22 @@
         <div class="layui-row" style="margin-bottom: 10px">
 
             <div class="layui-col-lg12">
-                <!--        职责选择-->
+                <!--        模块选择-->
                 <div class="layui-card">
-                    <div class="layui-card-header">职责选择</div>
+                    <div class="layui-card-header">模块选择</div>
                     <div class="layui-card-body">
                         <div class="layui-form-item layui-row">
                             <div class="layui-inline layui-col-md12">
-                                <label class="layui-form-label">职责分配 :</label>
+                                <label class="layui-form-label">所属模块 :</label>
                                 <div class="layui-input-block">
-                                    <input name="assignment" type="text" class="layui-input layui-disabled"
-                                           lay-verType="tips" lay-verify="required" disabled required/>
+                                    <select name="productCategory" lay-verify="required" lay-verType="tips">
+                                        <option value=""></option>
+                                        <option value="业务模块" selected="">业务模块</option>
+                                        <option value="计划模块">计划模块</option>
+                                        <option value="质量模块">质量模块</option>
+                                        <option value="工程模块">工程模块</option>
+                                        <option value="生产模块">生产模块</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +55,7 @@
             </div>
 
         </div>
-        <div class="layui-row">
+        <div class="layui-row" style="margin-bottom: 10px">
             <div class="layui-col-lg12">
                 <div class="layui-card">
                     <div class="layui-card-header">根据部门树选择部门人员</div>
@@ -84,9 +90,31 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group-bottom text-right" style="margin: 0 auto; width: 95%;">
-                <button class="layui-btn" lay-filter="formSubmitAdv" lay-submit>&emsp;确认&emsp;</button>
+
+        </div>
+
+        <div class="layui-row" style="margin-bottom: 30px">
+            <div class="layui-col-lg12">
+                <!--        职责-->
+                <div class="layui-card">
+                    <div class="layui-card-header">模块选择</div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item layui-row">
+                            <div class="layui-inline layui-col-md12">
+                                <label class="layui-form-label">职责负责 :</label>
+                                <div class="layui-input-block">
+                            <textarea name="responsibility" placeholder="请输入内容" class="layui-textarea"
+                                      lay-verify="required" lay-verType="tips"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="form-group-bottom text-right" style="margin: 0 auto; width: 95%;">
+            <button class="layui-btn" lay-filter="formSubmitAdv" lay-submit>&emsp;确认&emsp;</button>
         </div>
     </form>
 </div>
