@@ -111,8 +111,8 @@
         var departmentid = null;
         $.ajax({
             type: "GET",
-            // url: "http://172.20.73.16:8899/safe_usercenter/safe/department/getDepartmentTree",
-            url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/department/getDepartmentTree",
+            url: "http://172.20.73.16:8899/safe_usercenter/safe/department/getDepartmentTree",
+            // url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/department/getDepartmentTree",
             success: function (res) {
                 console.log(res);
                 //初始化树
@@ -132,8 +132,8 @@
             departmentid = obj.param.nodeId;
             $.ajax({
                 type: "GET",
-                // url: "http://172.20.73.16:8899/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId=5&start=0&limit=100",
-                url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/user/getUsersListByDepartmentId",
+                url: "http://172.20.73.16:8899/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId="+departmentid+"&start=0&limit=100",
+                // url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/user/getUsersListByDepartmentId",
                 success: function (res1) {
                     console.log(res1.result);
                     var data = res1.result;
@@ -159,6 +159,7 @@
             console.log(checkObj[0].realName);
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.$('#libinglin1').val(checkObj[0].realName);
+            parent.person =  checkObj[0].id;
             parent.layer.close(index); //再执行关闭
             return false;
         });

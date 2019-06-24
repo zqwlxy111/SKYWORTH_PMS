@@ -19,4 +19,5 @@
             for(var st in checkObj[0]) {
                 console.dir(st);
             }
-16. 
+16. layui-inline 不要和layui-col-md之类的栅格布局代码写在一起，不然会发生致命的错误
+17.

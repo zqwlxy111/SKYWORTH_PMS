@@ -195,11 +195,13 @@
         // 监听表单提交
         form.on('submit(formSubmitAdv)', function (data) {
             // layer.msg(JSON.stringify(data.field));
+            console.log(data);
             console.log(data.field);
-            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-            parent.productPlanData.push(data.field);
-            parent.productPlanEle.reload({data: parent.productPlanData});
-            parent.layer.close(index); //再执行关闭
+            console.log(typeof data.field);
+            // var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            // parent.productPlanData.push(data.field);
+            // parent.productPlanEle.reload({data: parent.productPlanData});
+            // parent.layer.close(index); //再执行关闭
             return false;
         });
     });
