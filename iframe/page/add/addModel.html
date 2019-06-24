@@ -138,6 +138,22 @@
             </div>
         </div>
 
+<!--        派生差异-->
+        <div class="layui-card layui-hide" id="paisheng">
+            <!--            <div class="layui-card-header">备注</div>-->
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">派生差异 :</label>
+                        <div class="layui-input-block">
+<!--                            <textarea name="paishengchayi" placeholder="请输入内容" lay-verType="tips" lay-verify="required" class="layui-textarea"></textarea>-->
+                            <input name="paishengchayi" id="paishenginput" type="text" class="layui-input"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 <!--        备注-->
         <div class="layui-card">
 <!--            <div class="layui-card-header">备注</div>-->
@@ -191,6 +207,22 @@
                 // ,theme:libinglin
             });
         }
+
+        // 监听select选择是否要显示隐藏派生差异
+        form.on('select(productCategoryChoice)', function(data){
+            console.log(data.value); //得到被选中的值
+            if (data.value == "派生产品") {
+                $("#paisheng").removeClass("layui-hide");
+                $("#paisheng").addClass("layui-show");
+                $("#paishenginput").attr({"lay-verType":"tips","lay-verify":"required"});
+            }else{
+                $("#paisheng").removeClass("layui-show");
+                $("#paisheng").addClass("layui-hide");
+                $("#paishenginput").removeAttr("lay-verType");
+                $("#paishenginput").removeAttr("lay-verify");
+            }
+        });
+
 
         // 监听表单提交
         form.on('submit(formSubmitAdv)', function (data) {

@@ -42,7 +42,7 @@
                                     <select name="productCategory" lay-verify="required" lay-verType="tips"
                                             lay-filter="mokuaixiala">
                                         <option value=""></option>
-                                        <option value="业务模块" selected="">业务模块</option>
+                                        <option value="业务模块">业务模块</option>
                                         <option value="计划模块">计划模块</option>
                                         <option value="质量模块">质量模块</option>
                                         <option value="工程模块">工程模块</option>
@@ -68,10 +68,10 @@
                                     <select id="zhizefuze" name="responsibility" lay-filter="zhizefuze" lay-verType="tips"
                                             lay-verify="required">
                                         <option value="">请选择</option>
-                                        <option value="问题履历">问题履历</option>
-                                        <option value="质量管理书">质量管理书</option>
-                                        <option value="产品立项书">产品立项书</option>
-                                        <option value="标题1">标题1</option>
+<!--                                        <option value="问题履历">问题履历</option>-->
+<!--                                        <option value="质量管理书">质量管理书</option>-->
+<!--                                        <option value="产品立项书">产品立项书</option>-->
+<!--                                        <option value="标题1">标题1</option>-->
                                     </select>
                                 </div>
                             </div>
@@ -159,7 +159,7 @@
         var form = layui.form;
         var dtree = layui.dtree;
 
-
+        // 初始化部门树
         var departmentid = null;
         $.ajax({
             type: "GET",
@@ -179,6 +179,7 @@
             }
         });
 
+        // 点击部门树节点后弹出部门所属的人员名单
         dtree.on("node('slTree1')", function (obj) {
             // layer.msg(JSON.stringify(obj.param));
             departmentid = obj.param.nodeId;
@@ -209,6 +210,7 @@
          * 获取职责
          */
 
+        //点击模块后选择模块对应的职责
         //定义各个职责的存放数组的
         var yewuzhize = [];
         var jihuazhize = [];
@@ -291,12 +293,8 @@
                     }
                     break;
             }
-            api.node.getDutys(function (e) {
-
-            });
             // 对目标form表单进行动态的重新渲染
             form.render();
-
         });
 
 
