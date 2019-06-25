@@ -441,16 +441,6 @@
             });
         });
 
-        parent.machines = [];
-        // parent.machineDetail = [];
-        for (var i = 0; i < parent.machines.length; i++) {
-            parent.machines[i].machineDetail = [];
-        }
-        exportdata
-        // api.project.getList({},function (e) {
-        //     console.log(e);
-        // });
-
         /**
          * 添加组长和负责人点击框事件
          */
@@ -490,6 +480,22 @@
          *  产品计划接口添加
          */
 
+        // 定义一个后端传送的接口对象
+
+        var hdata = {};
+
+        parent.machines = [];
+
+
+        // parent.machines = [];
+        // // parent.machineDetail = [];
+        // for (var i = 0; i < parent.machines.length; i++) {
+        //     parent.machines[i].machineDetail = [];
+        // }
+
+        // api.project.getList({},function (e) {
+        //     console.log(e);
+        // });
 
 
         /**
@@ -501,16 +507,34 @@
             console.log( typeof data.field);
             console.log( data.field);
             var exportdata = data.field;
-            if (exportdata.position == '高端产品') {
+            if (data.field.position == '高端产品') {
+                hdata.position = 3;
                 exportdata.position = 3;
-            }else if (exportdata.position == '中端产品') {
+            }else if (data.field.position == '中端产品') {
+                hdata.position = 2;
                 exportdata.position = 2;
             }else{
+                hdata.position = 1;
                 exportdata.position = 1;
             }
+            hdata.type = 2;
+            hdata.describe = data.field.describe;
+            hdata.groupleader = parent.groupleader;
+            hdata.person = parent.person;
+            hdata.jdmb = data.field.jdmb;
+            hdata.xlmb = data.field.xlmb;
+            hdata.zlmb = data.field.zlmb;
+            hdata.leadername = data.field.leadername;
+            hdata.personname = data.field.personname;
+            hdata.machines = parent.machines;
+            hdata.name = data.field.name
+            hdata.newfunc = data.field.newfunc;
+            hdata.newmate = data.field.newmate;
+            hdata.newtech = data.field.newtech;
             exportdata.groupleader = parent.groupleader;
             exportdata.person = parent.person;
             exportdata.type = 2;
+            console.log(hdata);
             for (var i = 0; i < parent.machines.length; i++) {
                 if (parent.machines[i].machinetype == "全新产品") {
                     parent.machines[i].machinetype = 1;
@@ -524,14 +548,14 @@
             console.log(parent.machines);
             console.log(typeof exportdata.machines);
             // 此处的e为返回的接口数据msg.result 为成功的状态值 1 = 成功；
-            api.project.addProject(exportdata,function (e) {
-                console.log(e);
-                if (e == 1) {
-                    layer.msg("提交成功",{time:1500});
-                }else{
-                    layer.msg("提交失败",{time:1500});
-                }
-            });
+            // api.project.addProject(exportdata,function (e) {
+            //     console.log(e);
+            //     if (e == 1) {
+            //         layer.msg("提交成功",{time:1500});
+            //     }else{
+            //         layer.msg("提交失败",{time:1500});
+            //     }
+            // });
             console.log(data);
             console.log(parent.plamin);
             console.log(typeof parent.plamin);

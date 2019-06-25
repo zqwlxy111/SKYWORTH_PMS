@@ -201,7 +201,7 @@
         for (var i = 1; i < 6; i++) {
             elemChoice = '#dayChoice';
             elemChoice = elemChoice+i;
-            console.log(elemChoice);
+            // console.log(elemChoice);
             laydate.render({
                 elem:elemChoice
                 // ,theme:libinglin
@@ -240,31 +240,46 @@
         // timeobj.llarr[1] = childobj2;
         console.log(timeobj);
         // 监听表单提交
+        var machines = [];
+        var machinesobj = {};
         form.on('submit(formSubmitAdv)', function (data) {
             // layer.msg(JSON.stringify(data.field));
-            // console.log(data);
-            // console.log(data.field);
+            console.log(data);
+            console.log(data.field);
+            machinesobj.machinname = data.field.machinname;
+            machinesobj.inner = data.field.inner;
+            if (data.field.machinetype == "全新产品") {
+                machinesobj.machinetype = 1;
+            }else{
+                machinesobj.machinetype = 2;
+            }
+            machinesobj.parentname = data.field.parentname;
+            machinesobj.remark = data.field.remark;
+            machinesobj.diff = data.field.diff;
+            parent.machines.push(machinesobj);
+            // parent.machines = machines;
+            console.log(parent.machines);
             // console.log(typeof data.field);
-            timearr.splice(0,timearr.length);
-            for (let i in data.field) {
-                // timearr.push(data.field[i]); //属性
-                // //arr.push(obj[i]); //值
-                let o = {};
-                o[i] = data.field[i];
-
-                timearr.push(o)
-            }
-            console.log(timearr);
-            if (timearr[2].evt) {
-                timeobj.milepost = 1;
-                timeobj.miletime = timearr[2].evt;
-                parent.machineDetail.push(timeobj);
-            }
-            console.log(
-                timeobj
-            );
-
-            parent.machines.push(data.field);
+            // timearr.splice(0,timearr.length);
+            // for (let i in data.field) {
+            //     // timearr.push(data.field[i]); //属性
+            //     // //arr.push(obj[i]); //值
+            //     let o = {};
+            //     o[i] = data.field[i];
+            //
+            //     timearr.push(o)
+            // }
+            // console.log(timearr);
+            // if (timearr[2].evt) {
+            //     timeobj.milepost = 1;
+            //     timeobj.miletime = timearr[2].evt;
+            //     parent.machineDetail.push(timeobj);
+            // }
+            // console.log(
+            //     timeobj
+            // );
+            //
+            // parent.machines.push(data.field);
             // parent.plamin = data.field;
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.productPlanData.push(data.field);

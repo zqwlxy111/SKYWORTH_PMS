@@ -10,46 +10,85 @@
     <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/dtree/dtree.css">
     <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/dtree/font/dtreefont.css">
 </head>
+<style>
+
+    .form-group-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        padding: 10px 20px;
+        box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, .05);
+    }
+
+</style>
 <body>
 
 <!-- 正文开始 -->
 <div class="layui-fluid">
-    <div class="layui-row layui-col-space15">
-        <div class="layui-col-lg12">
-            <div class="layui-card">
-                <div class="layui-card-header">根据部门树选择部门人员</div>
-                <div class="layui-card-body">
-                    <div class="layui-row">
-                        <div class="layui-col-md5">
-                            <div class="row">
-                                <div class="layui-col-md12">
-                                    <fieldset class="layui-elem-field layui-field-title" style="width: 90%;">
-                                        <legend style="font-size: 16px">部门选择</legend>
-                                    </fieldset>
-                                </div>
-                                <div class="layui-col-md12">
-                                    <ul id="slTree1" class="dtree" data-id="0" ></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layui-col-md7">
-                            <div class="row">
-                                <div class="layui-col-md12">
-                                    <fieldset class="layui-elem-field layui-field-title">
-                                        <legend style="font-size: 16px">员工选择</legend>
-                                    </fieldset>
-                                </div>
-                                <div class="layui-col-md12">
-                                    <table class="layui-table" id="projectOverview" lay-filter="projectOverview"></table>
+    <form class="layui-form" lay-filter="add-xmzz" id="add-xmzz">
+        <div class="layui-row" style="margin-bottom: 10px">
+
+            <div class="layui-col-lg12">
+                <!--        职责选择-->
+                <div class="layui-card">
+                    <div class="layui-card-header">职责选择</div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item layui-row">
+                            <div class="layui-inline layui-col-md12">
+                                <label class="layui-form-label">职责分配 :</label>
+                                <div class="layui-input-block">
+                                    <input name="assignment" type="text" class="layui-input layui-disabled"
+                                           lay-verType="tips" lay-verify="required" disabled required/>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-lg12">
+                <div class="layui-card">
+                    <div class="layui-card-header">根据部门树选择部门人员</div>
+                    <div class="layui-card-body">
+                        <div class="layui-row">
+                            <div class="layui-col-sm5">
+                                <div class="row">
+                                    <div class="layui-col-md12">
+                                        <fieldset class="layui-elem-field layui-field-title" style="width: 90%;">
+                                            <legend style="font-size: 16px">部门选择</legend>
+                                        </fieldset>
+                                    </div>
+                                    <div class="layui-col-md12">
+                                        <ul id="slTree1" class="dtree" data-id="0" style="overflow: hidden"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-sm7">
+                                <div class="row">
+                                    <div class="layui-col-md12">
+                                        <fieldset class="layui-elem-field layui-field-title">
+                                            <legend style="font-size: 16px">员工选择</legend>
+                                        </fieldset>
+                                    </div>
+                                    <div class="layui-col-md12">
+                                        <table class="layui-table" id="projectOverview"
+                                               lay-filter="projectOverview"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group-bottom text-right" style="margin: 0 auto; width: 95%;">
+                <button class="layui-btn" lay-filter="formSubmitAdv" lay-submit>&emsp;确认&emsp;</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <!-- js部分 -->
@@ -57,7 +96,7 @@
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/common.js?v=312"></script>
 <script>
-    layui.use(['layer', 'table', 'admin', 'form','dtree'], function () {
+    layui.use(['layer', 'table', 'admin', 'form', 'dtree'], function () {
         var $ = layui.jquery;
         var layer = layui.layer;
         var table = layui.table;
@@ -65,11 +104,16 @@
         var form = layui.form;
         var dtree = layui.dtree;
 
+        // 表单赋值
+        form.val('add-xmzz', {
+            "assignment": "项目组长"
+        });
 
+        var departmentid = null;
         $.ajax({
             type: "GET",
-            url: "http://172.20.73.16:8899/safe_usercenter/safe/department/getDepartmentTree",
-            // url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/department/getDepartmentTree",
+            // url: "http://172.20.73.16:8899/safe_usercenter/safe/department/getDepartmentTree",
+            url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/department/getDepartmentTree",
             success: function (res) {
                 console.log(res);
                 //初始化树
@@ -77,46 +121,77 @@
                     elem: "#slTree1",
                     data: [res],
                     response: {title: "text"}, // 这里指定了返回的数据格式，组件会根据这些值来替换返回JSON中的指定格式，从而读取信息
-                    initLevel: "10"
+                    initLevel: "4",
+                    ficon: ["-1", "-1"],
+                    line: true,
+                    done: function(){
+                        var params = dtree.dataInit("slTree1", "1");
+                        $.ajax({
+                            type: "GET",
+                            // url: "http://172.20.73.16:8899/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId="+departmentid+"&start=0&limit=100",
+                            url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/user/getUsersListByDepartmentId",
+                            success: function (res1) {
+                                console.log(res1.result);
+                                console.log(res1.result[0].id);
+                                var data = res1.result;
+                                table.render({
+                                    elem: '#projectOverview',
+                                    data: data,
+                                    page: true,
+                                    cellMinWidth: 100,
+                                    cols: [[
+                                        {type: 'radio'},
+                                        // {field: 'type', title: '所属部门' ,align:"center"},
+                                        {field: 'code', title: '员工工号', align: "center"},
+                                        {field: 'realName', title: '员工姓名', align: "center"}
+                                    ]]
+                                });
+                            }
+                        });
+                    }
                 });
             }
         });
 
-        dtree.on("node('slTree1')" ,function(obj){
-            layer.msg(JSON.stringify(obj.param));
+        dtree.on("node('slTree1')", function (obj) {
+            // layer.msg(JSON.stringify(obj.param));
+            departmentid = obj.param.nodeId;
+            $.ajax({
+                type: "GET",
+                // url: "http://172.20.73.16:8899/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId="+departmentid+"&start=0&limit=100",
+                // url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/user/getUsersListByDepartmentId",
+                url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/user/getUsersListByDepartmentId_copy_1561472992567",
+                success: function (res1) {
+                    console.log(res1.result);
+                    console.log(res1.result[0].id);
+                    var data = res1.result;
+                    table.reload('projectOverview',{data:data})
+                    // table.render({
+                    //     elem: '#projectOverview',
+                    //     data: data,
+                    //     page: true,
+                    //     cellMinWidth: 100,
+                    //     cols: [[
+                    //         {type: 'radio'},
+                    //         // {field: 'type', title: '所属部门' ,align:"center"},
+                    //         {field: 'code', title: '员工工号', align: "center"},
+                    //         {field: 'realName', title: '员工姓名', align: "center"}
+                    //     ]]
+                    // });
+                }
+            });
         });
 
-        $.ajax({
-            type: "GET",
-            // url: "http://172.20.73.16:8899/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId=" + departmentId + "&start=0&limit=100",
-            url: "http://172.20.73.16:8899/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId=5&start=0&limit=100",
-            // url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/department/getDepartmentTree?nodeId=" + nodeid,
-            success: function (res1) {
-                console.log(res1.result);
-                var data = res1.result;
-                table.render({
-                    elem: '#projectOverview',
-                    data:data,
-                    page: true,
-                    cellMinWidth: 100,
-                    // parseData: function(e){ //res 即为原始返回的数据
-                    //     return {
-                    //         "msg": e.msg, //解析提示文本
-                    //         "data": e.result //解析数据列表
-                    //     };
-                    // },
-                    // response: {
-                    //     statusCode: 1 //规定成功的状态码，默认：0
-                    //     ,dataName: 'result' //规定数据列表的字段名称，默认：data
-                    // },
-                    cols: [[
-                        {type:'radio'},
-                        {field: 'type', title: '所属部门' ,align:"center"},
-                        {field: 'code', title: '员工工号' ,align:"center"},
-                        {field: 'realName', title: '员工姓名' ,align:"center"}
-                    ]]
-                });
-            }
+        form.on('submit(formSubmitAdv)', function (data) {
+            console.log(data);
+            var checkObj = table.checkStatus('projectOverview').data;
+            console.log(checkObj[0].id);
+            console.log(checkObj[0].realName);
+            parent.groupleader = checkObj[0].id;
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            parent.$('#libinglin').val(checkObj[0].realName);
+            parent.layer.close(index); //再执行关闭
+            return false;
         });
     });
 </script>
