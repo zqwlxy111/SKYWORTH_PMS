@@ -51,21 +51,21 @@
 
         <!--        机型、机芯选择-->
         <div class="layui-card">
-<!--            <div class="layui-card-header">机型、机芯选择</div>-->
+            <!--            <div class="layui-card-header">机型、机芯选择</div>-->
             <div class="layui-card-body">
 
                 <div class="layui-form-item layui-row">
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">机型 :</label>
                         <div class="layui-input-block">
-                            <input name="jixing" type="text" placeholder="请输入机型" class="layui-input"
+                            <input name="machinname" type="text" placeholder="请输入机型" class="layui-input"
                                    lay-verType="tips" lay-verify="required" required/>
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">机芯 :</label>
                         <div class="layui-input-block">
-                            <input name="jixin" type="text" class="layui-input" placeholder="请输入机芯"
+                            <input name="inner" type="text" class="layui-input" placeholder="请输入机芯"
                                    lay-verType="tips" lay-verify="required" required/>
                         </div>
                     </div>
@@ -114,13 +114,13 @@
 
         <!--        产品类型和原型机-->
         <div class="layui-card">
-<!--            <div class="layui-card-header">功能描述和要求</div>-->
+            <!--            <div class="layui-card-header">功能描述和要求</div>-->
             <div class="layui-card-body">
                 <div class="layui-form-item layui-row">
                     <div class="layui-inline layui-col-md6">
                         <label class="layui-form-label">产品类型 :</label>
                         <div class="layui-input-block">
-                            <select name="chanplx" lay-filter="productCategoryChoice" lay-verType="tips" lay-verify="required">
+                            <select name="machinetype" lay-filter="productCategoryChoice" lay-verType="tips" lay-verify="required">
                                 <option value=""></option>
                                 <option value="全新产品" selected="">全新产品</option>
                                 <option value="派生产品">派生产品</option>
@@ -130,15 +130,15 @@
                     <div class="layui-inline layui-col-md6">
                         <label class="layui-form-label">原型机 :</label>
                         <div class="layui-input-block">
-                            <input name="yuanxj" type="text" class="layui-input"
-                               lay-verType="tips" lay-verify="required" required/>
+                            <input name="parentname" type="text" class="layui-input"
+                                   lay-verType="tips" lay-verify="required" required/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-<!--        派生差异-->
+        <!--        派生差异-->
         <div class="layui-card layui-hide" id="paisheng">
             <!--            <div class="layui-card-header">备注</div>-->
             <div class="layui-card-body">
@@ -146,23 +146,23 @@
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">派生差异 :</label>
                         <div class="layui-input-block">
-<!--                            <textarea name="paishengchayi" placeholder="请输入内容" lay-verType="tips" lay-verify="required" class="layui-textarea"></textarea>-->
-                            <input name="paishengchayi" id="paishenginput" type="text" class="layui-input"/>
+                            <!--                            <textarea name="paishengchayi" placeholder="请输入内容" lay-verType="tips" lay-verify="required" class="layui-textarea"></textarea>-->
+                            <input name="diff" id="paishenginput" type="text" class="layui-input"/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-<!--        备注-->
+        <!--        备注-->
         <div class="layui-card">
-<!--            <div class="layui-card-header">备注</div>-->
+            <!--            <div class="layui-card-header">备注</div>-->
             <div class="layui-card-body">
                 <div class="layui-form-item layui-row">
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">备注事项 :</label>
                         <div class="layui-input-block">
-                            <textarea name="beizhu" placeholder="请输入内容" lay-verType="tips" lay-verify="required" class="layui-textarea"></textarea>
+                            <textarea name="remark" placeholder="请输入内容" lay-verType="tips" lay-verify="required" class="layui-textarea"></textarea>
                         </div>
                     </div>
                 </div>
@@ -224,16 +224,52 @@
         });
 
 
+        // 定义存放时间进度的对象
+        var timeobj = {};
+        timeobj.milepost = null;
+        timeobj.miletime = null;
+        var timearr = [];
+        // var childobj = {
+        //     id:1,machinid:1
+        // };
+        // var childobj2 = {
+        //     id:2,machinid:2
+        // };
+        // timeobj.llarr = [];
+        // timeobj.llarr[0] = childobj;
+        // timeobj.llarr[1] = childobj2;
+        console.log(timeobj);
         // 监听表单提交
         form.on('submit(formSubmitAdv)', function (data) {
             // layer.msg(JSON.stringify(data.field));
-            console.log(data);
-            console.log(data.field);
-            console.log(typeof data.field);
-            // var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-            // parent.productPlanData.push(data.field);
-            // parent.productPlanEle.reload({data: parent.productPlanData});
-            // parent.layer.close(index); //再执行关闭
+            // console.log(data);
+            // console.log(data.field);
+            // console.log(typeof data.field);
+            timearr.splice(0,timearr.length);
+            for (let i in data.field) {
+                // timearr.push(data.field[i]); //属性
+                // //arr.push(obj[i]); //值
+                let o = {};
+                o[i] = data.field[i];
+
+                timearr.push(o)
+            }
+            console.log(timearr);
+            if (timearr[2].evt) {
+                timeobj.milepost = 1;
+                timeobj.miletime = timearr[2].evt;
+                parent.machineDetail.push(timeobj);
+            }
+            console.log(
+                timeobj
+            );
+
+            parent.machines.push(data.field);
+            // parent.plamin = data.field;
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            parent.productPlanData.push(data.field);
+            parent.productPlanEle.reload({data: parent.productPlanData});
+            parent.layer.close(index); //再执行关闭
             return false;
         });
     });

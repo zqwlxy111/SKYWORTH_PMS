@@ -390,19 +390,19 @@
             page: false,
             cellMinWidth: 100,
             cols: [[
-                {type: 'checkbox', title: '#'},
-                {type: 'numbers', title: '#'},
-                {field: 'chanplx', title: '产品类型',width:'10%',align:'center'},
-                {field: 'yuanxj', title: '原型机' ,width:'13%',align:'center'},
-                {field: 'jixing', title: '机型' ,width:'12%',align:'center'},
-                {field: 'jixin', title: '机芯',align:'center' },
-                {field: 'evt', title: 'EVT',align:'center' },
-                {field: 'dvt', title: 'DVT',align:'center' },
-                {field: 'pvt', title: 'PVT',align:'center' },
-                {field: 'pmp', title: 'PMP',align:'center' },
-                {field: 'mp', title: 'MP',align:'center' },
-                {field: 'beizhu', title: '备注',align:'center' }
-
+                {type: 'checkbox', width:'2%',title: '#'},
+                {type: 'numbers', width:'2%',title: '#'},
+                {field: 'machinetype', title: '产品类型',width:'6%',align:'center'},
+                {field: 'parentname', title: '原型机' ,width:'10%',align:'center'},
+                {field: 'machinname', title: '机型' ,width:'9%',align:'center'},
+                {field: 'inner', title: '机芯',width:'9%',align:'center' },
+                {field: 'evt', title: 'EVT',width:'9%',align:'center' },
+                {field: 'dvt', title: 'DVT',width:'9%',align:'center' },
+                {field: 'pvt', title: 'PVT',width:'9%',align:'center' },
+                {field: 'pmp', title: 'PMP',width:'9%',align:'center' },
+                {field: 'mp', title: 'MP',width:'9%',align:'center' },
+                {field: 'diff', title: '派生差异',width:'9%',align:'center' },
+                {field: 'remark', title: '备注',width:'9%',align:'center' }
             ]]
         });
 
@@ -441,10 +441,15 @@
             });
         });
 
+        parent.machines = [];
+        // parent.machineDetail = [];
+        for (var i = 0; i < parent.machines.length; i++) {
+            parent.machines[i].machineDetail = [];
+        }
+        exportdata
         // api.project.getList({},function (e) {
         //     console.log(e);
         // });
-
 
         /**
          * 添加组长和负责人点击框事件
@@ -506,7 +511,18 @@
             exportdata.groupleader = parent.groupleader;
             exportdata.person = parent.person;
             exportdata.type = 2;
+            for (var i = 0; i < parent.machines.length; i++) {
+                if (parent.machines[i].machinetype == "全新产品") {
+                    parent.machines[i].machinetype = 1;
+                }else {
+                    parent.machines[i].machinetype = 2;
+                }
+            }
+            exportdata.machines = parent.machines;
             console.log(exportdata);
+            console.log(exportdata.machines);
+            console.log(parent.machines);
+            console.log(typeof exportdata.machines);
             // 此处的e为返回的接口数据msg.result 为成功的状态值 1 = 成功；
             api.project.addProject(exportdata,function (e) {
                 console.log(e);
@@ -517,6 +533,9 @@
                 }
             });
             console.log(data);
+            console.log(parent.plamin);
+            console.log(typeof parent.plamin);
+            console.log(parent.productPlanData);
             return false;
         });
     });

@@ -123,7 +123,10 @@
                     response: {title: "text"}, // 这里指定了返回的数据格式，组件会根据这些值来替换返回JSON中的指定格式，从而读取信息
                     initLevel: "4",
                     ficon: ["-1", "-1"],
-                    line: true
+                    line: true,
+                    done: function(){
+                        var params = dtree.dataInit("Dtree", "1");
+                    }
                 });
             }
         });
