@@ -20,4 +20,7 @@
                 console.dir(st);
             }
 16. layui-inline 不要和layui-col-md之类的栅格布局代码写在一起，不然会发生致命的错误
-17.
+17. var oldTime = (new Date(data.field.evt)).getTime(); //得到毫秒数
+    var newTime = new Date(oldTime); //就得到普通的时间了
+18. 前端分页是指后台直接将所有的数据返回到前端，由前端进行数据的处理和分页；后台分页是指前端根据ajax发送页码和条数从后台拿到返回的数据，一页页去展示
+19. https://www.iviewui.com/

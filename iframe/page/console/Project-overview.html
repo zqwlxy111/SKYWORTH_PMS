@@ -94,10 +94,10 @@
         </div>
     </div>
 
-<!--    产品子项目-->
+<!--    产品子项目 内销、B2B-->
     <div class="layui-card">
         <div class="layui-card-header">
-            <div class="layui-inline layui-col-lg10 layui-col-md10 layui-col-sm10 layui-col-xs10" style="margin-right: 0px">项目查询</div>
+            <div class="layui-inline layui-col-lg10 layui-col-md10 layui-col-sm10 layui-col-xs10" style="margin-right: 0px">产品子项目 -- 内销、B2B</div>
             <div class="layui-inline layui-col-lg2  layui-col-md2 layui-col-sm2 layui-col-xs2 text-right" style="margin-right: 0px">
                 <button class="layui-btn layui-btn-sm " lay-event="add" id="chaxunanniu2"><i class="layui-icon layui-icon-add-1"></i>新建查询</button>
             </div>
@@ -165,6 +165,77 @@
             <table class="layui-table" id="projectOverview2" lay-filter="projectOverview"></table>
         </div>
     </div>
+<!--    产品子项目 外销-->
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <div class="layui-inline layui-col-lg10 layui-col-md10 layui-col-sm10 layui-col-xs10" style="margin-right: 0px">产品子项目 -- 外销</div>
+            <div class="layui-inline layui-col-lg2  layui-col-md2 layui-col-sm2 layui-col-xs2 text-right" style="margin-right: 0px">
+                <button class="layui-btn layui-btn-sm " lay-event="add" id="chaxunanniu3"><i class="layui-icon layui-icon-add-1"></i>新建查询</button>
+            </div>
+        </div>
+        <div class="layui-card-body">
+            <div class="layui-form toolbar layui-hide" id="toolbarShow3">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label w-auto">项目类别：</label>
+                        <div class="layui-input-inline mr0">
+                            <select name="xiangmulb">-->
+                                <option value=""></option>
+                                <option value="待立项审核">all</option>
+                                <option value="已完成">内销项目</option>
+                                <option value="未完成">外销项目</option>
+                                <option value="异常">B2B项目</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label w-auto">项目名称：</label>
+                        <div class="layui-input-inline mr0">
+                            <input name="xiangmumc" class="layui-input" type="text" placeholder="项目名称"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label w-auto">项目组长：</label>
+                        <div class="layui-input-inline mr0">
+                            <input name="xiangmuzz" class="layui-input" type="text" placeholder="项目名称"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label w-auto">项目负责人：</label>
+                        <div class="layui-input-inline mr0">
+                            <input name="xiangmufzr" class="layui-input" type="text" placeholder="项目名称"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label w-auto">立项时间：</label>
+                        <div class="layui-input-inline mr0" style="width: 175px;">
+                            <input type="text" class="layui-input" id="lixiangTime3" placeholder="选择范围时间">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label w-auto">项目状态：</label>
+                        <div class="layui-input-inline mr0">
+                            <select name="xiangmuzt">
+                                <option value=""></option>
+                                <option value="待立项审核">待立项审核</option>
+                                <option value="已完成">已完成</option>
+                                <option value="未完成">未完成</option>
+                                <option value="异常">异常</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn icon-btn" lay-filter="formSubSearchUser" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>搜索
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--            橙色标签线-->
+            <hr class="layui-bg-orange">
+            <table class="layui-table" id="projectOverview3" lay-filter="projectOverview"></table>
+        </div>
+    </div>
 </div>
 
 <!--            头部工具栏新增删除按钮-->
@@ -209,28 +280,6 @@
         api.machine.getListByProject({projectId: 7},function (e) {
             console.log(e);
         });
-     //
-     // project
-     //    {
-     //        machines:[
-     //
-     //            {
-     //                machinname:"fawe",
-        //             inner:"hrfghd"
-     //                machineDetail:[{
-        //                    milepost:1,
-        //                       miletime:'1245125',
-        //                },
-        // {
-            //                    milepost:2,
-            //                       miletime:'1245125',
-            //                },
-        //                ],
-     //            }
-     //        ],
-     //            persons:[],
-     //    }
-
 
         /**
          *  查询按钮事件
@@ -259,12 +308,16 @@
         /**
          * table渲染
          */
+
+        //项目总览
         window.tbdata = null;
         api.project.getList({},function (e) {
             for (var i = 0; i < e.length; i++) {
                 e[i].type = util.getProType(e[i].type);
                 // console.log(e[i].type);
+                e[i].createtime = formatDate(new Date(e[i].createtime)); //就得到普通的时间了
             }
+            console.log(e);
             tbdata = e;
             table.render({
                 elem: '#projectOverview',
@@ -294,6 +347,116 @@
                     {field: 'sex', title: '产品立项书' ,toolbar: '#barDemo2',align:"center"},
                     {field: 'sex', title: '甘特图' ,toolbar: '#barDemo2',align:"center"},
                     {field: 'right', title:'操作', toolbar: '#barDemo1', width:150,align:"center"}
+                ]]
+            });
+        });
+
+        // 项目子项目 -- 内销、B2B
+        window.tbdata = null;
+        api.project.getList({},function (e) {
+            for (var i = 0; i < e.length; i++) {
+                e[i].type = util.getProType(e[i].type);
+                e[i].createtime = formatDate(new Date(e[i].createtime)); //就得到普通的时间了
+                // console.log(e[i].type);
+            }
+            tbdata = e;
+            table.render({
+                elem: '#projectOverview2',
+                data:tbdata,
+                page: true,
+                cellMinWidth: 100,
+                toolbar: '#toolbarDemo',
+                // parseData: function(e){ //res 即为原始返回的数据
+                //     return {
+                //         "msg": e.msg, //解析提示文本
+                //         "data": e.result //解析数据列表
+                //     };
+                // },
+                // response: {
+                //     statusCode: 1 //规定成功的状态码，默认：0
+                //     ,dataName: 'result' //规定数据列表的字段名称，默认：data
+                // },
+                cols: [[
+                    {type:'radio'},
+                    {type: 'numbers', title: '#' ,align:"center"},
+                    {field: 'type', sort: true, title: '项目类别' ,align:"center"},
+                    {field: 'name', title: '机型' ,align:"center"},
+                    {field: 'personname', title: '机芯' ,align:"center"},
+                    {field: 'leadername', title: '原型机' ,align:"center"},
+                    {field: 'createtime', sort: true, title: '配屏' ,align:"center"},
+                    {field: 'state', sort: true, title: '机型审核状态' ,align:"center"},
+                    {field: 'state', sort: true, title: '审核结果' ,align:"center"},
+                    {field: 'state', sort: true, title: '当前阶段' ,align:"center"},
+                    {field: 'state', sort: true, title: '项目完成率' ,align:"center"}
+                    // ,
+                    // {field: 'sex', title: '产品立项书' ,toolbar: '#barDemo2',align:"center"},
+                    // {field: 'sex', title: '甘特图' ,toolbar: '#barDemo2',align:"center"},
+                    // {field: 'right', title:'操作', toolbar: '#barDemo1', width:150,align:"center"}
+                ]]
+            });
+        });
+        // 子项目 -- 外销
+        window.tbdata = null;
+        api.project.getList({},function (e) {
+            for (var i = 0; i < e.length; i++) {
+                e[i].type = util.getProType(e[i].type);
+                e[i].createtime = formatDate(new Date(e[i].createtime)); //就得到普通的时间了
+                // console.log(e[i].type);
+            }
+            tbdata = e;
+            table.render({
+                elem: '#projectOverview3',
+                data:tbdata,
+                page: true,
+                cellMinWidth: 100,
+                toolbar: '#toolbarDemo',
+                // parseData: function(e){ //res 即为原始返回的数据
+                //     return {
+                //         "msg": e.msg, //解析提示文本
+                //         "data": e.result //解析数据列表
+                //     };
+                // },
+                // response: {
+                //     statusCode: 1 //规定成功的状态码，默认：0
+                //     ,dataName: 'result' //规定数据列表的字段名称，默认：data
+                // },
+                cols: [[
+                    {type:'radio'},
+                    {type: 'numbers', title: '#' ,align:"center"},
+                    {field: 'type', sort: true, title: '项目类别' ,align:"center"},
+                    {field: 'name', title: '机型' ,align:"center"},
+                    {field: 'personname', title: '机芯' ,align:"center"},
+                    {field: 'leadername', title: '原型机' ,align:"center"},
+                    {field: 'createtime', title: '配屏' ,align:"center"},
+                    {field: 'state', title: '产品定位' ,align:"center"},
+                    {field: 'state', title: '机型审核状态' ,align:"center"},
+                    {field: 'state', title: '审核结果' ,align:"center"},
+                    {field: 'state', title: '当前阶段' ,align:"center"},
+                    {field: 'state', title: '项目完成率' ,align:"center"},
+                    {field: 'state', title: '方案系统' ,align:"center"},
+                    {field: 'state', title: 'S评审' ,align:"center"},
+                    {field: 'state', title: 'ES闭环' ,align:"center"},
+                    {field: 'state', title: 'NPR试产' ,align:"center"},
+                    {field: 'state', title: 'NPR评审' ,align:"center"},
+                    {field: 'state', title: 'NPR闭环' ,align:"center"},
+                    {field: 'state', title: 'PID号' ,align:"center"},
+                    {field: 'state', title: 'PID评审' ,align:"center"},
+                    {field: 'state', title: '工艺确认' ,align:"center"},
+                    {field: 'state', title: '设计师(电子)' ,align:"center",width:"8%"},
+                    {field: 'state', title: '设计师(结构)' ,align:"center",width:"8%"},
+                    {field: 'state', title: '设计师(电源)' ,align:"center",width:"8%"},
+                    {field: 'state', title: '设计师(软件)' ,align:"center",width:"8%"},
+                    {field: 'state', title: '设计师(模组)' ,align:"center",width:"8%"},
+                    {field: 'state', title: 'PMP试产订单号' ,align:"center"},
+                    {field: 'state', title: '对应PO' ,align:"center"},
+                    {field: 'state', title: '试产进度' ,align:"center"},
+                    {field: 'state', title: 'MP量产' ,align:"center"},
+                    {field: 'state', title: '计划出货时间' ,align:"center",width:"10%"},
+                    {field: 'state', title: '实际出货时间' ,align:"center",width:"10%"}
+                    // ,
+                    // {field: 'sex', title: '产品立项书' ,toolbar: '#barDemo2',align:"center"},
+                    // {field: 'sex', title: '甘特图' ,toolbar: '#barDemo2',align:"center"},
+                    // {field: 'right', title:'操作', toolbar: '#barDemo1', width:150,align:"center"}
                 ]]
             });
         });

@@ -51,7 +51,10 @@
 
         <!--        机型、机芯选择-->
         <div class="layui-card">
-            <!--            <div class="layui-card-header">机型、机芯选择</div>-->
+                        <div class="layui-card-header">机型、机芯选择
+                            <div class="layui-btn layui-btn-danger" id="asdasd">adasd</div>
+
+                        </div>
             <div class="layui-card-body">
 
                 <div class="layui-form-item layui-row">
@@ -82,30 +85,30 @@
                     <div class="layui-inline layui-col-md6 layui-col-xs6 ">
                         <label class="layui-form-label">EVT :</label>
                         <div class="layui-input-block">
-                            <input name="evt" type="text" class="layui-input" id="dayChoice1" placeholder="yyyy-MM-dd" lay-verType="tips" lay-verify="required">
+                            <input name="evt" type="text" class="layui-input" id="dayChoice1" placeholder="yyyy-MM-dd" >
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md6 layui-col-xs6">
                         <label class="layui-form-label">DVT :</label>
                         <div class="layui-input-block">
-                            <input name="dvt" type="text" class="layui-input" id="dayChoice2" placeholder="yyyy-MM-dd" lay-verType="tips" lay-verify="required">
+                            <input name="dvt" type="text" class="layui-input" id="dayChoice2" placeholder="yyyy-MM-dd" >
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md6 layui-col-xs6">
                         <label class="layui-form-label">PVT :</label>
                         <div class="layui-input-block">
-                            <input name="pvt" type="text" class="layui-input" id="dayChoice3" placeholder="yyyy-MM-dd" lay-verType="tips" lay-verify="required">
+                            <input name="pvt" type="text" class="layui-input" id="dayChoice3" placeholder="yyyy-MM-dd" >
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md6 layui-col-xs6">
                         <label class="layui-form-label">PMP :</label>
                         <div class="layui-input-block">
-                            <input name="pmp" type="text" class="layui-input" id="dayChoice4" placeholder="yyyy-MM-dd" lay-verType="tips" lay-verify="required">
+                            <input name="pmp" type="text" class="layui-input" id="dayChoice4" placeholder="yyyy-MM-dd" >
                         </div>
                     </div><div class="layui-inline layui-col-md6 layui-col-xs6">
                     <label class="layui-form-label">MP :</label>
                     <div class="layui-input-block">
-                        <input name="mp" type="text" class="layui-input" id="dayChoice5" placeholder="yyyy-MM-dd" lay-verType="tips" lay-verify="required">
+                        <input name="mp" type="text" class="layui-input" id="dayChoice5" placeholder="yyyy-MM-dd" >
                     </div>
                 </div>
                 </div>
@@ -222,13 +225,15 @@
                 $("#paishenginput").removeAttr("lay-verify");
             }
         });
-
+        $("#asdasd").on("click",function () {
+            $("input").val("1");
+        });
 
         // 定义存放时间进度的对象
-        var timeobj = {};
-        timeobj.milepost = null;
-        timeobj.miletime = null;
-        var timearr = [];
+        // var timeobj = {};
+        // timeobj.milepost = null;
+        // timeobj.miletime = null;
+        // var timearr = [];
         // var childobj = {
         //     id:1,machinid:1
         // };
@@ -238,14 +243,24 @@
         // timeobj.llarr = [];
         // timeobj.llarr[0] = childobj;
         // timeobj.llarr[1] = childobj2;
-        console.log(timeobj);
+        // console.log(timeobj);
+
+
+
+
         // 监听表单提交
-        var machines = [];
         var machinesobj = {};
+        var machineDetail1 = {};
+        var machineDetail2 = {};
+        var machineDetail3 = {};
+        var machineDetail4 = {};
+        var machineDetail5 = {};
+        machinesobj.machineDetail = [];
         form.on('submit(formSubmitAdv)', function (data) {
             // layer.msg(JSON.stringify(data.field));
             console.log(data);
             console.log(data.field);
+            // machineobj
             machinesobj.machinname = data.field.machinname;
             machinesobj.inner = data.field.inner;
             if (data.field.machinetype == "全新产品") {
@@ -256,11 +271,41 @@
             machinesobj.parentname = data.field.parentname;
             machinesobj.remark = data.field.remark;
             machinesobj.diff = data.field.diff;
+
+            //machineDetail
+            machinesobj.machineDetail.splice(0,machinesobj.machineDetail.length);
+            if (data.field.evt) {
+                machineDetail1.milepost = 1;
+                machineDetail1.miletime = (new Date(data.field.evt)).getTime();
+                machinesobj.machineDetail.push(machineDetail1);
+            }
+            if (data.field.dvt) {
+                machineDetail2.milepost = 2;
+                machineDetail2.miletime = (new Date(data.field.dvt)).getTime();
+                machinesobj.machineDetail.push(machineDetail2);
+            }
+            if (data.field.pvt) {
+                machineDetail3.milepost = 3;
+                machineDetail3.miletime = (new Date(data.field.pvt)).getTime();
+                machinesobj.machineDetail.push(machineDetail3);
+            }
+            if (data.field.pmp) {
+                machineDetail4.milepost = 4;
+                machineDetail4.miletime = (new Date(data.field.pmp)).getTime();
+                machinesobj.machineDetail.push(machineDetail4);
+            }
+            if (data.field.mp) {
+                machineDetail5.milepost = 5;
+                machineDetail5.miletime = (new Date(data.field.mp)).getTime();
+                machinesobj.machineDetail.push(machineDetail5);
+            }
+            console.log(machinesobj.machineDetail);
+            console.log(machinesobj);
             parent.machines.push(machinesobj);
+
             // parent.machines = machines;
-            console.log(parent.machines);
             // console.log(typeof data.field);
-            // timearr.splice(0,timearr.length);
+            // timemachineDetail.splice(0,timearr.length);
             // for (let i in data.field) {
             //     // timearr.push(data.field[i]); //属性
             //     // //arr.push(obj[i]); //值
@@ -281,6 +326,7 @@
             //
             // parent.machines.push(data.field);
             // parent.plamin = data.field;
+
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.productPlanData.push(data.field);
             parent.productPlanEle.reload({data: parent.productPlanData});

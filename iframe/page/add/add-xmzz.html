@@ -95,6 +95,9 @@
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/libs/layui/layui.js"></script>
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/common.js?v=312"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/util.js"></script>
+<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/api.js"></script>
+
 <script>
     layui.use(['layer', 'table', 'admin', 'form', 'dtree'], function () {
         var $ = layui.jquery;
@@ -112,8 +115,14 @@
         var departmentid = null;
         $.ajax({
             type: "GET",
-            // url: "http://172.20.73.16:8899/safe_usercenter/safe/department/getDepartmentTree",
-            url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/department/getDepartmentTree",
+            url: "http://172.20.248.220:8088/dms/safe_usercenter/safe/department/getDepartmentTree",
+            // url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/department/getDepartmentTree",
+            headers: {
+                token: global.userIdentity.token,
+                user: global.userIdentity.user.id,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             success: function (res) {
                 console.log(res);
                 //初始化树
@@ -124,7 +133,7 @@
                     initLevel: "4",
                     ficon: ["-1", "-1"],
                     line: true,
-                    done: function(){
+                    done: function () {
                         var params = dtree.click("slTree1", "1");
                     }
                 });
@@ -136,8 +145,14 @@
             departmentid = obj.param.nodeId;
             $.ajax({
                 type: "GET",
-                // url: "http://172.20.73.16:8899/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId="+departmentid+"&start=0&limit=100",
-                url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/user/getUsersListByDepartmentId",
+                url: "http://172.20.248.220:8088/dms/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId=" + departmentid + "&start=0&limit=100",
+                // url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/user/getUsersListByDepartmentId",
+                headers: {
+                    token: global.userIdentity.token,
+                    user: global.userIdentity.user.id,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
                 success: function (res1) {
                     console.log(res1.result);
                     console.log(res1.result[0].id);

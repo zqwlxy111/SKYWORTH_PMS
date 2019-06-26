@@ -159,12 +159,24 @@
         var form = layui.form;
         var dtree = layui.dtree;
 
+
+
+        // 定义接口对象
+        var personsobj = {};
+
+
         // 初始化部门树
         var departmentid = null;
         $.ajax({
             type: "GET",
-            url: "http://172.20.73.16:8899/safe_usercenter/safe/department/getDepartmentTree",
+            url: "http://172.20.248.220:8088/dms/safe_usercenter/safe/department/getDepartmentTree",
             // url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/department/getDepartmentTree",
+            headers: {
+                token: global.userIdentity.token,
+                user: global.userIdentity.user.id,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             success: function (res) {
                 console.log(res);
                 //初始化树
@@ -174,7 +186,10 @@
                     response: {title: "text"}, // 这里指定了返回的数据格式，组件会根据这些值来替换返回JSON中的指定格式，从而读取信息
                     initLevel: "4",
                     ficon: ["-1", "-1"],
-                    line: true
+                    line: true,
+                    done: function () {
+                        var params = dtree.click("slTree1", "1");
+                    }
                 });
             }
         });
@@ -185,8 +200,14 @@
             departmentid = obj.param.nodeId;
             $.ajax({
                 type: "GET",
-                url: "http://172.20.73.16:8899/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId=" + departmentid + "&start=0&limit=100",
+                url: "http://172.20.248.220:8088/dms/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId=" + departmentid + "&start=0&limit=100",
                 // url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/user/getUsersListByDepartmentId",
+                headers: {
+                    token: global.userIdentity.token,
+                    user: global.userIdentity.user.id,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
                 success: function (res1) {
                     console.log(res1.result);
                     var data = res1.result;
@@ -249,10 +270,12 @@
                 }
             }
         });
+
         form.on('select(mokuaixiala)', function (data) {
             console.log(data.value); //得到被选中的值
             switch(data.value){
                 case "业务模块":
+                    personsobj.moduletype = 1;
                     $("#zhizefuze").empty();
                     $("#zhizefuze").append("<option value=''>请选择</option>");
                     $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
@@ -261,6 +284,7 @@
                     }
                     break;
                 case "计划模块":
+                    personsobj.moduletype = 2;
                     $("#zhizefuze").empty();
                     $("#zhizefuze").append("<option value=''>请选择</option>");
                     $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
@@ -269,6 +293,7 @@
                     }
                     break;
                 case "质量模块":
+                    personsobj.moduletype = 3;
                     $("#zhizefuze").empty();
                     $("#zhizefuze").append("<option value=''>请选择</option>");
                     $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
@@ -277,6 +302,7 @@
                     }
                     break;
                 case "工程模块":
+                    personsobj.moduletype = 4;
                     $("#zhizefuze").empty();
                     $("#zhizefuze").append("<option value=''>请选择</option>");
                     $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
@@ -285,6 +311,7 @@
                     }
                     break;
                 case "生产模块":
+                    personsobj.moduletype = 5;
                     $("#zhizefuze").empty();
                     $("#zhizefuze").append("<option value=''>请选择</option>");
                     $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
@@ -297,20 +324,39 @@
             form.render();
         });
 
+        //  获取duty的id
+        form.on('select(zhizefuze)', function (data) {
+            console.log(data.value);
+            personsobj.dutyname = data.value;
+            api.node.getDutys(function (e) {
+                for (var i = 0; i < e.length; i++) {
+                    if (e[i].title == data.value){
+                        console.log(e[i].id);
+                        personsobj.duty = e[i].id;
+                        break;
+                    } else if (data.value == "问题履历") {
+                        personsobj.duty = 1;
+                    }
+                }
+            })
+        });
 
         /**
          * 监听submit表单提交
          */
+
         form.on('submit(formSubmitAdv)', function (data) {
             console.log(data);
-            var checkObj = table.checkStatus('projectOverview').data;
+            var checkObj = table.checkStatus('projectOverview').data; // 获取表格选择人员的对象
             console.log(checkObj[0]);
-            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.$('#libinglin').val(checkObj[0].realName);
+            personsobj.personname = checkObj[0].realName;
+            personsobj.person = checkObj[0].id;
+            console.log(personsobj);
+            parent.persons.push(personsobj);
 
-            var objk = data.field;
-            objk.departmentPeople = checkObj[0].realName;
-            objk.peopleId = checkObj[0].code;
+            data.field.departmentPeople = checkObj[0].realName;
+            data.field.peopleId = checkObj[0].code;
             // 条件判断
             switch (data.field.productCategory) {
                 case '业务模块':
@@ -338,6 +384,7 @@
                     parent.insTb5.reload({data: parent.mDataList5});
                     break;
             }
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.layer.close(index); //再执行关闭
             return false;
         });

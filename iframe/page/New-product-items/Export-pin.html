@@ -48,7 +48,9 @@
 
         <!--        项目名称和项目定位-->
         <div class="layui-card">
-            <div class="layui-card-header">外销项目立项</div>
+            <div class="layui-card-header">外销项目立项
+            <div class="layui-btn layui-btn-danger" id="asdasd">adasd</div>
+            </div>
             <div class="layui-card-body">
 
                 <div class="layui-form-item layui-row">
@@ -485,7 +487,13 @@
         var hdata = {};
 
         parent.machines = [];
+        hdata.machines = parent.machines;
 
+        parent.persons = [];
+        hdata.persons = parent.persons;
+        $("#asdasd").on("click",function () {
+            $("input").val("1");
+        });
 
         // parent.machines = [];
         // // parent.machineDetail = [];
@@ -506,16 +514,12 @@
         form.on('submit(exportsubmit)', function (data) {
             console.log( typeof data.field);
             console.log( data.field);
-            var exportdata = data.field;
             if (data.field.position == '高端产品') {
                 hdata.position = 3;
-                exportdata.position = 3;
             }else if (data.field.position == '中端产品') {
                 hdata.position = 2;
-                exportdata.position = 2;
             }else{
                 hdata.position = 1;
-                exportdata.position = 1;
             }
             hdata.type = 2;
             hdata.describe = data.field.describe;
@@ -526,39 +530,24 @@
             hdata.zlmb = data.field.zlmb;
             hdata.leadername = data.field.leadername;
             hdata.personname = data.field.personname;
-            hdata.machines = parent.machines;
-            hdata.name = data.field.name
+            hdata.name = data.field.name;
             hdata.newfunc = data.field.newfunc;
             hdata.newmate = data.field.newmate;
             hdata.newtech = data.field.newtech;
-            exportdata.groupleader = parent.groupleader;
-            exportdata.person = parent.person;
-            exportdata.type = 2;
+            $.each(hdata,function (i,n) {
+                console.log(i+":"+n);
+            });
             console.log(hdata);
-            for (var i = 0; i < parent.machines.length; i++) {
-                if (parent.machines[i].machinetype == "全新产品") {
-                    parent.machines[i].machinetype = 1;
-                }else {
-                    parent.machines[i].machinetype = 2;
-                }
-            }
-            exportdata.machines = parent.machines;
-            console.log(exportdata);
-            console.log(exportdata.machines);
-            console.log(parent.machines);
-            console.log(typeof exportdata.machines);
             // 此处的e为返回的接口数据msg.result 为成功的状态值 1 = 成功；
-            // api.project.addProject(exportdata,function (e) {
-            //     console.log(e);
-            //     if (e == 1) {
-            //         layer.msg("提交成功",{time:1500});
-            //     }else{
-            //         layer.msg("提交失败",{time:1500});
-            //     }
-            // });
+            api.project.addProject(hdata,function (e) {
+                console.log(e);
+                if (e == 1) {
+                    layer.msg("提交成功",{time:1500});
+                }else{
+                    layer.msg("提交失败",{time:1500});
+                }
+            });
             console.log(data);
-            console.log(parent.plamin);
-            console.log(typeof parent.plamin);
             console.log(parent.productPlanData);
             return false;
         });
