@@ -55,32 +55,7 @@
                 </div>
             </div>
         </div>
-        <div class="layui-row" style="margin-bottom: 10px">
-            <div class="layui-col-lg12">
-                <!--        模块选择-->
-                <div class="layui-card">
-                    <div class="layui-card-header">职责负责选择</div>
-                    <div class="layui-card-body">
-                        <div class="layui-form-item layui-row">
-                            <div class="layui-col-md12 ">
-                                <label class="layui-form-label">职责负责 :</label>
-                                <div class="layui-input-block">
-                                    <select id="zhizefuze" name="responsibility" lay-filter="zhizefuze" lay-verType="tips"
-                                            lay-verify="required">
-                                        <option value="">请选择</option>
-<!--                                        <option value="问题履历">问题履历</option>-->
-<!--                                        <option value="质量管理书">质量管理书</option>-->
-<!--                                        <option value="产品立项书">产品立项书</option>-->
-<!--                                        <option value="标题1">标题1</option>-->
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="layui-row" style="margin-bottom: 47px">
+        <div class="layui-row" style="margin-bottom: 9px">
             <div class="layui-col-lg12">
                 <div class="layui-card">
                     <div class="layui-card-header">根据部门树选择部门人员</div>
@@ -116,6 +91,48 @@
                 </div>
             </div>
 
+        </div>
+        <div class="layui-row" style="margin-bottom: 9px">
+            <div class="layui-col-lg12">
+                <!--        模块选择-->
+                <div class="layui-card">
+                    <div class="layui-card-header">分解包节点选择</div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item layui-row">
+                            <div class="layui-col-md12 ">
+                                <label class="layui-form-label">节点选择 :</label>
+                                <div class="layui-input-block">
+                                    <select id="fenjiebaojiedian" name="fenjiebaojiedian" lay-filter="fenjiebaojiedian" lay-verType="tips"
+                                            lay-verify="required">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row" style="margin-bottom: 53px">
+            <div class="layui-col-lg12">
+                <!--        模块选择-->
+                <div class="layui-card">
+                    <div class="layui-card-header">职责负责选择</div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item layui-row">
+                            <div class="layui-col-md12 ">
+                                <label class="layui-form-label">职责负责 :</label>
+                                <div class="layui-input-block">
+                                    <select id="zhizefuze" name="responsibility" lay-filter="zhizefuze" lay-verType="tips"
+                                            lay-verify="required">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!--        <div class="layui-row" style="margin-bottom: 30px">-->
@@ -159,11 +176,8 @@
         var form = layui.form;
         var dtree = layui.dtree;
 
-
-
         // 定义接口对象
         var personsobj = {};
-
 
         // 初始化部门树
         var departmentid = null;
@@ -184,7 +198,7 @@
                     elem: "#slTree1",
                     data: [res],
                     response: {title: "text"}, // 这里指定了返回的数据格式，组件会根据这些值来替换返回JSON中的指定格式，从而读取信息
-                    initLevel: "4",
+                    initLevel: "5",
                     ficon: ["-1", "-1"],
                     line: true,
                     done: function () {
@@ -227,166 +241,193 @@
             });
         });
 
-        /**
-         * 获取职责
-         */
-
-        //点击模块后选择模块对应的职责
-        //定义各个职责的存放数组的
-        var yewuzhize = [];
-        var jihuazhize = [];
-        var zhiliangzhize = [];
-        var gongchengzhize = [];
-        var shengchanzhize = [];
-        api.node.getDutys(function (e) {
+        // 分解包节点选择
+        api.node.getWorkNodes({projecttype:1},function (e) {
             console.log(e);
             for (var i = 0; i < e.length; i++) {
-                switch (e[i].nodeid) {
-                    case 1:
-                        console.log("1");
-                        console.log(e[i].title);
-                        yewuzhize.push(e[i]);
-                        break;
-                    case 2:
-                        console.log("2");
-                        console.log(e[i].title);
-                        jihuazhize.push(e[i]);
-                        break;
-                    case 3:
-                        console.log("3");
-                        console.log(e[i].title);
-                        zhiliangzhize.push(e[i]);
-                        break;
-                    case 4:
-                        console.log("4");
-                        console.log(e[i].title);
-                        gongchengzhize.push(e[i]);
-                        break;
-                    case 5:
-                        console.log("5");
-                        console.log(e[i].title);
-                        shengchanzhize.push(e[i]);
-                        break;
-                }
+                $("#fenjiebaojiedian").append("<option value='"+e[i].name+"'>"+e[i].name+"</option>");
             }
-        });
-
-        form.on('select(mokuaixiala)', function (data) {
-            console.log(data.value); //得到被选中的值
-            switch(data.value){
-                case "业务模块":
-                    personsobj.moduletype = 1;
-                    $("#zhizefuze").empty();
-                    $("#zhizefuze").append("<option value=''>请选择</option>");
-                    $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
-                    for (var i = 0; i < yewuzhize.length; i++) {
-                        $("#zhizefuze").append("<option value='"+yewuzhize[i].title+"'>"+yewuzhize[i].title+"</option>");
-                    }
-                    break;
-                case "计划模块":
-                    personsobj.moduletype = 2;
-                    $("#zhizefuze").empty();
-                    $("#zhizefuze").append("<option value=''>请选择</option>");
-                    $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
-                    for (var i = 0; i < jihuazhize.length; i++) {
-                        $("#zhizefuze").append("<option value='"+jihuazhize[i].title+"'>"+jihuazhize[i].title+"</option>");
-                    }
-                    break;
-                case "质量模块":
-                    personsobj.moduletype = 3;
-                    $("#zhizefuze").empty();
-                    $("#zhizefuze").append("<option value=''>请选择</option>");
-                    $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
-                    for (var i = 0; i < zhiliangzhize.length; i++) {
-                        $("#zhizefuze").append("<option value='"+zhiliangzhize[i].title+"'>"+zhiliangzhize[i].title+"</option>");
-                    }
-                    break;
-                case "工程模块":
-                    personsobj.moduletype = 4;
-                    $("#zhizefuze").empty();
-                    $("#zhizefuze").append("<option value=''>请选择</option>");
-                    $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
-                    for (var i = 0; i < gongchengzhize.length; i++) {
-                        $("#zhizefuze").append("<option value='"+gongchengzhize[i].title+"'>"+gongchengzhize[i].title+"</option>");
-                    }
-                    break;
-                case "生产模块":
-                    personsobj.moduletype = 5;
-                    $("#zhizefuze").empty();
-                    $("#zhizefuze").append("<option value=''>请选择</option>");
-                    $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
-                    for (var i = 0; i < shengchanzhize.length; i++) {
-                        $("#zhizefuze").append("<option value='"+shengchanzhize[i].title+"'>"+shengchanzhize[i].title+"</option>");
-                    }
-                    break;
-            }
-            // 对目标form表单进行动态的重新渲染
             form.render();
         });
 
-        //  获取duty的id
-        form.on('select(zhizefuze)', function (data) {
-            console.log(data.value);
-            personsobj.dutyname = data.value;
-            api.node.getDutys(function (e) {
-                for (var i = 0; i < e.length; i++) {
-                    if (e[i].title == data.value){
-                        console.log(e[i].id);
-                        personsobj.duty = e[i].id;
-                        break;
-                    } else if (data.value == "问题履历") {
-                        personsobj.duty = 1;
+        // 职责负责
+        form.on('select(fenjiebaojiedian)', function (data) {
+            console.log(data.value); //得到被选中的值
+            api.node.getWorkNodes({projecttype:1},function (e) {
+                console.log(e);
+                console.log(e[0]);
+                for (var i = 0; i < e.length ; i++) {
+                    if ( data.value === e[i].name){
+                        $("#zhizefuze").empty();
+                        $("#zhizefuze").append("<option value=''>请选择</option>");
+                        for (var j = 0; j < e[i].nodeTasks.length; j++) {
+                            console.log(e[i].nodeTasks[j].title);
+                            $("#zhizefuze").append("<option value='"+e[i].nodeTasks[j].title+"'>"+e[i].nodeTasks[j].title+"</option>");
+                        }
                     }
                 }
-            })
+                // 对目标form表单进行动态的重新渲染
+                form.render();
+            });
         });
+
+
+        //点击模块后选择模块对应的职责
+        //定义各个职责的存放数组的
+        // var yewuzhize = [];
+        // var jihuazhize = [];
+        // var zhiliangzhize = [];
+        // var gongchengzhize = [];
+        // var shengchanzhize = [];
+        // api.node.getDutys(function (e) {
+        //     console.log(e);
+        //     for (var i = 0; i < e.length; i++) {
+        //         switch (e[i].nodeid) {
+        //             case 1:
+        //                 console.log("1");
+        //                 console.log(e[i].title);
+        //                 yewuzhize.push(e[i]);
+        //                 break;
+        //             case 2:
+        //                 console.log("2");
+        //                 console.log(e[i].title);
+        //                 jihuazhize.push(e[i]);
+        //                 break;
+        //             case 3:
+        //                 console.log("3");
+        //                 console.log(e[i].title);
+        //                 zhiliangzhize.push(e[i]);
+        //                 break;
+        //             case 4:
+        //                 console.log("4");
+        //                 console.log(e[i].title);
+        //                 gongchengzhize.push(e[i]);
+        //                 break;
+        //             case 5:
+        //                 console.log("5");
+        //                 console.log(e[i].title);
+        //                 shengchanzhize.push(e[i]);
+        //                 break;
+        //         }
+        //     }
+        // });
+        //
+        // form.on('select(mokuaixiala)', function (data) {
+        //     console.log(data.value); //得到被选中的值
+        //     switch(data.value){
+        //         case "业务模块":
+        //             personsobj.moduletype = 1;
+        //             $("#zhizefuze").empty();
+        //             $("#zhizefuze").append("<option value=''>请选择</option>");
+        //             $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
+        //             for (var i = 0; i < yewuzhize.length; i++) {
+        //                 $("#zhizefuze").append("<option value='"+yewuzhize[i].title+"'>"+yewuzhize[i].title+"</option>");
+        //             }
+        //             break;
+        //         case "计划模块":
+        //             personsobj.moduletype = 2;
+        //             $("#zhizefuze").empty();
+        //             $("#zhizefuze").append("<option value=''>请选择</option>");
+        //             $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
+        //             for (var i = 0; i < jihuazhize.length; i++) {
+        //                 $("#zhizefuze").append("<option value='"+jihuazhize[i].title+"'>"+jihuazhize[i].title+"</option>");
+        //             }
+        //             break;
+        //         case "质量模块":
+        //             personsobj.moduletype = 3;
+        //             $("#zhizefuze").empty();
+        //             $("#zhizefuze").append("<option value=''>请选择</option>");
+        //             $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
+        //             for (var i = 0; i < zhiliangzhize.length; i++) {
+        //                 $("#zhizefuze").append("<option value='"+zhiliangzhize[i].title+"'>"+zhiliangzhize[i].title+"</option>");
+        //             }
+        //             break;
+        //         case "工程模块":
+        //             personsobj.moduletype = 4;
+        //             $("#zhizefuze").empty();
+        //             $("#zhizefuze").append("<option value=''>请选择</option>");
+        //             $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
+        //             for (var i = 0; i < gongchengzhize.length; i++) {
+        //                 $("#zhizefuze").append("<option value='"+gongchengzhize[i].title+"'>"+gongchengzhize[i].title+"</option>");
+        //             }
+        //             break;
+        //         case "生产模块":
+        //             personsobj.moduletype = 5;
+        //             $("#zhizefuze").empty();
+        //             $("#zhizefuze").append("<option value=''>请选择</option>");
+        //             $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");
+        //             for (var i = 0; i < shengchanzhize.length; i++) {
+        //                 $("#zhizefuze").append("<option value='"+shengchanzhize[i].title+"'>"+shengchanzhize[i].title+"</option>");
+        //             }
+        //             break;
+        //     }
+        //     // 对目标form表单进行动态的重新渲染
+        //     form.render();
+        // });
+
+        //  获取duty的id
+        // form.on('select(zhizefuze)', function (data) {
+        //     console.log(data.value);
+        //     personsobj.dutyname = data.value;
+        //     api.node.getDutys(function (e) {
+        //         for (var i = 0; i < e.length; i++) {
+        //             if (e[i].title == data.value){
+        //                 console.log(e[i].id);
+        //                 personsobj.duty = e[i].id;
+        //                 break;
+        //             } else if (data.value == "问题履历") {
+        //                 personsobj.duty = 1;
+        //             }
+        //         }
+        //     })
+        // });
 
         /**
          * 监听submit表单提交
          */
-        form.on('submit(formSubmitAdv)', function (data) {
-            console.log(data);
-            var checkObj = table.checkStatus('projectOverview').data; // 获取表格选择人员的对象
-            console.log(checkObj[0]);
-            parent.$('#libinglin').val(checkObj[0].realName);
-            personsobj.personname = checkObj[0].realName;
-            personsobj.person = checkObj[0].id;
-            console.log(personsobj);
-            parent.persons.push(personsobj);
-
-            data.field.departmentPeople = checkObj[0].realName;
-            data.field.peopleId = checkObj[0].code;
-            // 条件判断
-            switch (data.field.productCategory) {
-                case '业务模块':
-                    console.log(data.field);
-                    for (var st in data.field) {
-                        console.dir(st);
-                    }
-                    parent.mDataList1.push(data.field);
-                    parent.insTb1.reload({data: parent.mDataList1});
-                    break;
-                case '计划模块':
-                    parent.mDataList2.push(data.field);
-                    parent.insTb2.reload({data: parent.mDataList2});
-                    break;
-                case '质量模块':
-                    parent.mDataList3.push(data.field);
-                    parent.insTb3.reload({data: parent.mDataList3});
-                    break;
-                case '工程模块':
-                    parent.mDataList4.push(data.field);
-                    parent.insTb4.reload({data: parent.mDataList4});
-                    break;
-                case '生产模块':
-                    parent.mDataList5.push(data.field);
-                    parent.insTb5.reload({data: parent.mDataList5});
-                    break;
-            }
-            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-            parent.layer.close(index); //再执行关闭
-            return false;
-        });
+        // form.on('submit(formSubmitAdv)', function (data) {
+        //     console.log(data);
+        //     var checkObj = table.checkStatus('projectOverview').data; // 获取表格选择人员的对象
+        //     console.log(checkObj[0]);
+        //     parent.$('#libinglin').val(checkObj[0].realName);
+        //     personsobj.personname = checkObj[0].realName;
+        //     personsobj.person = checkObj[0].id;
+        //     console.log(personsobj);
+        //     parent.persons.push(personsobj);
+        //
+        //     data.field.departmentPeople = checkObj[0].realName;
+        //     data.field.peopleId = checkObj[0].code;
+        //     // 条件判断
+        //     switch (data.field.productCategory) {
+        //         case '业务模块':
+        //             console.log(data.field);
+        //             for (var st in data.field) {
+        //                 console.dir(st);
+        //             }
+        //             parent.mDataList1.push(data.field);
+        //             parent.insTb1.reload({data: parent.mDataList1});
+        //             break;
+        //         case '计划模块':
+        //             parent.mDataList2.push(data.field);
+        //             parent.insTb2.reload({data: parent.mDataList2});
+        //             break;
+        //         case '质量模块':
+        //             parent.mDataList3.push(data.field);
+        //             parent.insTb3.reload({data: parent.mDataList3});
+        //             break;
+        //         case '工程模块':
+        //             parent.mDataList4.push(data.field);
+        //             parent.insTb4.reload({data: parent.mDataList4});
+        //             break;
+        //         case '生产模块':
+        //             parent.mDataList5.push(data.field);
+        //             parent.insTb5.reload({data: parent.mDataList5});
+        //             break;
+        //     }
+        //     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+        //     parent.layer.close(index); //再执行关闭
+        //     return false;
+        // });
     });
 </script>
 </body>
