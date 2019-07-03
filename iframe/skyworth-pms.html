@@ -167,7 +167,23 @@
 
         // 切换tab自动刷新
         // $('.layui-body>.layui-tab[lay-filter="admin-pagetabs"]').attr('lay-autoRefresh', 'true');
+
     });
+    // 超时弹出登录界面
+    var myTime = setTimeout("Timeout()", 1680000);
+    function resetTime() {
+        clearTimeout(myTime);
+        myTime = setTimeout('Timeout()', 1680000);
+    }
+    function Timeout() {
+        alert("您的登录已超时, 请点确定后重新登录!");
+        document.location.href='login.html';
+    }
+    document.documentElement.onkeydown=resetTime;
+    document.doocumentElement.onclick=resetTime;
+</script>
+<script language="javascript">
+
 </script>
 </body>
 </html>

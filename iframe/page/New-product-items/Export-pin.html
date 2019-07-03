@@ -264,17 +264,12 @@
 
 
 
-        /**
-         * 表单初始赋值
-         */
+        // 表单初始赋值
         form.val('Export-pin', {
             "type": "外销产品"
         });
 
-        /**
-         * 项目主要人员弹出层
-         *
-         */
+        // 各个模块人员职责分配
         parent.mDataList1 = [];
         parent.mDataList2 = [];
         parent.mDataList3 = [];
@@ -369,22 +364,21 @@
                 content: getProjectUrl() + 'page/add/addPeople-model.html',
 
                 success: function (layero,dIndex) {
-
                     var body = layer.getChildFrame('body', dIndex); // 获取弹出层iframe层的对象
-                    // console.log(body.html());
                 },
                 cancel: function (index, layero) {
                     // if (confirm('确定要关闭么')) { //只有当点击confirm框的确定时，该层才会关闭
                     //     layer.close(index);
                     // }
                     // return false;
+                },
+                end:function () {
+                    console.log(window.top.wmokuai);
                 }
             });
         });
 
-        /**
-         * 产品进度计划表格
-         */
+        // 产品进度计划表格
         parent.productPlanData = [];
         parent.productPlanEle = table.render({
             elem: '#productPlan',
@@ -415,9 +409,8 @@
             obj.del(); //删除当前行
             //obj.update(fields) //修改当前行数据
         });
-        /**
-         * 产品计划弹出层
-         */
+
+        // 产品计划弹出层
         $("#libinglin-btn-productPlanning").click(function () {
             top.layui.admin.open({
                 type: 2, //此处以iframe举例
@@ -443,9 +436,7 @@
             });
         });
 
-        /**
-         * 添加组长和负责人点击框事件
-         */
+        // 添加组长和负责人点击框事件
         $('#libinglin,#libinglin1').on("mouseover",function () {
             $(this).css("cursor","pointer");
         });
@@ -478,9 +469,7 @@
             });
         });
 
-        /**
-         *  产品计划接口添加
-         */
+        // 产品计划接口
 
         // 定义一个后端传送的接口对象
 
@@ -508,9 +497,7 @@
         // });
 
 
-        /**
-         * 表单提交监听事件
-         */
+        // 表单提交监听事件
         parent.groupleader = null;
         parent.personalbar = null;
         form.on('submit(exportsubmit)', function (data) {
