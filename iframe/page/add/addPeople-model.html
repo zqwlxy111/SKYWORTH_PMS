@@ -211,6 +211,9 @@
         });
 
         // 点击部门树节点后弹出部门所属的人员名单
+        var bumen = null;
+        var gonghao = null;
+        var renyuan = null;
         dtree.on("node('slTree1')", function (obj) {
             // layer.msg(JSON.stringify(obj.param));
             departmentid = obj.param.nodeId;
@@ -243,16 +246,25 @@
             });
         });
 
+        // 获取选中的人员的对象
+        table.on('radio(projectOverview)', function(obj){
+            console.log(obj.data); //选中行的相关数据
+            bumen = obj.data.departmentsStr;
+            renyuan = obj.data.realName;
+            gonghao = obj.data.code;
+        });
+
         // 分解包节点选择
         api.node.getWorkNodes({projecttype:1},function (e) {
             console.log(e);
+            // console.log(JSON.stringify(e));
             for (var i = 0; i < e.length; i++) {
                 $("#fenjiebaojiedian").append("<option value='"+e[i].name+"'>"+e[i].name+"</option>");
             }
             form.render();
         });
 
-        // 职责负责选择
+        // 职责节点选择
         form.on('select(fenjiebaojiedian)', function (data) {
             console.log(data.value); //得到被选中的值
             api.node.getWorkNodes({projecttype:1},function (e) {
@@ -276,46 +288,30 @@
         // 监听submit表单提交
         form.on('submit(formSubmitAdv)', function (data) {
             console.log(data.field);
-            window.top.wmokuai = data.field.productCategory;
-            // var checkObj = table.checkStatus('projectOverview').data; // 获取表格选择人员的对象
-            // console.log(checkObj[0]);
-            // parent.$('#libinglin').val(checkObj[0].realName);
-            // personsobj.personname = checkObj[0].realName;
-            // personsobj.person = checkObj[0].id;
-            // console.log(personsobj);
-            // parent.persons.push(personsobj);
-            //
-            // data.field.departmentPeople = checkObj[0].realName;
-            // data.field.peopleId = checkObj[0].code;
-            // // 条件判断
-            // switch (data.field.productCategory) {
-            //     case '业务模块':
-            //         console.log(data.field);
-            //         for (var st in data.field) {
-            //             console.dir(st);
-            //         }
-            //         parent.mDataList1.push(data.field);
-            //         parent.insTb1.reload({data: parent.mDataList1});
-            //         break;
-            //     case '计划模块':
-            //         parent.mDataList2.push(data.field);
-            //         parent.insTb2.reload({data: parent.mDataList2});
-            //         break;
-            //     case '质量模块':
-            //         parent.mDataList3.push(data.field);
-            //         parent.insTb3.reload({data: parent.mDataList3});
-            //         break;
-            //     case '工程模块':
-            //         parent.mDataList4.push(data.field);
-            //         parent.insTb4.reload({data: parent.mDataList4});
-            //         break;
-            //     case '生产模块':
-            //         parent.mDataList5.push(data.field);
-            //         parent.insTb5.reload({data: parent.mDataList5});
-            //         break;
-            // }
-            // var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-            // parent.layer.close(index); //再执行关闭
+            window.parent.wmokuai = data.field.productCategory;
+            var listobj = {};
+            listobj.mokuai = data.field.productCategory;
+            listobj.bumen = null;
+            listobj.gonghao = null;
+            listobj.renyuan = null;
+            listobj.zhize = data.field.responsibility;
+            listobj.renyuan = renyuan;
+            listobj.bumen = "智能设备部";
+            listobj.gonghao= gonghao;
+            if (listobj.mokuai == "业务模块"){
+                window.parent.wlist1.push(listobj);
+            } else if (listobj.mokuai == "计划模块") {
+                window.parent.wlist2.push(listobj);
+            }else if (listobj.mokuai == "质量模块") {
+                window.parent.wlist3.push(listobj);
+            }else if (listobj.mokuai == "工程模块") {
+                window.parent.wlist4.push(listobj);
+            }else if (listobj.mokuai == "生产模块") {
+                window.parent.wlist5.push(listobj);
+            }
+            console.log(window.parent.wlist1);
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            parent.layer.close(index); //再执行关闭
             return false;
         });
 

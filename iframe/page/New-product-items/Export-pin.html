@@ -262,120 +262,13 @@
         var admin = layui.admin;
         parent.$ = layui.jquery;
 
-
+        $("#asdasd").on("click",function () {
+            $("input").val("1");
+        });
 
         // 表单初始赋值
         form.val('Export-pin', {
             "type": "外销产品"
-        });
-
-        // 各个模块人员职责分配
-        parent.mDataList1 = [];
-        parent.mDataList2 = [];
-        parent.mDataList3 = [];
-        parent.mDataList4 = [];
-        parent.mDataList5 = [];
-        parent.insTb1 = table.render({
-            elem: '#tb1',
-            data: [],
-            page: false,
-            cellMinWidth: 100,
-            cols: [[
-                {type: 'checkbox', title: '#',width:'3%'},
-                {type: 'numbers', title: '#',width:'3%'},
-                {field: 'productCategory', title: '模块',width:'10%',align:'center'},
-                {field: 'department', title: '部门' ,width:'13%',align:'center'},
-                {field: 'peopleId', title: '工号' ,width:'13%',align:'center'},
-                {field: 'departmentPeople', title: '人员' ,width:'12%',align:'center'},
-                {field: 'responsibility', title: '职责',width:'46.2%',align:'center' }
-            ]]
-        });
-        parent.insTb2 = table.render({
-            elem: '#tb2',
-            data: [],
-            page: false,
-            cellMinWidth: 100,
-            cols: [[
-                {type: 'checkbox', title: '#',width:'3%'},
-                {type: 'numbers', title: '#',width:'3%'},
-                {field: 'productCategory', title: '模块',width:'10%',align:'center'},
-                {field: 'department', title: '部门' ,width:'13%',align:'center'},
-                {field: 'peopleId', title: '工号' ,width:'13%',align:'center'},
-                {field: 'departmentPeople', title: '人员' ,width:'12%',align:'center'},
-                {field: 'responsibility', title: '职责',width:'46.2%',align:'center' }
-            ]]
-        });
-        parent.insTb3 = table.render({
-            elem: '#tb3',
-            data: [],
-            page: false,
-            cellMinWidth: 100,
-            cols: [[
-                {type: 'checkbox', title: '#',width:'3%'},
-                {type: 'numbers', title: '#',width:'3%'},
-                {field: 'productCategory', title: '模块',width:'10%',align:'center'},
-                {field: 'department', title: '部门' ,width:'13%',align:'center'},
-                {field: 'peopleId', title: '工号' ,width:'13%',align:'center'},
-                {field: 'departmentPeople', title: '人员' ,width:'12%',align:'center'},
-                {field: 'responsibility', title: '职责',width:'46.2%',align:'center' }
-            ]]
-        });
-        parent.insTb4 = table.render({
-            elem: '#tb4',
-            data: [],
-            page: false,
-            cellMinWidth: 100,
-            cols: [[
-                {type: 'checkbox', title: '#',width:'3%'},
-                {type: 'numbers', title: '#',width:'3%'},
-                {field: 'productCategory', title: '模块',width:'10%',align:'center'},
-                {field: 'department', title: '部门' ,width:'13%',align:'center'},
-                {field: 'peopleId', title: '工号' ,width:'13%',align:'center'},
-                {field: 'departmentPeople', title: '人员' ,width:'12%',align:'center'},
-                {field: 'responsibility', title: '职责',width:'46.2%',align:'center' }
-            ]]
-        });
-        parent.insTb5 = table.render({
-            elem: '#tb5',
-            data: [],
-            page: false,
-            cellMinWidth: 100,
-            cols: [[
-                {type: 'checkbox', title: '#',width:'3%'},
-                {type: 'numbers', title: '#',width:'3%'},
-                {field: 'productCategory', title: '模块',width:'10%',align:'center'},
-                {field: 'department', title: '部门' ,width:'13%',align:'center'},
-                {field: 'peopleId', title: '工号' ,width:'13%',align:'center'},
-                {field: 'departmentPeople', title: '人员' ,width:'12%',align:'center'},
-                {field: 'responsibility', title: '职责',width:'46.2%',align:'center' }
-            ]]
-        });
-        $("#libinglin-btn-departmentPeople").click(function () {
-            top.layui.admin.open({
-                type: 2, //此处以iframe举例
-                title: '添加项目模块人员',
-                area: ['860px', '695px'],
-                shade: 0.8,
-                maxmin: false,
-                anim: 0,
-                closeBtn: 1,
-                offset: 'auto',
-                //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                content: getProjectUrl() + 'page/add/addPeople-model.html',
-
-                success: function (layero,dIndex) {
-                    var body = layer.getChildFrame('body', dIndex); // 获取弹出层iframe层的对象
-                },
-                cancel: function (index, layero) {
-                    // if (confirm('确定要关闭么')) { //只有当点击confirm框的确定时，该层才会关闭
-                    //     layer.close(index);
-                    // }
-                    // return false;
-                },
-                end:function () {
-                    console.log(window.top.wmokuai);
-                }
-            });
         });
 
         // 产品进度计划表格
@@ -402,17 +295,17 @@
             ]]
         });
 
-        table.on('rowDouble(productPlan)', function(obj){
-            console.log(obj.tr); //得到当前行元素对象
-            console.log(obj.data); //得到当前行数据
-            console.log(obj);
-            obj.del(); //删除当前行
-            //obj.update(fields) //修改当前行数据
-        });
+        // table.on('rowDouble(productPlan)', function(obj){
+        //     console.log(obj.tr); //得到当前行元素对象
+        //     console.log(obj.data); //得到当前行数据
+        //     console.log(obj);
+        //     obj.del(); //删除当前行
+        //     //obj.update(fields) //修改当前行数据
+        // });
 
         // 产品计划弹出层
         $("#libinglin-btn-productPlanning").click(function () {
-            top.layui.admin.open({
+            admin.open({
                 type: 2, //此处以iframe举例
                 title: '添加产品计划',
                 area: ['780px', '770px'],
@@ -437,11 +330,15 @@
         });
 
         // 添加组长和负责人点击框事件
+        window.personname = null;
+        window.leadername = null;
+        window.person = null;
+        window.groupleader = null;
         $('#libinglin,#libinglin1').on("mouseover",function () {
             $(this).css("cursor","pointer");
         });
         $('#libinglin').on("click",function () {
-            top.layui.admin.open({
+            admin.open({
                 type: 2, //此处以iframe举例
                 title: '项目总成员分配',
                 area: ['860px', '695px'],
@@ -451,11 +348,16 @@
                 closeBtn: 1,
                 offset: 'auto',
                 //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                content: getProjectUrl() + 'page/add/add-xmzz.html'
+                content: getProjectUrl() + 'page/add/add-xmzz.html',
+                end:function () {
+                    console.log(window.personname);
+                    console.log(window.person);
+                    $('#libinglin').val(personname);
+                }
             });
         });
         $('#libinglin1').on("click",function () {
-            top.layui.admin.open({
+            admin.open({
                 type: 2, //此处以iframe举例
                 title: '项目总成员分配',
                 area: ['860px', '695px'],
@@ -465,14 +367,137 @@
                 closeBtn: 1,
                 offset: 'auto',
                 //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                content: getProjectUrl() + 'page/add/add-xmfzr.html'
+                content: getProjectUrl() + 'page/add/add-xmfzr.html',
+                end:function () {
+                    $('#libinglin1').val(leadername);
+                }
             });
         });
+
+        // 各个模块人员职责分配
+        var insTb1 = table.render({
+            elem: '#tb1',
+            data: [],
+            page: false,
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox', title: '#',width:'3%'},
+                {type: 'numbers', title: '#',width:'3%'},
+                {field: 'mokuai', title: '模块',width:'10%',align:'center'},
+                {field: 'bumen', title: '部门' ,width:'10%',align:'center'},
+                {field: 'gonghao', title: '工号' ,width:'13%',align:'center'},
+                {field: 'renyuan', title: '人员' ,width:'12%',align:'center'},
+                {field: 'zhize', title: '职责',width:'49.2%',align:'center' }
+            ]]
+        });
+        var insTb2 = table.render({
+            elem: '#tb2',
+            data: [],
+            page: false,
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox', title: '#',width:'3%'},
+                {type: 'numbers', title: '#',width:'3%'},
+                {field: 'mokuai', title: '模块',width:'10%',align:'center'},
+                {field: 'bumen', title: '部门' ,width:'10%',align:'center'},
+                {field: 'gonghao', title: '工号' ,width:'13%',align:'center'},
+                {field: 'renyuan', title: '人员' ,width:'12%',align:'center'},
+                {field: 'zhize', title: '职责',width:'49.2%',align:'center' }
+            ]]
+        });
+        var insTb3 = table.render({
+            elem: '#tb3',
+            data: [],
+            page: false,
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox', title: '#',width:'3%'},
+                {type: 'numbers', title: '#',width:'3%'},
+                {field: 'mokuai', title: '模块',width:'10%',align:'center'},
+                {field: 'bumen', title: '部门' ,width:'10%',align:'center'},
+                {field: 'gonghao', title: '工号' ,width:'13%',align:'center'},
+                {field: 'renyuan', title: '人员' ,width:'12%',align:'center'},
+                {field: 'zhize', title: '职责',width:'49.2%',align:'center' }
+            ]]
+        });
+        var insTb4 = table.render({
+            elem: '#tb4',
+            data: [],
+            page: false,
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox', title: '#',width:'3%'},
+                {type: 'numbers', title: '#',width:'3%'},
+                {field: 'mokuai', title: '模块',width:'10%',align:'center'},
+                {field: 'bumen', title: '部门' ,width:'10%',align:'center'},
+                {field: 'gonghao', title: '工号' ,width:'13%',align:'center'},
+                {field: 'renyuan', title: '人员' ,width:'12%',align:'center'},
+                {field: 'zhize', title: '职责',width:'49.2%',align:'center' }
+            ]]
+        });
+        var insTb5 = table.render({
+            elem: '#tb5',
+            data: [],
+            page: false,
+            cellMinWidth: 100,
+            cols: [[
+                {type: 'checkbox', title: '#',width:'3%'},
+                {type: 'numbers', title: '#',width:'3%'},
+                {field: 'mokuai', title: '模块',width:'10%',align:'center'},
+                {field: 'bumen', title: '部门' ,width:'10%',align:'center'},
+                {field: 'gonghao', title: '工号' ,width:'13%',align:'center'},
+                {field: 'renyuan', title: '人员' ,width:'12%',align:'center'},
+                {field: 'zhize', title: '职责',width:'49.2%',align:'center' }
+            ]]
+        });
+        // 定义五个外销list
+        window.wlist1 = [];
+        window.wlist2 = [];
+        window.wlist3 = [];
+        window.wlist4 = [];
+        window.wlist5 = [];
+        $("#libinglin-btn-departmentPeople").click(function () {
+            admin.open({
+                type: 2, //此处以iframe举例
+                title: '添加项目模块人员',
+                area: ['860px', '695px'],
+                shade: 0.8,
+                maxmin: false,
+                anim: 0,
+                closeBtn: 1,
+                offset: 'auto',
+                //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                content: getProjectUrl() + 'page/add/addPeople-model.html',
+
+                success: function (layero,dIndex) {
+                    var body = layer.getChildFrame('body', dIndex); // 获取弹出层iframe层的对象
+                },
+                cancel: function (index, layero) {
+                    // if (confirm('确定要关闭么')) { //只有当点击confirm框的确定时，该层才会关闭
+                    //     layer.close(index);
+                    // }
+                    // return false;
+                },
+                end:function () {
+                    if (window.wmokuai == "业务模块") {
+                        insTb1.reload({data: window.wlist1})
+                    }else if (window.wmokuai == "计划模块") {
+                        insTb2.reload({data: window.wlist2})
+                    }else if (window.wmokuai == "质量模块") {
+                        insTb3.reload({data: window.wlist3})
+                    }else if (window.wmokuai == "工程模块") {
+                        insTb4.reload({data: window.wlist4})
+                    }else if (window.wmokuai == "生产模块") {
+                        insTb5.reload({data: window.wlist5})
+                    }
+                }
+            });
+        });
+
 
         // 产品计划接口
 
         // 定义一个后端传送的接口对象
-
         var hdata = {};
 
         parent.machines = [];
@@ -481,10 +506,6 @@
         parent.persons = [];
         hdata.persons = parent.persons;
 
-
-        $("#asdasd").on("click",function () {
-            $("input").val("1");
-        });
 
         // parent.machines = [];
         // // parent.machineDetail = [];

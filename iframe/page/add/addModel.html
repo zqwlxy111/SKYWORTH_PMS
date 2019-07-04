@@ -194,11 +194,6 @@
         var laydate = layui.laydate;
         var admin = layui.admin;
 
-        // //表单初始赋值
-        // form.val('Export-pin', {
-        //     "Item-category": "外销产品"
-        // });
-
         // laydate加载
         var elemChoice = '#dayChoice'; // 定义一个test的选择器
         for (var i = 1; i < 6; i++) {
@@ -228,25 +223,6 @@
         $("#asdasd").on("click",function () {
             $("input").val("1");
         });
-
-        // 定义存放时间进度的对象
-        // var timeobj = {};
-        // timeobj.milepost = null;
-        // timeobj.miletime = null;
-        // var timearr = [];
-        // var childobj = {
-        //     id:1,machinid:1
-        // };
-        // var childobj2 = {
-        //     id:2,machinid:2
-        // };
-        // timeobj.llarr = [];
-        // timeobj.llarr[0] = childobj;
-        // timeobj.llarr[1] = childobj2;
-        // console.log(timeobj);
-
-
-
 
         // 监听表单提交
         var machinesobj = {};
@@ -302,30 +278,6 @@
             console.log(machinesobj.machineDetail);
             console.log(machinesobj);
             parent.machines.push(machinesobj);
-
-            // parent.machines = machines;
-            // console.log(typeof data.field);
-            // timemachineDetail.splice(0,timearr.length);
-            // for (let i in data.field) {
-            //     // timearr.push(data.field[i]); //属性
-            //     // //arr.push(obj[i]); //值
-            //     let o = {};
-            //     o[i] = data.field[i];
-            //
-            //     timearr.push(o)
-            // }
-            // console.log(timearr);
-            // if (timearr[2].evt) {
-            //     timeobj.milepost = 1;
-            //     timeobj.miletime = timearr[2].evt;
-            //     parent.machineDetail.push(timeobj);
-            // }
-            // console.log(
-            //     timeobj
-            // );
-            //
-            // parent.machines.push(data.field);
-            // parent.plamin = data.field;
 
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.productPlanData.push(data.field);

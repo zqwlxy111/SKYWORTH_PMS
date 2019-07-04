@@ -112,6 +112,7 @@
             "assignment": "项目组长"
         });
 
+        // 加载部门树
         var departmentid = null;
         $.ajax({
             type: "GET",
@@ -140,6 +141,7 @@
             }
         });
 
+        // 点击树节点加载人员名单
         dtree.on("node('slTree1')", function (obj) {
             // layer.msg(JSON.stringify(obj.param));
             departmentid = obj.param.nodeId;
@@ -173,14 +175,16 @@
             });
         });
 
+        // 表单提交
         form.on('submit(formSubmitAdv)', function (data) {
             console.log(data);
             var checkObj = table.checkStatus('projectOverview').data;
-            console.log(checkObj[0].id);
-            console.log(checkObj[0].realName);
+            window.parent.person = checkObj[0].id; // 将人员id传给父页面
+            window.parent.personname = checkObj[0].realName; // 将人员的名字传给父页面
+            console.log(window.parent.person);
+            console.log(window.parent.personname);
             parent.groupleader = checkObj[0].id;
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-            parent.$('#libinglin').val(checkObj[0].realName);
             parent.layer.close(index); //再执行关闭
             return false;
         });
