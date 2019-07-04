@@ -272,8 +272,7 @@
         });
 
         // 产品进度计划表格
-        parent.productPlanData = [];
-        parent.productPlanEle = table.render({
+        var productPlanEle = table.render({
             elem: '#productPlan',
             data: [],
             page: false,
@@ -304,6 +303,11 @@
         // });
 
         // 产品计划弹出层
+        var machinesobb = [];
+        var bbb = [];
+        window.machinesobj = {};
+        window.machinesobj.machineDetail = [];
+        window.machinesobjx = [];
         $("#libinglin-btn-productPlanning").click(function () {
             admin.open({
                 type: 2, //此处以iframe举例
@@ -315,7 +319,7 @@
                 closeBtn: 1,
                 offset: 'auto',
                 //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                content: getProjectUrl() + 'page/add/addModel.html',
+                content: getProjectUrl() + 'page/add/addt.html',
                 success: function (layero,dIndex) {
                     var body = layer.getChildFrame('body', dIndex); // 获取弹出层iframe层的对象
 
@@ -325,6 +329,12 @@
                     //     layer.close(index);
                     // }
                     // return false;
+                },
+                end:function () {
+                    productPlanEle.reload({data: window.machinesobjx});
+                    var aaa = machinesobj;
+                    machinesobb.push(aaa);
+                    console.log(machinesobb);
                 }
             });
         });

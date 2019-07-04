@@ -1,416 +1,295 @@
-<!--&lt;!&ndash; 正文开始 &ndash;&gt;-->
-<!--<div class="layui-fluid">-->
-<!--    <form class="layui-form" lay-filter="addPeople-model" id="addPeople-model">-->
-<!--        <div class="layui-row" style="margin-bottom: 10px">-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>外销项目立项</title>
+    <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/libs/layui/css/layui.css"/>
+    <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/admin.css?v=312"/>
+    <style>
+        #export-pin .layui-form-item {
+            margin-bottom: 0;
+            margin-top: 20px;
+        }
 
-<!--            <div class="layui-col-lg12">-->
-<!--                &lt;!&ndash;        模块选择&ndash;&gt;-->
-<!--                <div class="layui-card">-->
-<!--                    <div class="layui-card-header">模块选择</div>-->
-<!--                    <div class="layui-card-body">-->
-<!--                        <div class="layui-form-item layui-row">-->
-<!--                            <div class="layui-col-md12 ">-->
-<!--                                <label class="layui-form-label">所属模块 :</label>-->
-<!--                                <div class="layui-input-block">-->
-<!--                                    <select name="productCategory" lay-verify="required" lay-verType="tips"-->
-<!--                                            lay-filter="mokuaixiala">-->
-<!--                                        <option value=""></option>-->
-<!--                                        <option value="业务模块">业务模块</option>-->
-<!--                                        <option value="计划模块">计划模块</option>-->
-<!--                                        <option value="质量模块">质量模块</option>-->
-<!--                                        <option value="工程模块">工程模块</option>-->
-<!--                                        <option value="生产模块">生产模块</option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--&lt;!&ndash;        <div class="layui-row" style="margin-bottom: 10px">&ndash;&gt;-->
-<!--&lt;!&ndash;            <div class="layui-col-lg12">&ndash;&gt;-->
-<!--&lt;!&ndash;                &lt;!&ndash;        模块选择&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="layui-card">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div class="layui-card-header">职责负责选择</div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div class="layui-card-body">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="layui-form-item layui-row">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <div class="layui-col-md12 ">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <label class="layui-form-label">职责负责 :</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <div class="layui-input-block">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <select id="zhizefuze" name="responsibility" lay-filter="zhizefuze"&ndash;&gt;-->
-<!--&lt;!&ndash;                                            lay-verType="tips"&ndash;&gt;-->
-<!--&lt;!&ndash;                                            lay-verify="required">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <option value="">请选择</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        &lt;!&ndash;                                        <option value="问题履历">问题履历</option>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                        &lt;!&ndash;                                        <option value="质量管理书">质量管理书</option>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                        &lt;!&ndash;                                        <option value="产品立项书">产品立项书</option>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                        &lt;!&ndash;                                        <option value="标题1">标题1</option>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </select>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        <div class="layui-row" style="margin-bottom: 47px">&ndash;&gt;-->
-<!--&lt;!&ndash;            <div class="layui-col-lg12">&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="layui-card">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div class="layui-card-header">根据部门树选择部门人员</div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div class="layui-card-body">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="layui-row">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <div class="layui-col-sm5">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <div class="layui-col-md12">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <fieldset class="layui-elem-field layui-field-title" style="width: 90%;">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <legend style="font-size: 16px">部门选择</legend>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </fieldset>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <div class="layui-col-md12">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <ul id="slTree1" class="dtree" data-id="0" style="overflow: hidden"></ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <div class="layui-col-sm7">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <div class="layui-col-md12">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <fieldset class="layui-elem-field layui-field-title">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <legend style="font-size: 16px">员工选择</legend>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </fieldset>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <div class="layui-col-md12">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <table class="layui-table" id="projectOverview"&ndash;&gt;-->
-<!--&lt;!&ndash;                                               lay-filter="projectOverview"></table>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+        #export-pin .layui-form-item .layui-inline {
+            margin-bottom: 25px;
+            margin-right: 0;
+        }
 
-<!--        &lt;!&ndash;        <div class="layui-row" style="margin-bottom: 30px">&ndash;&gt;-->
-<!--        &lt;!&ndash;            <div class="layui-col-lg12">&ndash;&gt;-->
-<!--        &lt;!&ndash;                &lt;!&ndash;        职责&ndash;&gt;&ndash;&gt;-->
-<!--        &lt;!&ndash;                <div class="layui-card">&ndash;&gt;-->
-<!--        &lt;!&ndash;                    <div class="layui-card-header">模块选择</div>&ndash;&gt;-->
-<!--        &lt;!&ndash;                    <div class="layui-card-body">&ndash;&gt;-->
-<!--        &lt;!&ndash;                        <div class="layui-form-item layui-row">&ndash;&gt;-->
-<!--        &lt;!&ndash;                            <div class="layui-inline layui-col-md12">&ndash;&gt;-->
-<!--        &lt;!&ndash;                                <label class="layui-form-label">职责负责 :</label>&ndash;&gt;-->
-<!--        &lt;!&ndash;                                <div class="layui-input-block">&ndash;&gt;-->
-<!--        &lt;!&ndash;                            <textarea name="responsibility" placeholder="请输入内容" class="layui-textarea"&ndash;&gt;-->
-<!--        &lt;!&ndash;                                      lay-verify="required" lay-verType="tips"></textarea>&ndash;&gt;-->
-<!--        &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+        .form-group-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, .05);
+        }
+        .layui-form-label{
+            padding: 9px 0px;
+            width: 66px;
+        }
+        .layui-input-block{
+            margin-left: 80px;
+        }
+    </style>
+</head>
+<body>
 
-<!--        <div class="form-group-bottom text-right" style="margin: 0 auto; width: 95%;position: fixed;bottom: 0;left: 0;right: 0;background-color: #fff;padding: 10px 20px;box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, .05);">-->
-<!--            <button class="layui-btn" lay-filter="formSubmitAdv" lay-submit>&emsp;确认&emsp;</button>-->
-<!--        </div>-->
-<!--    </form>-->
+<!-- 加载动画 -->
+<!--<div class="page-loading">-->
+<!--    <div class="ball-loader">-->
+<!--        <span></span><span></span><span></span><span></span>-->
+<!--    </div>-->
 <!--</div>-->
-<form id="modelRoleForm" lay-filter="modelRoleForm" class="layui-form model-form">
-    <input name="roleId" type="hidden"/>
-    <div class="layui-form-item">
-        <label class="layui-form-label">角色名</label>
-        <div class="layui-input-block">
-            <input name="name" placeholder="请输入角色名" type="text" class="layui-input" maxlength="20"
-                   lay-verType="tips" lay-verify="required" required/>
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">sex</label>
-        <div class="layui-input-block">
-            <input name="sex" placeholder="sex?" type="text" class="layui-input" maxlength="20"
-                   lay-verType="tips" lay-verify="required" required/>
-        </div>
-    </div>
-    <div class="layui-form-item text-right">
-<!--        <button class="layui-btn layui-btn-primary" type="button" ew-event="closePageDialog">取消</button>-->
-        <button class="layui-btn" lay-filter="modelSubmitRole" id="btnSave" ew-event="closePageDialog" lay-submit>保存</button>
-    </div>
-</form>
 
-<!--css-->
-<link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/libs/layui/css/layui.css"/>
-<link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/admin.css?v=312"/>
+<!-- 正文开始 -->
+<form class="layui-form" lay-filter="Export-pin" id="export-pin">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+
+        <!--        机型、机芯选择-->
+        <div class="layui-card">
+            <div class="layui-card-header">机型、机芯选择
+                <div class="layui-btn layui-btn-danger" id="asdasd">adasd</div>
+
+            </div>
+            <div class="layui-card-body">
+
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">机型 :</label>
+                        <div class="layui-input-block">
+                            <input name="machinname" type="text" placeholder="请输入机型" class="layui-input"
+                                   lay-verType="tips" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">机芯 :</label>
+                        <div class="layui-input-block">
+                            <input name="inner" type="text" class="layui-input" placeholder="请输入机芯"
+                                   lay-verType="tips" lay-verify="required" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--        初定时间节点-->
+        <div class="layui-card">
+            <div class="layui-card-header">初定时间节点</div>
+            <div class="layui-card-body">
+
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md6 layui-col-xs6 ">
+                        <label class="layui-form-label">EVT :</label>
+                        <div class="layui-input-block">
+                            <input name="evt" type="text" class="layui-input" id="dayChoice1" placeholder="yyyy-MM-dd" >
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md6 layui-col-xs6">
+                        <label class="layui-form-label">DVT :</label>
+                        <div class="layui-input-block">
+                            <input name="dvt" type="text" class="layui-input" id="dayChoice2" placeholder="yyyy-MM-dd" >
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md6 layui-col-xs6">
+                        <label class="layui-form-label">PVT :</label>
+                        <div class="layui-input-block">
+                            <input name="pvt" type="text" class="layui-input" id="dayChoice3" placeholder="yyyy-MM-dd" >
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md6 layui-col-xs6">
+                        <label class="layui-form-label">PMP :</label>
+                        <div class="layui-input-block">
+                            <input name="pmp" type="text" class="layui-input" id="dayChoice4" placeholder="yyyy-MM-dd" >
+                        </div>
+                    </div><div class="layui-inline layui-col-md6 layui-col-xs6">
+                    <label class="layui-form-label">MP :</label>
+                    <div class="layui-input-block">
+                        <input name="mp" type="text" class="layui-input" id="dayChoice5" placeholder="yyyy-MM-dd" >
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!--        产品类型和原型机-->
+        <div class="layui-card">
+            <!--            <div class="layui-card-header">功能描述和要求</div>-->
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md6">
+                        <label class="layui-form-label">产品类型 :</label>
+                        <div class="layui-input-block">
+                            <select name="machinetype" lay-filter="productCategoryChoice" lay-verType="tips" lay-verify="required">
+                                <option value=""></option>
+                                <option value="全新产品" selected="">全新产品</option>
+                                <option value="派生产品">派生产品</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md6">
+                        <label class="layui-form-label">原型机 :</label>
+                        <div class="layui-input-block">
+                            <input name="parentname" type="text" class="layui-input"
+                                   lay-verType="tips" lay-verify="required" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--        派生差异-->
+        <div class="layui-card layui-hide" id="paisheng">
+            <!--            <div class="layui-card-header">备注</div>-->
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">派生差异 :</label>
+                        <div class="layui-input-block">
+                            <!--                            <textarea name="paishengchayi" placeholder="请输入内容" lay-verType="tips" lay-verify="required" class="layui-textarea"></textarea>-->
+                            <input name="diff" id="paishenginput" type="text" class="layui-input"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--        备注-->
+        <div class="layui-card">
+            <!--            <div class="layui-card-header">备注</div>-->
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">备注事项 :</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="请输入内容" lay-verType="tips" lay-verify="required" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group-bottom text-right" style="margin: 0 auto; width: 96%;">
+        <button type="reset" class="layui-btn layui-btn-primary">&emsp;重置&emsp;</button>
+        <button class="layui-btn" lay-filter="formSubmitAdv" lay-submit>&emsp;提交&emsp;</button>
+    </div>
+
+</form>
 <!-- js部分 -->
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/libs/layui/layui.js"></script>
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/common.js?v=312"></script>
-<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/util.js"></script>
-<script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/api.js"></script>
+
 <script>
-    layui.use(['layer', 'form','admin'], function () {
+    layui.use(['layer', 'form', 'table', 'util', 'laydate','admin'], function () {
         var $ = layui.jquery;
         var layer = layui.layer;
         var form = layui.form;
+        var table = layui.table;
+        var util = layui.util;
+        var laydate = layui.laydate;
         var admin = layui.admin;
 
-        var user = window.user;
-        form.val('modelRoleForm', user);  // 回显表单数据
-        window.user = undefined;
+        // laydate加载
+        var elemChoice = '#dayChoice'; // 定义一个test的选择器
+        for (var i = 1; i < 6; i++) {
+            elemChoice = '#dayChoice';
+            elemChoice = elemChoice+i;
+            // console.log(elemChoice);
+            laydate.render({
+                elem:elemChoice
+                // ,theme:libinglin
+            });
+        }
 
-        // 表单提交事件
-        form.on('submit(modelSubmitRole)', function (data) {
-            console.log(data.field);
-            window.userFormOk = true;  // 添加成功的标识变量
-            admin.closeDialog('#btnSave');  // 关闭当前弹窗
-            return false;
+        // 监听select选择是否要显示隐藏派生差异
+        form.on('select(productCategoryChoice)', function(data){
+            console.log(data.value); //得到被选中的值
+            if (data.value == "派生产品") {
+                $("#paisheng").removeClass("layui-hide");
+                $("#paisheng").addClass("layui-show");
+                $("#paishenginput").attr({"lay-verType":"tips","lay-verify":"required"});
+            }else{
+                $("#paisheng").removeClass("layui-show");
+                $("#paisheng").addClass("layui-hide");
+                $("#paishenginput").removeAttr("lay-verType");
+                $("#paishenginput").removeAttr("lay-verify");
+            }
+        });
+        $("#asdasd").on("click",function () {
+            $("input").val("1");
         });
 
+        // 监听表单提交
+        form.on('submit(formSubmitAdv)', function (data) {
+            // layer.msg(JSON.stringify(data.field));
+            var machinesoba = null;
+            console.log(data);
+            console.log(data.field);
+            window.parent.machinesobjx.push(data.field);
+            // machineobj
+            window.parent.machinesobj.machinname = data.field.machinname;
+            window.parent.machinesobj.inner = data.field.inner;
+            if (data.field.machinetype == "全新产品") {
+                window.parent.machinesobj.machinetype = 1;
+            }else{
+                window.parent.machinesobj.machinetype = 2;
+            }
+            window.parent.machinesobj.parentname = data.field.parentname;
+            window.parent.machinesobj.remark = data.field.remark;
+            window.parent.machinesobj.diff = data.field.diff;
+
+            //machineDetail
+            window.parent.machinesobj.machineDetail.splice(0,window.parent.machinesobj.machineDetail.length);
+            if (data.field.evt) {
+                var machineDetail = {};
+                machineDetail.milepost = 1;
+                machineDetail.miletime = (new Date(data.field.evt)).getTime();
+                window.parent.machinesobj.machineDetail.push(machineDetail);
+                console.log(window.parent.machinesobj.machineDetail);
+            }
+            if (data.field.dvt) {
+                var machineDetail = {};
+                machineDetail.milepost = 2;
+                machineDetail.miletime = (new Date(data.field.dvt)).getTime();
+                window.parent.machinesobj.machineDetail.push(machineDetail);
+                console.log(window.parent.machinesobj.machineDetail);
+            }
+            if (data.field.pvt) {
+                var machineDetail = {};
+                machineDetail.milepost = 3;
+                machineDetail.miletime = (new Date(data.field.pvt)).getTime();
+                window.parent.machinesobj.machineDetail.push(machineDetail);
+            }
+            if (data.field.pmp) {
+                var machineDetail = {};
+                machineDetail.milepost = 4;
+                machineDetail.miletime = (new Date(data.field.pmp)).getTime();
+                window.parent.machinesobj.machineDetail.push(machineDetail);
+            }
+            if (data.field.mp) {
+                var machineDetail = {};
+                machineDetail.milepost = 5;
+                machineDetail.miletime = (new Date(data.field.mp)).getTime();
+                window.parent.machinesobj.machineDetail.push(machineDetail);
+            }
+            // window.parent.machinesobb.push(window.parent.machinesobj);
+            console.log(window.parent.machinesobj);
+            console.log(window.parent.machinesobb);
+            // console.log(machinesobj);
+
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            // parent.productPlanData.push(data.field);
+            // parent.productPlanEle.reload({data: parent.productPlanData});
+            parent.layer.close(index); //再执行关闭
+            return false;
+        });
     });
 </script>
+</body>
 
-
-<!--<script>-->
-<!--    layui.use(['layer', 'table', 'admin', 'form', 'dtree'], function () {-->
-<!--        var layer = layui.layer;-->
-<!--        var table = layui.table;-->
-<!--        var admin = layui.admin;-->
-<!--        var form = layui.form;-->
-<!--        var dtree = layui.dtree;-->
-
-<!--        // api.node.getDutys(function (e) {-->
-<!--        //     console.log(e);-->
-<!--        // });-->
-
-<!--        // 定义接口对象-->
-<!--        var personsobj = {};-->
-
-
-<!--        // 初始化部门树-->
-<!--        var departmentid = null;-->
-<!--        // $.ajax({-->
-<!--        //     type: "GET",-->
-<!--        //     url: "http://172.20.248.220:8088/dms/safe_usercenter/safe/department/getDepartmentTree",-->
-<!--        //     // url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/department/getDepartmentTree",-->
-<!--        //     headers: {-->
-<!--        //         token: global.userIdentity.token,-->
-<!--        //         user: global.userIdentity.user.id,-->
-<!--        //         'Accept': 'application/json',-->
-<!--        //         'Content-Type': 'application/json'-->
-<!--        //     },-->
-<!--        //     success: function (res) {-->
-<!--        //         console.log(res);-->
-<!--        //         //初始化树-->
-<!--        //         var DTree = dtree.render({-->
-<!--        //             elem: "#slTree1",-->
-<!--        //             data: [res],-->
-<!--        //             response: {title: "text"}, // 这里指定了返回的数据格式，组件会根据这些值来替换返回JSON中的指定格式，从而读取信息-->
-<!--        //             initLevel: "4",-->
-<!--        //             ficon: ["-1", "-1"],-->
-<!--        //             line: true,-->
-<!--        //             done: function () {-->
-<!--        //                 var params = dtree.click("slTree1", "1");-->
-<!--        //             }-->
-<!--        //         });-->
-<!--        //     }-->
-<!--        // });-->
-
-<!--        // 点击部门树节点后弹出部门所属的人员名单-->
-<!--        // dtree.on("node('slTree1')", function (obj) {-->
-<!--        //     // layer.msg(JSON.stringify(obj.param));-->
-<!--        //     departmentid = obj.param.nodeId;-->
-<!--        //     $.ajax({-->
-<!--        //         type: "GET",-->
-<!--        //         url: "http://172.20.248.220:8088/dms/safe_usercenter/safe/user/getUsersListByDepartmentId?departmentId=" + departmentid + "&start=0&limit=100",-->
-<!--        //         // url: "https://www.easy-mock.com/mock/5cf1600306cab27e589f9550/safe_usercenter/safe/user/getUsersListByDepartmentId",-->
-<!--        //         headers: {-->
-<!--        //             token: global.userIdentity.token,-->
-<!--        //             user: global.userIdentity.user.id,-->
-<!--        //             'Accept': 'application/json',-->
-<!--        //             'Content-Type': 'application/json'-->
-<!--        //         },-->
-<!--        //         success: function (res1) {-->
-<!--        //             console.log(res1.result);-->
-<!--        //             var data = res1.result;-->
-<!--        //             table.render({-->
-<!--        //                 elem: '#projectOverview',-->
-<!--        //                 data: data,-->
-<!--        //                 page: true,-->
-<!--        //                 cellMinWidth: 100,-->
-<!--        //                 cols: [[-->
-<!--        //                     {type: 'radio'},-->
-<!--        //                     // {field: 'type', title: '所属部门' ,align:"center"},-->
-<!--        //                     {field: 'code', title: '员工工号', align: "center"},-->
-<!--        //                     {field: 'realName', title: '员工姓名', align: "center"}-->
-<!--        //                 ]]-->
-<!--        //             });-->
-<!--        //         }-->
-<!--        //     });-->
-<!--        // });-->
-
-<!--        /**-->
-<!--         * 获取职责-->
-<!--         */-->
-
-<!--            //点击模块后选择模块对应的职责-->
-<!--            //定义各个职责的存放数组的-->
-<!--        var yewuzhize = [];-->
-<!--        var jihuazhize = [];-->
-<!--        var zhiliangzhize = [];-->
-<!--        var gongchengzhize = [];-->
-<!--        var shengchanzhize = [];-->
-<!--        // api.node.getDutys(function (e) {-->
-<!--        //     console.log(e);-->
-<!--        //     for (var i = 0; i < e.length; i++) {-->
-<!--        //         switch (e[i].nodeid) {-->
-<!--        //             case 1:-->
-<!--        //                 console.log("1");-->
-<!--        //                 console.log(e[i].title);-->
-<!--        //                 yewuzhize.push(e[i]);-->
-<!--        //                 break;-->
-<!--        //             case 2:-->
-<!--        //                 console.log("2");-->
-<!--        //                 console.log(e[i].title);-->
-<!--        //                 jihuazhize.push(e[i]);-->
-<!--        //                 break;-->
-<!--        //             case 3:-->
-<!--        //                 console.log("3");-->
-<!--        //                 console.log(e[i].title);-->
-<!--        //                 zhiliangzhize.push(e[i]);-->
-<!--        //                 break;-->
-<!--        //             case 4:-->
-<!--        //                 console.log("4");-->
-<!--        //                 console.log(e[i].title);-->
-<!--        //                 gongchengzhize.push(e[i]);-->
-<!--        //                 break;-->
-<!--        //             case 5:-->
-<!--        //                 console.log("5");-->
-<!--        //                 console.log(e[i].title);-->
-<!--        //                 shengchanzhize.push(e[i]);-->
-<!--        //                 break;-->
-<!--        //         }-->
-<!--        //     }-->
-<!--        // });-->
-
-<!--        form.on('select(mokuaixiala)', function (data) {-->
-<!--            console.log(data.value); //得到被选中的值-->
-<!--            switch (data.value) {-->
-<!--                case "业务模块":-->
-<!--                    personsobj.moduletype = 1;-->
-<!--                    $("#zhizefuze").empty();-->
-<!--                    $("#zhizefuze").append("<option value=''>请选择</option>");-->
-<!--                    $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");-->
-<!--                    for (var i = 0; i < yewuzhize.length; i++) {-->
-<!--                        $("#zhizefuze").append("<option value='" + yewuzhize[i].title + "'>" + yewuzhize[i].title + "</option>");-->
-<!--                    }-->
-<!--                    break;-->
-<!--                case "计划模块":-->
-<!--                    personsobj.moduletype = 2;-->
-<!--                    $("#zhizefuze").empty();-->
-<!--                    $("#zhizefuze").append("<option value=''>请选择</option>");-->
-<!--                    $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");-->
-<!--                    for (var i = 0; i < jihuazhize.length; i++) {-->
-<!--                        $("#zhizefuze").append("<option value='" + jihuazhize[i].title + "'>" + jihuazhize[i].title + "</option>");-->
-<!--                    }-->
-<!--                    break;-->
-<!--                case "质量模块":-->
-<!--                    personsobj.moduletype = 3;-->
-<!--                    $("#zhizefuze").empty();-->
-<!--                    $("#zhizefuze").append("<option value=''>请选择</option>");-->
-<!--                    $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");-->
-<!--                    for (var i = 0; i < zhiliangzhize.length; i++) {-->
-<!--                        $("#zhizefuze").append("<option value='" + zhiliangzhize[i].title + "'>" + zhiliangzhize[i].title + "</option>");-->
-<!--                    }-->
-<!--                    break;-->
-<!--                case "工程模块":-->
-<!--                    personsobj.moduletype = 4;-->
-<!--                    $("#zhizefuze").empty();-->
-<!--                    $("#zhizefuze").append("<option value=''>请选择</option>");-->
-<!--                    $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");-->
-<!--                    for (var i = 0; i < gongchengzhize.length; i++) {-->
-<!--                        $("#zhizefuze").append("<option value='" + gongchengzhize[i].title + "'>" + gongchengzhize[i].title + "</option>");-->
-<!--                    }-->
-<!--                    break;-->
-<!--                case "生产模块":-->
-<!--                    personsobj.moduletype = 5;-->
-<!--                    $("#zhizefuze").empty();-->
-<!--                    $("#zhizefuze").append("<option value=''>请选择</option>");-->
-<!--                    $("#zhizefuze").append("<option value='问题履历'>问题履历</option>");-->
-<!--                    for (var i = 0; i < shengchanzhize.length; i++) {-->
-<!--                        $("#zhizefuze").append("<option value='" + shengchanzhize[i].title + "'>" + shengchanzhize[i].title + "</option>");-->
-<!--                    }-->
-<!--                    break;-->
-<!--            }-->
-<!--            // 对目标form表单进行动态的重新渲染-->
-<!--            form.render();-->
-<!--        });-->
-
-<!--        //  获取duty的id-->
-<!--        form.on('select(zhizefuze)', function (data) {-->
-<!--            console.log(data.value);-->
-<!--            personsobj.dutyname = data.value;-->
-<!--            // api.node.getDutys(function (e) {-->
-<!--            //     for (var i = 0; i < e.length; i++) {-->
-<!--            //         if (e[i].title == data.value) {-->
-<!--            //             console.log(e[i].id);-->
-<!--            //             personsobj.duty = e[i].id;-->
-<!--            //             break;-->
-<!--            //         } else if (data.value == "问题履历") {-->
-<!--            //             personsobj.duty = 1;-->
-<!--            //         }-->
-<!--            //     }-->
-<!--            // })-->
-<!--        });-->
-
-<!--        // 弹窗的页面写-->
-<!--        var user = window.user;-->
-<!--        form.val('userForm', user);  // 回显表单数据-->
-<!--        window.user = undefined;-->
-<!--        /**-->
-<!--         * 监听submit表单提交-->
-<!--         */-->
-<!--        form.on('submit(formSubmitAdv)', function (data) {-->
-<!--            console.log(data);-->
-<!--            var checkObj = table.checkStatus('projectOverview').data; // 获取表格选择人员的对象-->
-<!--            console.log(checkObj[0]);-->
-<!--            parent.$('#libinglin').val(checkObj[0].realName);-->
-<!--            personsobj.personname = checkObj[0].realName;-->
-<!--            personsobj.person = checkObj[0].id;-->
-<!--            console.log(personsobj);-->
-<!--            parent.persons.push(personsobj);-->
-
-<!--            data.field.departmentPeople = checkObj[0].realName;-->
-<!--            data.field.peopleId = checkObj[0].code;-->
-<!--            // 条件判断-->
-<!--            switch (data.field.productCategory) {-->
-<!--                case '业务模块':-->
-<!--                    console.log(data.field);-->
-<!--                    for (var st in data.field) {-->
-<!--                        console.dir(st);-->
-<!--                    }-->
-<!--                    parent.mDataList1.push(data.field);-->
-<!--                    parent.insTb1.reload({data: parent.mDataList1});-->
-<!--                    break;-->
-<!--                case '计划模块':-->
-<!--                    parent.mDataList2.push(data.field);-->
-<!--                    parent.insTb2.reload({data: parent.mDataList2});-->
-<!--                    break;-->
-<!--                case '质量模块':-->
-<!--                    parent.mDataList3.push(data.field);-->
-<!--                    parent.insTb3.reload({data: parent.mDataList3});-->
-<!--                    break;-->
-<!--                case '工程模块':-->
-<!--                    parent.mDataList4.push(data.field);-->
-<!--                    parent.insTb4.reload({data: parent.mDataList4});-->
-<!--                    break;-->
-<!--                case '生产模块':-->
-<!--                    parent.mDataList5.push(data.field);-->
-<!--                    parent.insTb5.reload({data: parent.mDataList5});-->
-<!--                    break;-->
-<!--            }-->
-<!--            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引-->
-<!--            parent.layer.close(index); //再执行关闭-->
-<!--            return false;-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->
+</html>

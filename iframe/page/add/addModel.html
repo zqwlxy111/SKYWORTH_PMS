@@ -277,12 +277,12 @@
             }
             console.log(machinesobj.machineDetail);
             console.log(machinesobj);
-            parent.machines.push(machinesobj);
+            // parent.machines.push(machinesobj);
 
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-            parent.productPlanData.push(data.field);
-            parent.productPlanEle.reload({data: parent.productPlanData});
-            parent.layer.close(index); //再执行关闭
+            // parent.productPlanData.push(data.field);
+            // parent.productPlanEle.reload({data: parent.productPlanData});
+            // parent.layer.close(index); //再执行关闭
             return false;
         });
     });
