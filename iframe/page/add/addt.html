@@ -225,6 +225,8 @@
         });
 
         // 监听表单提交
+        var machinesobj = {};
+        machinesobj.machineDetail = [];
         form.on('submit(formSubmitAdv)', function (data) {
             // layer.msg(JSON.stringify(data.field));
             var machinesoba = null;
@@ -232,55 +234,55 @@
             console.log(data.field);
             window.parent.machinesobjx.push(data.field);
             // machineobj
-            window.parent.machinesobj.machinname = data.field.machinname;
-            window.parent.machinesobj.inner = data.field.inner;
+            machinesobj.machinname = data.field.machinname;
+            machinesobj.inner = data.field.inner;
             if (data.field.machinetype == "全新产品") {
                 window.parent.machinesobj.machinetype = 1;
             }else{
                 window.parent.machinesobj.machinetype = 2;
             }
-            window.parent.machinesobj.parentname = data.field.parentname;
-            window.parent.machinesobj.remark = data.field.remark;
-            window.parent.machinesobj.diff = data.field.diff;
+            machinesobj.parentname = data.field.parentname;
+            machinesobj.remark = data.field.remark;
+            machinesobj.diff = data.field.diff;
 
             //machineDetail
-            window.parent.machinesobj.machineDetail.splice(0,window.parent.machinesobj.machineDetail.length);
+            machinesobj.machineDetail.splice(0,machinesobj.machineDetail.length);
             if (data.field.evt) {
                 var machineDetail = {};
                 machineDetail.milepost = 1;
                 machineDetail.miletime = (new Date(data.field.evt)).getTime();
-                window.parent.machinesobj.machineDetail.push(machineDetail);
-                console.log(window.parent.machinesobj.machineDetail);
+                machinesobj.machineDetail.push(machineDetail);
+                console.log(machinesobj.machineDetail);
             }
             if (data.field.dvt) {
                 var machineDetail = {};
                 machineDetail.milepost = 2;
                 machineDetail.miletime = (new Date(data.field.dvt)).getTime();
-                window.parent.machinesobj.machineDetail.push(machineDetail);
-                console.log(window.parent.machinesobj.machineDetail);
+                machinesobj.machineDetail.push(machineDetail);
+                console.log(machinesobj.machineDetail);
             }
             if (data.field.pvt) {
                 var machineDetail = {};
                 machineDetail.milepost = 3;
                 machineDetail.miletime = (new Date(data.field.pvt)).getTime();
-                window.parent.machinesobj.machineDetail.push(machineDetail);
+                machinesobj.machineDetail.push(machineDetail);
             }
             if (data.field.pmp) {
                 var machineDetail = {};
                 machineDetail.milepost = 4;
                 machineDetail.miletime = (new Date(data.field.pmp)).getTime();
-                window.parent.machinesobj.machineDetail.push(machineDetail);
+                machinesobj.machineDetail.push(machineDetail);
             }
             if (data.field.mp) {
                 var machineDetail = {};
                 machineDetail.milepost = 5;
                 machineDetail.miletime = (new Date(data.field.mp)).getTime();
-                window.parent.machinesobj.machineDetail.push(machineDetail);
+                machinesobj.machineDetail.push(machineDetail);
             }
             // window.parent.machinesobb.push(window.parent.machinesobj);
-            console.log(window.parent.machinesobj);
+            window.parent.machinesobb.push(machinesobj);
+            console.log(machinesobj);
             console.log(window.parent.machinesobb);
-            // console.log(machinesobj);
 
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             // parent.productPlanData.push(data.field);

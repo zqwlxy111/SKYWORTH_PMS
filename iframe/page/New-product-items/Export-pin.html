@@ -303,10 +303,7 @@
         // });
 
         // 产品计划弹出层
-        var machinesobb = [];
-        var bbb = [];
-        window.machinesobj = {};
-        window.machinesobj.machineDetail = [];
+        window.machinesobb = [];
         window.machinesobjx = [];
         $("#libinglin-btn-productPlanning").click(function () {
             admin.open({
@@ -332,9 +329,7 @@
                 },
                 end:function () {
                     productPlanEle.reload({data: window.machinesobjx});
-                    var aaa = machinesobj;
-                    machinesobb.push(aaa);
-                    console.log(machinesobb);
+                    console.log(window.machinesobb);
                 }
             });
         });
