@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3a2231d-7dd6-4462-8cc0-0deb2419bd16" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iframe/page/New-product-items/Export-pin.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/page/New-product-items/Export-pin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/page/add/addModel.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/page/add/addModel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/page/add/addPeople-model.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/page/add/addPeople-model.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iframe/page/add/addt.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/page/add/addt.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,7 +24,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/iframe/assets/js/util.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
+                <state relative-caret-position="340">
                   <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
@@ -43,26 +46,33 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/iframe/assets/js/api.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2058">
-                  <caret line="98" column="11" selection-start-line="98" selection-start-column="11" selection-end-line="98" selection-end-column="11" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/addPin-all.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="9471">
-                  <caret line="451" column="24" selection-start-line="451" selection-start-column="24" selection-end-line="451" selection-end-column="24" />
+                <state relative-caret-position="500">
+                  <caret line="114" column="20" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="20" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/addPin-all.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="840">
+                  <caret line="451" column="24" selection-start-line="451" selection-start-column="24" selection-end-line="451" selection-end-column="24" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/Export-pin.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="147">
-                  <caret line="305" column="32" selection-start-line="305" selection-start-column="32" selection-end-line="305" selection-end-column="32" />
+                <state relative-caret-position="303">
+                  <caret line="465" column="64" lean-forward="true" selection-start-line="465" selection-start-column="64" selection-end-line="465" selection-end-column="64" />
+                  <folding>
+                    <element signature="e#17002#17650#0" />
+                    <element signature="e#17687#18335#0" />
+                    <element signature="e#18372#19020#0" />
+                    <element signature="e#19057#19705#0" />
+                    <element signature="e#19742#20390#0" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -70,7 +80,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/未混淆代码/添加注释的源代码/admin.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2772">
+                <state relative-caret-position="840">
                   <caret line="132" column="37" selection-start-line="132" selection-start-column="37" selection-end-line="132" selection-end-column="37" />
                 </state>
               </provider>
@@ -83,29 +93,31 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/iframe/skyworth-pms.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3717">
+                <state relative-caret-position="840">
                   <caret line="177" column="24" selection-start-line="177" selection-start-column="24" selection-end-line="177" selection-end-column="24" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/iframe/page/add/addt.html">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/iframe/page/add/addPeople-model.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1191">
-                  <caret line="278" column="55" selection-start-line="278" selection-start-column="55" selection-end-line="278" selection-end-column="55" />
+                <state relative-caret-position="421">
+                  <caret line="262" column="48" selection-start-line="262" selection-start-column="48" selection-end-line="262" selection-end-column="48" />
                   <folding>
-                    <element signature="n#style#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/未混淆代码/一些学习上的经验文件/layui学习笔记.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="447">
-                  <caret line="22" column="31" lean-forward="true" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+                <state relative-caret-position="440">
+                  <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
                 </state>
               </provider>
             </entry>
@@ -190,18 +202,18 @@
         <option value="$PROJECT_DIR$/iframe/page/add/add-test.html" />
         <option value="$PROJECT_DIR$/iframe/page/add/add-xmfzr1.html" />
         <option value="$PROJECT_DIR$/iframe/assets/js/common.js" />
-        <option value="$PROJECT_DIR$/iframe/page/console/Project-overview.html" />
         <option value="$PROJECT_DIR$/未混淆代码/一些学习上的经验文件/layui学习笔记.txt" />
         <option value="$PROJECT_DIR$/iframe/test.html" />
         <option value="$PROJECT_DIR$/iframe/page/New-product-items/nt.html" />
         <option value="$PROJECT_DIR$/iframe/111.html" />
         <option value="$PROJECT_DIR$/iframe/skyworth-pms.html" />
-        <option value="$PROJECT_DIR$/iframe/page/add/addPeople-model.html" />
         <option value="$PROJECT_DIR$/iframe/page/add/add-xmzz.html" />
         <option value="$PROJECT_DIR$/iframe/page/add/add-xmfzr.html" />
-        <option value="$PROJECT_DIR$/iframe/page/add/addModel.html" />
         <option value="$PROJECT_DIR$/iframe/page/add/addt.html" />
+        <option value="$PROJECT_DIR$/iframe/page/add/addModel.html" />
         <option value="$PROJECT_DIR$/iframe/page/New-product-items/Export-pin.html" />
+        <option value="$PROJECT_DIR$/iframe/page/console/Project-overview.html" />
+        <option value="$PROJECT_DIR$/iframe/page/add/addPeople-model.html" />
       </list>
     </option>
   </component>
@@ -327,11 +339,12 @@
       <workItem from="1562198851528" duration="14500000" />
       <workItem from="1562253372363" duration="685000" />
       <workItem from="1562254078518" duration="7243000" />
+      <workItem from="1562287616319" duration="14729000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="323910000" />
+    <option name="totallyTimeSpent" value="338639000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -343,7 +356,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.17447917" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -563,21 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iframe/page/console/Project-overview.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7660">
-          <caret line="383" column="71" selection-start-line="383" selection-start-column="71" selection-end-line="383" selection-end-column="71" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iframe/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1580">
@@ -630,19 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iframe/page/add/addPeople-model.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="293" column="33" lean-forward="true" selection-start-line="293" selection-start-column="33" selection-end-line="293" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#11992#12861#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iframe/111.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -664,20 +649,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iframe/page/add/add-xmzz.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="185" column="48" lean-forward="true" selection-start-line="185" selection-start-column="48" selection-end-line="185" selection-end-column="48" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#5018#6094#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iframe/assets/js/util.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="340">
           <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -695,65 +669,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iframe/assets/js/api.js">
+    <entry file="file://$PROJECT_DIR$/iframe/page/add/addt.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2058">
-          <caret line="98" column="11" selection-start-line="98" selection-start-column="11" selection-end-line="98" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/addPin-all.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9471">
-          <caret line="451" column="24" selection-start-line="451" selection-start-column="24" selection-end-line="451" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/未混淆代码/添加注释的源代码/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2772">
-          <caret line="132" column="37" selection-start-line="132" selection-start-column="37" selection-end-line="132" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iframe/skyworth-pms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3717">
-          <caret line="177" column="24" selection-start-line="177" selection-start-column="24" selection-end-line="177" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iframe/page/add/addModel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="275" column="53" lean-forward="true" selection-end-line="291" selection-end-column="7" />
+        <state relative-caret-position="481">
+          <caret line="245" column="47" lean-forward="true" selection-end-line="296" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/未混淆代码/一些学习上的经验文件/layui学习笔记.txt">
+    <entry file="file://$PROJECT_DIR$/iframe/page/add/addModel.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="22" column="31" lean-forward="true" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        <state relative-caret-position="-154">
+          <caret line="212" column="41" selection-start-line="212" selection-start-column="41" selection-end-line="212" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iframe/page/add/addt.html">
+    <entry file="file://$PROJECT_DIR$/iframe/page/add/add-xmzz.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1191">
-          <caret line="278" column="55" selection-start-line="278" selection-start-column="55" selection-end-line="278" selection-end-column="55" />
+        <state relative-caret-position="486">
+          <caret line="180" column="69" lean-forward="true" selection-start-line="180" selection-start-column="69" selection-end-line="180" selection-end-column="69" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/page/console/Project-overview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1554">
+          <caret line="280" column="27" lean-forward="true" selection-start-line="280" selection-start-column="27" selection-end-line="280" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/assets/js/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="114" column="20" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/page/add/addPeople-model.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="262" column="48" selection-start-line="262" selection-start-column="48" selection-end-line="262" selection-end-column="48" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/Export-pin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="305" column="32" selection-start-line="305" selection-start-column="32" selection-end-line="305" selection-end-column="32" />
+        <state relative-caret-position="303">
+          <caret line="465" column="64" lean-forward="true" selection-start-line="465" selection-start-column="64" selection-end-line="465" selection-end-column="64" />
+          <folding>
+            <element signature="e#17002#17650#0" />
+            <element signature="e#17687#18335#0" />
+            <element signature="e#18372#19020#0" />
+            <element signature="e#19057#19705#0" />
+            <element signature="e#19742#20390#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/未混淆代码/添加注释的源代码/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="132" column="37" selection-start-line="132" selection-start-column="37" selection-end-line="132" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/addPin-all.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="451" column="24" selection-start-line="451" selection-start-column="24" selection-end-line="451" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/skyworth-pms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="177" column="24" selection-start-line="177" selection-start-column="24" selection-end-line="177" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/未混淆代码/一些学习上的经验文件/layui学习笔记.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
         </state>
       </provider>
     </entry>

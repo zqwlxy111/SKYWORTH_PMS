@@ -211,9 +211,10 @@
         });
 
         // 点击部门树节点后弹出部门所属的人员名单
-        var bumen = null;
-        var gonghao = null;
-        var renyuan = null;
+        var bumen = null; // 部门
+        var gonghao = null; // 工号
+        var renyuan = null; // 人员
+        var renyuanid = null; // 人员id
         dtree.on("node('slTree1')", function (obj) {
             // layer.msg(JSON.stringify(obj.param));
             departmentid = obj.param.nodeId;
@@ -252,6 +253,7 @@
             bumen = obj.data.departmentsStr;
             renyuan = obj.data.realName;
             gonghao = obj.data.code;
+            renyuanid = obj.data.id;
         });
 
         // 分解包节点选择
@@ -259,7 +261,7 @@
             console.log(e);
             // console.log(JSON.stringify(e));
             for (var i = 0; i < e.length; i++) {
-                $("#fenjiebaojiedian").append("<option value='"+e[i].name+"'>"+e[i].name+"</option>");
+                $("#fenjiebaojiedian").append("<option value='" + e[i].name + "' data-index = '"+ i +"'>" + e[i].name + "</option>");
             }
             form.render();
         });
@@ -275,7 +277,7 @@
                         $("#zhizefuze").empty();
                         $("#zhizefuze").append("<option value=''>请选择</option>");
                         for (var j = 0; j < e[i].nodeTasks.length; j++) {
-                            console.log(e[i].nodeTasks[j].title);
+                            // console.log(e[i].nodeTasks[j].title);
                             $("#zhizefuze").append("<option value='"+e[i].nodeTasks[j].title+"'>"+e[i].nodeTasks[j].title+"</option>");
                         }
                     }
@@ -285,54 +287,97 @@
             });
         });
 
+        //  获取职责duty的id
+        // form.on('select(zhizefuze)', function (data) {
+        //     console.log(data.value);
+        //     // personsobj.dutyname = data.value;
+        //     // api.node.getDutys(function (e) {
+        //     //     for (var i = 0; i < e.length; i++) {
+        //     //         if (e[i].title == data.value){
+        //     //             console.log(e[i].id);
+        //     //             personsobj.duty = e[i].id;
+        //     //             break;
+        //     //         } else if (data.value == "问题履历") {
+        //     //             personsobj.duty = 1;
+        //     //         }
+        //     //     }
+        //     // })
+        // });
+        layui.formSelects.on('select1', function(id, vals, val, isAdd, isDisabled){
+            //id:           点击select的id
+            //vals:         当前select已选中的值
+            //val:          当前select点击的值
+            //isAdd:        当前操作选中or取消
+            //isDisabled:   当前选项是否是disabled
+            console.log(vals);
+            var aaa = vals;
+            console.log(aaa);
+            // var a = $("#fenjiebaojiedian").data("index");
+            console.log(a);
+            // for(var i=0; i<$("fenjiebaojiedian").length;i++){
+            //     if($(fenjiebaojiedian).eq(i).fenjiebao-index("0")==$(data.elem).data("d")){
+            //         return i;
+            //     }
+            // }
+            // api.node.getWorkNodes({projecttype:1},function (e) {
+            //     console.log(e);
+            //     for (var i = 0; i < e.length; i++) {
+            //         for (var j = 0; j < e[i].nodeTasks.length; j++) {
+            //             for (var k = 0; k < aaa.length; k++) {
+            //                 if (aaa[k].value == e[i].nodeTasks.title) {
+            //                     console.log(aaa[k].value);
+            //                     console.log(e[i].nodeTasks.title);
+            //                     console.log(e[i].nodeTasks.id);
+            //                 }
+            //             }
+            //         }
+            //     }
+            // });
+        }, true);
+
         // 监听submit表单提交
         form.on('submit(formSubmitAdv)', function (data) {
             console.log(data.field);
             window.parent.wmokuai = data.field.productCategory;
-            var listobj = {};
+            var listobjh = {}; // 传给后台接口
+            listobjh.person = renyuanid;
+            listobjh.personname = renyuan;
+            listobjh.dutyname = data.field.responsibility;
+            listobjh.duty = [];
+            var dutyobj = {};
+            dutyobj.duty = null;
+            dutyobj.dutyname = null;
+            window.parent.persons.push(listobjh);
+            console.log(window.parent.persons);
+
+            var listobj = {}; // 传给前台显示数据接口对象
             listobj.mokuai = data.field.productCategory;
-            listobj.bumen = null;
-            listobj.gonghao = null;
-            listobj.renyuan = null;
             listobj.zhize = data.field.responsibility;
             listobj.renyuan = renyuan;
             listobj.bumen = "智能设备部";
-            listobj.gonghao= gonghao;
+            listobj.gonghao = gonghao;
             if (listobj.mokuai == "业务模块"){
+                listobjh.moduletype = 1;
                 window.parent.wlist1.push(listobj);
             } else if (listobj.mokuai == "计划模块") {
+                listobjh.moduletype = 2;
                 window.parent.wlist2.push(listobj);
             }else if (listobj.mokuai == "质量模块") {
+                listobjh.moduletype = 3;
                 window.parent.wlist3.push(listobj);
             }else if (listobj.mokuai == "工程模块") {
+                listobjh.moduletype = 4;
                 window.parent.wlist4.push(listobj);
             }else if (listobj.mokuai == "生产模块") {
+                listobjh.moduletype = 5;
                 window.parent.wlist5.push(listobj);
             }
-            console.log(window.parent.wlist1);
+            console.log(listobj);
+            // console.log(layui.formSelects.value('select1','val')); //取值name数组
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-            parent.layer.close(index); //再执行关闭
+            // parent.layer.close(index); //再执行关闭
             return false;
         });
-
-
-        //  获取duty的id
-        // form.on('select(zhizefuze)', function (data) {
-        //     console.log(data.value);
-        //     personsobj.dutyname = data.value;
-        //     api.node.getDutys(function (e) {
-        //         for (var i = 0; i < e.length; i++) {
-        //             if (e[i].title == data.value){
-        //                 console.log(e[i].id);
-        //                 personsobj.duty = e[i].id;
-        //                 break;
-        //             } else if (data.value == "问题履历") {
-        //                 personsobj.duty = 1;
-        //             }
-        //         }
-        //     })
-        // });
-
     });
 </script>
 </body>

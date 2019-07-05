@@ -51,10 +51,10 @@
 
         <!--        机型、机芯选择-->
         <div class="layui-card">
-                        <div class="layui-card-header">机型、机芯选择
-                            <div class="layui-btn layui-btn-danger" id="asdasd">adasd</div>
+            <div class="layui-card-header">机型、机芯选择
+                <div class="layui-btn layui-btn-danger" id="asdasd">adasd</div>
 
-                        </div>
+            </div>
             <div class="layui-card-body">
 
                 <div class="layui-form-item layui-row">
@@ -226,16 +226,13 @@
 
         // 监听表单提交
         var machinesobj = {};
-        var machineDetail1 = {};
-        var machineDetail2 = {};
-        var machineDetail3 = {};
-        var machineDetail4 = {};
-        var machineDetail5 = {};
         machinesobj.machineDetail = [];
         form.on('submit(formSubmitAdv)', function (data) {
             // layer.msg(JSON.stringify(data.field));
+            var machinesoba = null;
             console.log(data);
             console.log(data.field);
+            window.parent.machinesobjx.push(data.field);
             // machineobj
             machinesobj.machinname = data.field.machinname;
             machinesobj.inner = data.field.inner;
@@ -251,38 +248,46 @@
             //machineDetail
             machinesobj.machineDetail.splice(0,machinesobj.machineDetail.length);
             if (data.field.evt) {
-                machineDetail1.milepost = 1;
-                machineDetail1.miletime = (new Date(data.field.evt)).getTime();
-                machinesobj.machineDetail.push(machineDetail1);
+                var machineDetail = {};
+                machineDetail.milepost = 1;
+                machineDetail.miletime = (new Date(data.field.evt)).getTime();
+                machinesobj.machineDetail.push(machineDetail);
+                console.log(machinesobj.machineDetail);
             }
             if (data.field.dvt) {
-                machineDetail2.milepost = 2;
-                machineDetail2.miletime = (new Date(data.field.dvt)).getTime();
-                machinesobj.machineDetail.push(machineDetail2);
+                var machineDetail = {};
+                machineDetail.milepost = 2;
+                machineDetail.miletime = (new Date(data.field.dvt)).getTime();
+                machinesobj.machineDetail.push(machineDetail);
+                console.log(machinesobj.machineDetail);
             }
             if (data.field.pvt) {
-                machineDetail3.milepost = 3;
-                machineDetail3.miletime = (new Date(data.field.pvt)).getTime();
-                machinesobj.machineDetail.push(machineDetail3);
+                var machineDetail = {};
+                machineDetail.milepost = 3;
+                machineDetail.miletime = (new Date(data.field.pvt)).getTime();
+                machinesobj.machineDetail.push(machineDetail);
             }
             if (data.field.pmp) {
-                machineDetail4.milepost = 4;
-                machineDetail4.miletime = (new Date(data.field.pmp)).getTime();
-                machinesobj.machineDetail.push(machineDetail4);
+                var machineDetail = {};
+                machineDetail.milepost = 4;
+                machineDetail.miletime = (new Date(data.field.pmp)).getTime();
+                machinesobj.machineDetail.push(machineDetail);
             }
             if (data.field.mp) {
-                machineDetail5.milepost = 5;
-                machineDetail5.miletime = (new Date(data.field.mp)).getTime();
-                machinesobj.machineDetail.push(machineDetail5);
+                var machineDetail = {};
+                machineDetail.milepost = 5;
+                machineDetail.miletime = (new Date(data.field.mp)).getTime();
+                machinesobj.machineDetail.push(machineDetail);
             }
-            console.log(machinesobj.machineDetail);
+            // window.parent.machinesobb.push(window.parent.machinesobj);
+            window.parent.machinesobb.push(machinesobj);
             console.log(machinesobj);
-            // parent.machines.push(machinesobj);
+            console.log(window.parent.machinesobb);
 
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             // parent.productPlanData.push(data.field);
             // parent.productPlanEle.reload({data: parent.productPlanData});
-            // parent.layer.close(index); //再执行关闭
+            parent.layer.close(index); //再执行关闭
             return false;
         });
     });

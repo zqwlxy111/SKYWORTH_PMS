@@ -237,9 +237,9 @@
             machinesobj.machinname = data.field.machinname;
             machinesobj.inner = data.field.inner;
             if (data.field.machinetype == "全新产品") {
-                window.parent.machinesobj.machinetype = 1;
+                machinesobj.machinetype = 1;
             }else{
-                window.parent.machinesobj.machinetype = 2;
+                machinesobj.machinetype = 2;
             }
             machinesobj.parentname = data.field.parentname;
             machinesobj.remark = data.field.remark;
