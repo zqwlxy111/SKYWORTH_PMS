@@ -261,14 +261,18 @@
             console.log(e);
             // console.log(JSON.stringify(e));
             for (var i = 0; i < e.length; i++) {
-                $("#fenjiebaojiedian").append("<option value='" + e[i].name + "' data-index = '"+ i +"'>" + e[i].name + "</option>");
+                $("#fenjiebaojiedian").append("<option value='" + e[i].name + "'>" + e[i].name + "</option>");
             }
             form.render();
         });
 
         // 职责节点选择
+        var indexi = null; // 分解包节点的index索引值
         form.on('select(fenjiebaojiedian)', function (data) {
             console.log(data.value); //得到被选中的值
+            var index=$(data.elem).find("option:selected").index(); // 获取选中的分解包节点的index索引值
+            indexi = index - 1;
+            console.log(index);
             api.node.getWorkNodes({projecttype:1},function (e) {
                 console.log(e);
                 console.log(e[0]);
@@ -287,66 +291,47 @@
             });
         });
 
+        var listobjh = {}; // 传给后台接口
+        listobjh.dutys = [];
+
         //  获取职责duty的id
-        // form.on('select(zhizefuze)', function (data) {
-        //     console.log(data.value);
-        //     // personsobj.dutyname = data.value;
-        //     // api.node.getDutys(function (e) {
-        //     //     for (var i = 0; i < e.length; i++) {
-        //     //         if (e[i].title == data.value){
-        //     //             console.log(e[i].id);
-        //     //             personsobj.duty = e[i].id;
-        //     //             break;
-        //     //         } else if (data.value == "问题履历") {
-        //     //             personsobj.duty = 1;
-        //     //         }
-        //     //     }
-        //     // })
-        // });
         layui.formSelects.on('select1', function(id, vals, val, isAdd, isDisabled){
-            //id:           点击select的id
-            //vals:         当前select已选中的值
-            //val:          当前select点击的值
-            //isAdd:        当前操作选中or取消
-            //isDisabled:   当前选项是否是disabled
+            /*
+            id:           点击select的id
+            vals:         当前select已选中的值
+            val:          当前select点击的值
+            isAdd:        当前操作选中or取消
+            isDisabled:   当前选项是否是disabled
+            */
             console.log(vals);
-            var aaa = vals;
-            console.log(aaa);
-            // var a = $("#fenjiebaojiedian").data("index");
-            console.log(a);
-            // for(var i=0; i<$("fenjiebaojiedian").length;i++){
-            //     if($(fenjiebaojiedian).eq(i).fenjiebao-index("0")==$(data.elem).data("d")){
-            //         return i;
-            //     }
-            // }
-            // api.node.getWorkNodes({projecttype:1},function (e) {
-            //     console.log(e);
-            //     for (var i = 0; i < e.length; i++) {
-            //         for (var j = 0; j < e[i].nodeTasks.length; j++) {
-            //             for (var k = 0; k < aaa.length; k++) {
-            //                 if (aaa[k].value == e[i].nodeTasks.title) {
-            //                     console.log(aaa[k].value);
-            //                     console.log(e[i].nodeTasks.title);
-            //                     console.log(e[i].nodeTasks.id);
-            //                 }
-            //             }
-            //         }
-            //     }
-            // });
+            console.log(id);
+            console.log(val);
+            console.log(val.name);
+            api.node.getWorkNodes({projecttype:1},function (e) {
+                console.log(e);
+                switch (indexi) {
+                    case 0 :
+                        for (var i = 0; i < e[indexi].nodeTasks.length; i++) {
+                            if (val.name == e[indexi].nodeTasks[i].title) {
+                                var dutyobj = {}; // 定义后台传duty数组的对象
+                                dutyobj.duty = e[indexi].nodeTasks[i].id;
+                                dutyobj.dutyname = e[indexi].nodeTasks[i].title;
+                                listobjh.dutys.push(dutyobj);
+                                console.log(dutyobj.duty);
+                                console.log(listobjh.duty);
+                            }
+                        }
+                }
+            });
         }, true);
 
         // 监听submit表单提交
         form.on('submit(formSubmitAdv)', function (data) {
             console.log(data.field);
             window.parent.wmokuai = data.field.productCategory;
-            var listobjh = {}; // 传给后台接口
             listobjh.person = renyuanid;
             listobjh.personname = renyuan;
             listobjh.dutyname = data.field.responsibility;
-            listobjh.duty = [];
-            var dutyobj = {};
-            dutyobj.duty = null;
-            dutyobj.dutyname = null;
             window.parent.persons.push(listobjh);
             console.log(window.parent.persons);
 
@@ -375,7 +360,7 @@
             console.log(listobj);
             // console.log(layui.formSelects.value('select1','val')); //取值name数组
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-            // parent.layer.close(index); //再执行关闭
+            parent.layer.close(index); //再执行关闭
             return false;
         });
     });
