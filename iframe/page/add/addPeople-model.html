@@ -103,7 +103,8 @@
                             <div class="layui-col-md12 ">
                                 <label class="layui-form-label">节点选择 :</label>
                                 <div class="layui-input-block">
-                                    <select id="fenjiebaojiedian" name="fenjiebaojiedian" lay-filter="fenjiebaojiedian" lay-verType="tips"
+                                    <select id="fenjiebaojiedian" name="fenjiebaojiedian" lay-filter="fenjiebaojiedian"
+                                            lay-verType="tips"
                                             lay-verify="required">
                                         <option value="">请选择</option>
                                     </select>
@@ -124,7 +125,8 @@
                             <div class="layui-col-md12 ">
                                 <label class="layui-form-label">职责负责 :</label>
                                 <div class="layui-input-block">
-                                    <select id="zhizefuze" name="responsibility" xm-select="select1" lay-filter="zhizefuze" lay-verType="tips" lay-verify="required" xm-select-search="" xm-select-search-type="dl">
+                                    <select id="zhizefuze" name="responsibility" xm-select="select1"
+                                            lay-filter="zhizefuze" lay-verType="tips" lay-verify="required">
                                         <option value="">请选择</option>
                                     </select>
                                 </div>
@@ -169,7 +171,7 @@
 <script type="text/javascript" src="/SKYWORTH_PMS/iframe/assets/js/api.js"></script>
 
 <script>
-    layui.use(['layer', 'table', 'admin', 'form', 'dtree','formSelects'], function () {
+    layui.use(['layer', 'table', 'admin', 'form', 'dtree', 'formSelects'], function () {
         var layer = layui.layer;
         var table = layui.table;
         var admin = layui.admin;
@@ -248,7 +250,7 @@
         });
 
         // 获取选中的人员的对象
-        table.on('radio(projectOverview)', function(obj){
+        table.on('radio(projectOverview)', function (obj) {
             console.log(obj.data); //选中行的相关数据
             bumen = obj.data.departmentsStr;
             renyuan = obj.data.realName;
@@ -257,7 +259,7 @@
         });
 
         // 分解包节点选择
-        api.node.getWorkNodes({projecttype:1},function (e) {
+        api.node.getWorkNodes({projecttype: 1}, function (e) {
             console.log(e);
             // console.log(JSON.stringify(e));
             for (var i = 0; i < e.length; i++) {
@@ -267,22 +269,23 @@
         });
 
         // 职责节点选择
+        formSelects.btns('select1', []); // 定义空图标库
         var indexi = null; // 分解包节点的index索引值
         form.on('select(fenjiebaojiedian)', function (data) {
             console.log(data.value); //得到被选中的值
-            var index=$(data.elem).find("option:selected").index(); // 获取选中的分解包节点的index索引值
+            var index = $(data.elem).find("option:selected").index(); // 获取选中的分解包节点的index索引值
             indexi = index - 1;
             console.log(index);
-            api.node.getWorkNodes({projecttype:1},function (e) {
+            api.node.getWorkNodes({projecttype: 1}, function (e) {
                 console.log(e);
                 console.log(e[0]);
-                for (var i = 0; i < e.length ; i++) {
-                    if ( data.value === e[i].name){
+                for (var i = 0; i < e.length; i++) {
+                    if (data.value === e[i].name) {
                         $("#zhizefuze").empty();
                         $("#zhizefuze").append("<option value=''>请选择</option>");
                         for (var j = 0; j < e[i].nodeTasks.length; j++) {
                             // console.log(e[i].nodeTasks[j].title);
-                            $("#zhizefuze").append("<option value='"+e[i].nodeTasks[j].title+"'>"+e[i].nodeTasks[j].title+"</option>");
+                            $("#zhizefuze").append("<option value='" + e[i].nodeTasks[j].title + "'>" + e[i].nodeTasks[j].title + "</option>");
                         }
                     }
                 }
@@ -295,7 +298,7 @@
         listobjh.dutys = [];
 
         //  获取职责duty的id
-        layui.formSelects.on('select1', function(id, vals, val, isAdd, isDisabled){
+        layui.formSelects.on('select1', function (id, vals, val, isAdd, isDisabled) {
             /*
             id:           点击select的id
             vals:         当前select已选中的值
@@ -303,14 +306,31 @@
             isAdd:        当前操作选中or取消
             isDisabled:   当前选项是否是disabled
             */
-            console.log(vals);
+            /*console.log(vals);
             console.log(id);
             console.log(val);
             console.log(val.name);
-            api.node.getWorkNodes({projecttype:1},function (e) {
-                console.log(e);
-                switch (indexi) {
-                    case 0 :
+            console.log(isAdd);*/
+            var isc = false; // 设置是否有重复值 默认为false
+            if (!isAdd) {
+                for (var j = 0; j < listobjh.dutys.length; j++) {
+                    if (val.name == listobjh.dutys[j].dutyname) {
+                        listobjh.dutys.splice(j, 1);
+                        break;
+                    }
+                }
+                console.log(listobjh.dutys);
+                return false;
+            } else {
+                for (var i = 0; i < listobjh.dutys.length; i++) {
+                    if (val.name == listobjh.dutys[i].dutyname) {
+                        isc = true; // 有重复值
+                        break;
+                    }
+                }
+                if (!isc) {
+                    api.node.getWorkNodes({projecttype: 1}, function (e) {
+                        console.log(e);
                         for (var i = 0; i < e[indexi].nodeTasks.length; i++) {
                             if (val.name == e[indexi].nodeTasks[i].title) {
                                 var dutyobj = {}; // 定义后台传duty数组的对象
@@ -318,11 +338,13 @@
                                 dutyobj.dutyname = e[indexi].nodeTasks[i].title;
                                 listobjh.dutys.push(dutyobj);
                                 console.log(dutyobj.duty);
-                                console.log(listobjh.duty);
+                                console.log(listobjh.dutys);
                             }
                         }
+                    });
                 }
-            });
+            }
+            console.log(listobjh.dutys);
         }, true);
 
         // 监听submit表单提交
@@ -341,19 +363,19 @@
             listobj.renyuan = renyuan;
             listobj.bumen = "智能设备部";
             listobj.gonghao = gonghao;
-            if (listobj.mokuai == "业务模块"){
+            if (listobj.mokuai == "业务模块") {
                 listobjh.moduletype = 1;
                 window.parent.wlist1.push(listobj);
             } else if (listobj.mokuai == "计划模块") {
                 listobjh.moduletype = 2;
                 window.parent.wlist2.push(listobj);
-            }else if (listobj.mokuai == "质量模块") {
+            } else if (listobj.mokuai == "质量模块") {
                 listobjh.moduletype = 3;
                 window.parent.wlist3.push(listobj);
-            }else if (listobj.mokuai == "工程模块") {
+            } else if (listobj.mokuai == "工程模块") {
                 listobjh.moduletype = 4;
                 window.parent.wlist4.push(listobj);
-            }else if (listobj.mokuai == "生产模块") {
+            } else if (listobj.mokuai == "生产模块") {
                 listobjh.moduletype = 5;
                 window.parent.wlist5.push(listobj);
             }

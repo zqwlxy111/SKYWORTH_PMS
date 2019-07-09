@@ -171,14 +171,18 @@
             });
         });
 
+        // 获取选中的人员的对象
+        table.on('radio(projectOverview)', function (obj) {
+            console.log(obj.data); //选中行的相关数据
+            window.parent.groupleader = obj.data.id; // 获取负责人的id
+        });
+
         form.on('submit(formSubmitAdv)', function (data) {
             console.log(data);
             var checkObj = table.checkStatus('projectOverview').data;
-            window.parent.groupleader = checkObj[0].id; // 将人员id传给父页面
             window.parent.leadername = checkObj[0].realName; // 将人员的名字传给父页面
             console.log(window.parent.groupleader);
             console.log(window.parent.leadername);
-            parent.groupleader = checkObj[0].id;
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.layer.close(index); //再执行关闭
             return false;
