@@ -9,7 +9,7 @@ layui.config({
     treetable: 'treetable-lay/treetable',
     dropdown: 'dropdown/dropdown',
     notice: 'notice/notice',
-    step: 'step/step',
+    steps: 'steps/steps',
     dtree: 'dtree/dtree',
     citypicker: 'city-picker/city-picker',
     tableSelect: 'tableSelect/tableSelect',
@@ -45,7 +45,7 @@ function getProjectUrl() {
     }
     return layuiDir.substring(0, layuiDir.indexOf('assets'));
 }
-
+// 时间格式化
 function formatDate(date) {
     var y = date.getFullYear();
     var m = date.getMonth() + 1;

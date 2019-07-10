@@ -7,7 +7,12 @@
     <title>项目总览</title>
     <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/libs/layui/css/layui.css"/>
     <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/admin.css?v=312"/>
-    <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/step/step.css">
+    <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/steps/style.css">
+    <style>
+        #step_demo {
+            padding: 19px 3px 5px 23px;
+        }
+    </style>
 </head>
 <body>
 
@@ -46,26 +51,15 @@
 
             <!--            橙色标签线-->
             <hr class="layui-bg-green">
-            <div class="layui-step" id="step">
-                <div class="layui-step-content layui-clear">
-                    <div class="layui-step-content-item">条目1</div>
-                    <div class="layui-step-content-item">条目2</div>
-                    <div class="layui-step-content-item">条目3</div>
-                    <div class="layui-step-content-item">条目4</div>
-                    <div class="layui-step-content-item">条目5</div>
-                </div>
-                <div class="layui-step-btn">
-                    <div class="layui-btn-group">
-                        <button class="layui-btn goFirst">第一步</button>
-                        <button class="layui-btn prev">上一步</button>
-                        <button class="layui-btn next">下一步</button>
-                        <button class="layui-btn goLast">最后一步</button>
-                        <button class="layui-btn goStep">走到第二步</button>
-                        <button class="layui-btn disabled">禁用第三步</button>
-                        <button class="layui-btn abled">解禁第三步</button>
-                    </div>
+            <div id="step_demo" class="step-body layui-col-md12 layui-show">
+                <div class="step-header" style="width:98%;overflow: hidden;">
+                    <ul id="step-bl"></ul>
                 </div>
             </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <button id="preBtn">上一步</button>
+            <button id="nextBtn">下一步</button>
+            <button id="goBtn">跳转的指定的步骤</button>
         </div>
     </div>
 </div>
@@ -79,7 +73,7 @@
 
 <!--自定义js-->
 <script>
-    layui.use(['layer', 'form', 'table', 'laydate', 'admin', 'index', 'jquery','step'], function () {
+    layui.use(['layer', 'form', 'table', 'laydate', 'admin', 'index', 'jquery', 'steps'], function () {
         var $ = layui.jquery;
         var layer = layui.layer;
         var form = layui.form;
@@ -88,7 +82,6 @@
         var laydate = layui.laydate;
         var admin = layui.admin;
         var index = layui.index;
-        var step = layui.step;
 
         // 项目选择下拉框渲染
         api.project.getList({}, function (e) {
@@ -101,11 +94,13 @@
         });
 
         // 机型选择下拉框渲染
+        var blId = null; // 项目选择索引值 -- 给submit用
         form.on('select(xiangmuxuanze)', function (data) {
             console.log(data.value); //得到被选中的值
             var index = $(data.elem).find("option:selected").index() - 1; // 获取选中的项目选择的index索引值
             api.project.getList({}, function (res) {
                 var projectId = res[index].id; // 获取选择项目的id
+                blId = projectId;
                 console.log(projectId);
                 api.machine.getListByProject({projectId: projectId}, function (e) { // 根据项目id请求子项目
                     console.log(e);
@@ -120,42 +115,55 @@
             });
         });
 
-        step.render({
-            elem: '.layui-step',
-            // title: ["第一步","第二步","第三步","第四步"],
-            // description: ["aaa","bbb","ccc","ddd"],
-            // currentStep: 2,
-            // canIconClick: true,
-            // disabledStep: [1,3],
-            isOpenStepLevel: true
+        // 机型选择下拉框监听事件
+        form.on('select(jixingxuanze)', function (data) {
+            console.log(data.value); //得到被选中的值
+            var bllId = $(data.elem).find("option:selected").index() - 1; // 机型选择索引值
+            console.log(bllId);
+            api.machine.getListByProject({projectId: blId}, function (e) { // 根据项目id请求子项目
+                console.log(e);
+                // 动态添加li标签
+                var buzhoutiao = $("#step-bl");
+                buzhoutiao.find("li").remove();
+                buzhoutiao.find("div").remove();
+                $(".step-bar").remove();
+                buzhoutiao.append('<li><span class="step-name">项目审核</span></li>');
+                for (var i = 0; i < e[bllId].machineDetail.length; i++) {
+                    if (e[bllId].machineDetail[i].milepost == 1) {
+                        buzhoutiao.append('<li><span class="step-name">EVT</span></li>');
+                        continue;
+                    } else if (e[bllId].machineDetail[i].milepost == 2) {
+                        buzhoutiao.append('<li><span class="step-name">DVT</span></li>');
+                        continue;
+                    } else if (e[bllId].machineDetail[i].milepost == 3) {
+                        buzhoutiao.append('<li><span class="step-name">PVT</span></li>');
+                        continue;
+                    } else if (e[bllId].machineDetail[i].milepost == 4) {
+                        buzhoutiao.append('<li><span class="step-name">PMP</span></li>');
+                        continue;
+                    } else if (e[bllId].machineDetail[i].milepost == 5) {
+                        buzhoutiao.append('<li><span class="step-name">MP</span></li>');
+                        continue;
+                    }
+                }
+                var $step = $("#step_demo").step();
+                $("#preBtn").click(function (event) {
+                    $step.preStep();//上一步
+                });
+                $("#nextBtn").click(function (event) {
+                    $step.nextStep();//下一步
+                });
+                $("#goBtn").click(function (event) {
+                    $step.goStep(3);//到指定步
+                });
+            });
         });
-        $(".goFirst").on("click",function() {
-            step.goFirst();
-        })
-        $(".prev").on("click",function() {
-            step.prev();
-        })
-        $(".next").on("click",function() {
-            step.next();
-        })
-        $(".goLast").on("click",function() {
-            step.goLast();
-        })
-        $(".goStep").on("click",function() {
-            step.goStep(2);
-        })
-        $(".disabled").on("click",function() {
-            step.disabled(3);
-        })
-        $(".abled").on("click",function() {
-            step.abled(3);
-        })
+
 
         // 监听搜索事件提交
         form.on('submit(formSubSearchMachine)', function (data) {
             console.log(data);
             console.log(data.field);
-
             return false;
         });
     });
