@@ -7,7 +7,7 @@
     var barWidth=opts.initStep<size?100/(1*size)+100*(opts.initStep-1)/size : 100;
     var curPage=opts.initStep;
     var steps = this;
-    var bar_w = (95 - (90/size)+3) + '%';
+    var bar_w = (100 - (100/size)+1) + '%';
     this.find(".step-header").prepend("<div class=\"step-bar\" style='width:"+bar_w+"'><div class=\"step-bar-active\"></div></div>");
     this.find(".step-list").eq(opts.initStep).show();
     if (size<opts.initStep) {
