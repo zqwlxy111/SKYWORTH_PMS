@@ -21,6 +21,7 @@
 
         .layui-timeline-item {
             padding-right: 15px;
+            margin-bottom: 35px;
         }
     </style>
 </head>
@@ -73,20 +74,28 @@
             <button id="goBtn" style="visibility: hidden">跳转的指定的步骤</button>
         </div>
     </div>
-    <!--<ul class="layui-timeline">
-        <li class="layui-timeline-item">
-            <i class="layui-icon layui-timeline-axis"></i>
-            <div class="layui-timeline-content layui-text">
-                <div class="layui-timeline-title">2017年，layui 里程碑版本 2.0 发布</div>
-            </div>
-        </li>
-        <li class="layui-timeline-item">
-            <i class="layui-icon layui-timeline-axis"></i>
-            <div class="layui-timeline-content layui-text">
-                <div class="layui-timeline-title">2017年，layui 里程碑版本 2.0 发布</div>
-            </div>
-        </li>
-    </ul>-->
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <ul class="layui-timeline">
+                <li class="layui-timeline-item">
+                    <i class="layui-icon layui-timeline-axis"></i>
+                    <div class="layui-timeline-content layui-text">
+                        <div class="layui-timeline-title">
+                            <div class="layui-col-lg3">2017年，layui 里程碑版本 2.0 发布</div>
+                            <div class="layui-col-lg3" style="margin-top: -8px ">
+                                <div class="layui-input-inline">
+                                    <select id="fenjiebaojiedian1" name="fenjiebaojiedian" lay-filter="fenjiebaojiedian"
+                                            lay-verType="tips" lay-verify="required">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <!-- js部分 -->
@@ -153,6 +162,7 @@
                 buzhoutiao.find("div").remove();
                 $(".step-bar").remove();
                 buzhoutiao.append('<li id="xmsh"><span class="step-name">项目审核</span></li>');
+                // 加载li标签
                 for (var i = 0; i < e[bllId].machineDetail.length; i++) {
                     if (e[bllId].machineDetail[i].milepost == 1) {
                         buzhoutiao.append('<li id="EVT"><span class="step-name">EVT</span></li>');
@@ -172,7 +182,12 @@
                     }
                 }
                 var $step = $("#step_demo").step(); // 渲染step步骤条
-                buzhoutiao.find("li").append('<ul class="layui-timeline"></ul>');
+                // 在每个li标签下添加form标签
+                buzhoutiao.find("li").append('<div class="layui-form">\n' +
+                    '    <div class="layui-form-item" id="formmokuai"></div>\n' +
+                    '</div>');
+                // 在每个form标签添加ul模块
+                buzhoutiao.find("#formmokuai").append('<ul class="layui-timeline"></ul>');
                 api.node.getWorkNodes({projecttype: 1}, function (rse) {
                     for (var i = 0; i < rse[0].nodeTasks.length; i++) {
                         if (rse[0].name == "项目审核") {
