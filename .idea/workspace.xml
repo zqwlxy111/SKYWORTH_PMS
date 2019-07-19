@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a3a2231d-7dd6-4462-8cc0-0deb2419bd16" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingfenjiebao.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingfenjiebao.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/skyworth-pms.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/skyworth-pms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/新建文本文档.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -84,10 +85,10 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/iframe/page/jichushujuweihu/renwupeizhi.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
+                <state relative-caret-position="2840">
                   <caret line="142" column="44" selection-start-line="142" selection-start-column="44" selection-end-line="142" selection-end-column="44" />
                 </state>
               </provider>
@@ -108,6 +109,19 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingtest.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="380">
+                  <caret line="88" column="22" lean-forward="true" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+                  <folding>
+                    <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -115,8 +129,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/iframe/skyworth-pms.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2700">
-                  <caret line="135" column="93" selection-start-line="135" selection-start-column="93" selection-end-line="135" selection-end-column="93" />
+                <state relative-caret-position="1680">
+                  <caret line="84" column="63" selection-start-line="84" selection-start-column="63" selection-end-line="84" selection-end-column="63" />
                 </state>
               </provider>
             </entry>
@@ -125,7 +139,7 @@
             <entry file="file://$PROJECT_DIR$/iframe/page/add/addPeople-model.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="2080">
-                  <caret line="104" column="32" lean-forward="true" selection-start-line="104" selection-start-column="32" selection-end-line="109" selection-end-column="38" />
+                  <caret line="104" column="32" selection-start-line="104" selection-start-column="32" selection-end-line="109" selection-end-column="38" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -136,21 +150,14 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingfenjiebao.html">
+            <entry file="file://$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingtest.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="693">
-                  <caret line="207" column="42" lean-forward="true" selection-start-line="207" selection-start-column="42" selection-end-line="207" selection-end-column="42" />
+                <state relative-caret-position="318">
+                  <caret line="196" column="33" lean-forward="true" selection-start-line="196" selection-start-column="33" selection-end-line="196" selection-end-column="33" />
                   <folding>
-                    <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                     <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -181,8 +188,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="LayUI-Html" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -268,17 +277,20 @@
         <option value="$PROJECT_DIR$/未混淆代码/一些学习上的经验文件/layui学习笔记.txt" />
         <option value="$PROJECT_DIR$/iframe/assets/js/common.js" />
         <option value="$PROJECT_DIR$/iframe/assets/module/steps/style.css" />
-        <option value="$PROJECT_DIR$/iframe/skyworth-pms.html" />
         <option value="$PROJECT_DIR$/iframe/json/authorities.json" />
         <option value="$PROJECT_DIR$/iframe/page/jichushujuweihu/renwupeizhi.html" />
         <option value="$PROJECT_DIR$/iframe/assets/module/steps/steps.js" />
         <option value="$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingfenjiebao.html" />
+        <option value="$PROJECT_DIR$/iframe/skyworth-pms.html" />
+        <option value="$PROJECT_DIR$/iframe/assets/libs/elementUi/element.js" />
+        <option value="$PROJECT_DIR$/iframe/assets/libs/elementUi/element.css" />
+        <option value="$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingtest.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="320" />
-    <option name="y" value="153" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="979" />
     <option name="height" value="1050" />
   </component>
@@ -289,13 +301,53 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+              <item name="iframe" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+              <item name="iframe" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+              <item name="iframe" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SKYWORTH_PMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SKYWORTH_PMS" type="462c0819:PsiDirectoryNode" />
+              <item name="iframe" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+              <item name="elementUi" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../practice" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
@@ -408,11 +460,13 @@
       <workItem from="1562807019234" duration="16923000" />
       <workItem from="1562894452204" duration="8201000" />
       <workItem from="1562913475127" duration="1294000" />
+      <workItem from="1563409531987" duration="11134000" />
+      <workItem from="1563495614753" duration="8404000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="421568000" />
+    <option name="totallyTimeSpent" value="441106000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -450,19 +504,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/Import-pin.html" />
-    <entry file="file://$PROJECT_DIR$/iframe/json/user.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="182" column="1" lean-forward="true" selection-start-line="182" selection-start-column="1" selection-end-line="182" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#4284#1" />
-            <element signature="e#523#908#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/jquery-2.2.4.min.js" />
     <entry file="file://$PROJECT_DIR$/iframe/page/New-product-items/edit-pin-all.html" />
     <entry file="file://$PROJECT_DIR$/../SKYWORTH_PM/dttable.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -712,6 +753,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingfenjiebao.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="113" column="32" lean-forward="true" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/assets/libs/elementUi/element.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="551113" selection-start-column="551113" selection-end-column="551113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/assets/libs/elementUi/element.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="224412" lean-forward="true" selection-start-column="224412" selection-end-column="224412" />
+          <folding>
+            <element signature="e#175263#175402#2" expanded="true" />
+            <element signature="e#177689#177828#2" expanded="true" />
+            <element signature="e#181217#181356#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/iframe/assets/js/util.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -768,6 +847,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/iframe/page/jichushujuweihu/renwupeizhi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2840">
+          <caret line="142" column="44" selection-start-line="142" selection-start-column="44" selection-end-line="142" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/iframe/page/system/authorities.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -781,24 +867,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iframe/page/jichushujuweihu/renwupeizhi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="142" column="44" selection-start-line="142" selection-start-column="44" selection-end-line="142" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iframe/skyworth-pms.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2700">
-          <caret line="135" column="93" selection-start-line="135" selection-start-column="93" selection-end-line="135" selection-end-column="93" />
+        <state relative-caret-position="1680">
+          <caret line="84" column="63" selection-start-line="84" selection-start-column="63" selection-end-line="84" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iframe/page/add/addPeople-model.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2080">
-          <caret line="104" column="32" lean-forward="true" selection-start-line="104" selection-start-column="32" selection-end-line="109" selection-end-column="38" />
+          <caret line="104" column="32" selection-start-line="104" selection-start-column="32" selection-end-line="109" selection-end-column="38" />
           <folding>
             <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -821,21 +900,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingfenjiebao.html">
+    <entry file="file://$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingtest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="207" column="42" lean-forward="true" selection-start-line="207" selection-start-column="42" selection-end-line="207" selection-end-column="42" />
+        <state relative-caret-position="318">
+          <caret line="196" column="33" lean-forward="true" selection-start-line="196" selection-start-column="33" selection-end-line="196" selection-end-column="33" />
           <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
