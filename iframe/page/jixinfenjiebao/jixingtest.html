@@ -11,12 +11,28 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <style>
 
+        body{
+            font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;;
+        }
         ul {
             display: inline;
         }
 
         ul > li {
             line-height: 24px;
+        }
+
+        #app li > a {
+            /*border: 1px solid #ddd;*/
+            /*background: #edc;*/
+            width: 247px;
+            margin: 10px 0px;
+            padding: 0px 3px;
+            /*border-radius: 3px;*/
+            display: inline-block;
+            font-size: 8px;
+            height: 28px;
+            line-height: 28px;
         }
 
     </style>
@@ -26,15 +42,14 @@
 <!-- 正文开始 -->
 <div class="layui-fluid">
     <div class="layui-card">
-        <div class="layui-card-header">项目机型分解包查询</div>
+        <div class="layui-card-header">项目机型分解包设置</div>
         <div class="layui-card-body">
             <div class="layui-form toolbar" id="toolbarShow">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label w-auto">项目选择：</label>
                         <div class="layui-input-inline mr0">
-                            <select id="xiangmuxuanze" name="xiangmuxuanze" lay-filter="xiangmuxuanze"
-                                    lay-verType="tips" lay-verify="required">
+                            <select id="xiangmuxuanze" name="xiangmuxuanze" lay-filter="xiangmuxuanze">
                                 <option value="">请选择</option>
                             </select>
                         </div>
@@ -42,17 +57,16 @@
                     <div class="layui-inline">
                         <label class="layui-form-label w-auto">机型选择：</label>
                         <div class="layui-input-inline mr0">
-                            <select id="jixingxuanze" name="jixingxuanze" lay-filter="jixingxuanze"
-                                    lay-verType="tips" lay-verify="required">
+                            <select id="jixingxuanze" name="jixingxuanze" lay-filter="jixingxuanze">
                                 <option value="">请选择</option>
                             </select>
                         </div>
                     </div>
-                    <!--<div class="layui-inline" style="margin-left: 6px">
+                    <div class="layui-inline" style="margin-left: 6px">
                         <button class="layui-btn icon-btn" lay-filter="formSubSearchMachine" lay-submit>
-                            <i class="layui-icon">&#xe615;</i>搜索
+                            <i class="layui-icon">&#xe6c6;</i>提交保存
                         </button>
-                    </div>-->
+                    </div>
                 </div>
             </div>
 
@@ -63,56 +77,34 @@
             <div id="app" style="margin-top: 20px" class="layui-hide">
                 <template>
                     <Steps :current="current" status="error">
-                        <Step :title="item.name" v-for="item in datass" icon="ios-cog" content="请指派人员"></Step>
+                        <Step :title="item.name" v-for="item in fenjiebao" icon="ios-cog" content="请指派人员"></Step>
                     </Steps>
                 </template>
                 <template>
                     <Row type="flex" justify="space-between" class="code-row-bg">
-                        <i-col span="4" v-for="(item,index) in datass" style="border: 1px solid red;">
-                            <template v-for="(li,index2) in arrayzl" v-if="index === index2">
+                        <i-col span="4" v-for="(item,index) in fenjiebao">
+                            <template>
                                 <ul>
-                                    <li v-for="(item1,i) in li.yvan">{{item1.name}}</li>
+                                    <li v-for="(item1,i) in item.yvan">
+                                        <a href="#">
+                                            <Row type="flex">
+                                                <i-col span="16" style="border: 1px solid #dddddd;background: #286077; border-radius: 3px; color: #FFF;"><span style="margin-left: 5px">{{item1.name}}</span></i-col>
+                                                <i-col span="8">
+                                                    <span>
+                                                        <i-select>
+                                                            <i-option v-for="item in person" :value="item.value"
+                                                              :key="item.value">{{ item.label }}</i-option>
+                                                        </i-select>
+                                                    </span>
+                                                </i-col>
+                                            </Row>
+                                        </a>
+                                    </li>
                                 </ul>
                             </template>
                         </i-col>
                     </Row>
                 </template>
-                <!--&lt;!&ndash; 项目审核节点任务循环 &ndash;&gt;
-                <template v-if="txiangmushenhe">
-                    <ul>
-                        <li v-for="item in xiangmushenhe">{{item.name}}</li>
-                    </ul>
-                </template>
-                &lt;!&ndash; EVT &ndash;&gt;
-                <template v-if="tEVT">
-                    <ul>
-                        <li v-for="item in EVT">{{item.name}}</li>
-                    </ul>
-                </template>
-                &lt;!&ndash; DVT &ndash;&gt;
-                <template v-if="tDVT">
-                    <ul>
-                        <li v-for="item in DVT">{{item.name}}</li>
-                    </ul>
-                </template>
-                &lt;!&ndash; PVT &ndash;&gt;
-                <template v-if="tPVT">
-                    <ul>
-                        <li v-for="item in PVT">{{item.name}}</li>
-                    </ul>
-                </template>
-                &lt;!&ndash; PMP &ndash;&gt;
-                <template v-if="tPMP">
-                    <ul>
-                        <li v-for="item in PMP">{{item.name}}</li>
-                    </ul>
-                </template>
-                &lt;!&ndash; MP &ndash;&gt;
-                <template v-if="tMP">
-                    <ul>
-                        <li v-for="item in MP">{{item.name}}</li>
-                    </ul>
-                </template>-->
             </div>
         </div>
     </div>
@@ -134,23 +126,10 @@
         vm = new Vue({
             el: '#app',
             data: {
-                datass: [],
-                current: 3,
+                fenjiebao: [],
+                current: 5,
                 choice: 1,
-                xiangmushenhe: {},
-                EVT: {},
-                DVT: {},
-                PVT: {},
-                PMP: {},
-                MP: {},
-                arrayzl: [],
-                txiangmushenhe: true,
-                tEVT: false,
-                tDVT: false,
-                tPVT: false,
-                tPMP: false,
-                tMP: false,
-
+                person: []
             },
             methods: {}
         })
@@ -180,6 +159,7 @@
         // 机型选择下拉框渲染
         var blId = null; // 项目选择索引值 -- 给submit用
         form.on('select(xiangmuxuanze)', function (data) {
+            vm.person = []; // 清空原来的person里面的数据
             console.log(data.value); //得到被选中的值
             var index = $(data.elem).find("option:selected").index() - 1; // 获取选中的项目选择的index索引值
             api.project.getList({}, function (res) {
@@ -196,63 +176,22 @@
                     }
                     form.render();
                 });
+                // 添加人员数据到vue-data
+                api.project.getPerson({projectid:blId},function (e) {
+                    console.log(e);
+                    for (var i = 0; i < e.length; i++) {
+                        var personobj = {};
+                        personobj.value = e[i].personname;
+                        personobj.label = e[i].personname;
+                        vm.person.push(personobj);
+                    }
+                    console.log(vm.person);
+                })
             });
-        });
-
-        vm.xiangmushenhe.yvan = [];
-        vm.EVT.yvan = [];
-        vm.PVT.yvan = [];
-        vm.DVT.yvan = [];
-        vm.PMP.yvan = [];
-        vm.MP.yvan = [];
-
-        api.node.getWorkNodes({projecttype: 1}, function (res) { // projecttype : 项目类别
-            console.log(res);
-            for (var i = 0; i < res.length; i++) {
-                if (res[i].name == "项目审核") {
-                    for (var j = 0; j < res[0].nodeTasks.length; j++) {
-                        var xiangmushenheobj = {};
-                        xiangmushenheobj.name = res[0].nodeTasks[j].title;
-                        vm.xiangmushenhe.yvan.push(xiangmushenheobj);
-                    }
-                } else if (res[i].name == "EVT") {
-                    for (var j = 0; j < res[i].nodeTasks.length; j++) {
-                        var evtobj = {};
-                        evtobj.name = res[i].nodeTasks[j].title;
-                        vm.EVT.yvan.push(evtobj);
-                    }
-                } else if (res[i].name == "PVT") {
-                    for (var j = 0; j < res[i].nodeTasks.length; j++) {
-                        var pvtobj = {};
-                        pvtobj.name = res[i].nodeTasks[j].title;
-                        vm.PVT.yvan.push(pvtobj);
-                    }
-                } else if (res[i].name == "DVT") {
-                    for (var j = 0; j < res[i].nodeTasks.length; j++) {
-                        var dvtobj = {};
-                        dvtobj.name = res[i].nodeTasks[j].title;
-                        vm.DVT.yvan.push(dvtobj);
-                    }
-                } else if (res[i].name == "PMP") {
-                    for (var j = 0; j < res[i].nodeTasks.length; j++) {
-                        var pmpobj = {};
-                        pmpobj.name = res[i].nodeTasks[j].title;
-                        vm.PMP.yvan.push(pmpobj);
-                    }
-                } else if (res[i].name == "MP") {
-                    for (var j = 0; j < res[i].nodeTasks.length; j++) {
-                        var mpobj = {};
-                        mpobj.name = res[i].nodeTasks[j].title;
-                        vm.MP.yvan.push(mpobj);
-                    }
-                }
-            }
         });
 
         // 机型选择下拉框监听事件
         form.on('select(jixingxuanze)', function (data) {
-            vm.arrayzl = [];
-            vm.arrayzl.push(vm.xiangmushenhe);
             console.log(data.value); //得到被选中的值
             var bllId = $(data.elem).find("option:selected").index() - 1; // 机型选择索引值
             console.log(bllId);
@@ -264,45 +203,75 @@
             }
             api.machine.getListByProject({projectId: blId}, function (e) { // 根据项目id请求子项目
                 console.log(e);
-                vm.datass = [{name: "项目审核"}]
+                vm.fenjiebao = [{name: "项目审核", yvan: []}];
                 // 动态添加步骤条
                 for (var j = 0; j < e[bllId].machineDetail.length; j++) {
                     var fenjiebaoobj = {};
+                    fenjiebaoobj.yvan = [];
                     if (e[bllId].machineDetail[j].milepost == 1) {
                         fenjiebaoobj.name = "EVT";
-                        vm.datass.push(fenjiebaoobj);
-                        vm.tEVT = true;
-                        vm.arrayzl.push(vm.EVT);
+                        vm.fenjiebao.push(fenjiebaoobj);
+                        var indexi = vm.fenjiebao.length - 1;
+                        addyvan(indexi, "EVT");
                         continue;
                     } else if (e[bllId].machineDetail[j].milepost == 2) {
                         fenjiebaoobj.name = "DVT";
-                        vm.datass.push(fenjiebaoobj);
-                        vm.tDVT = true;
-                        vm.arrayzl.push(vm.DVT);
+                        vm.fenjiebao.push(fenjiebaoobj);
+                        var indexi = vm.fenjiebao.length - 1;
+                        addyvan(indexi, "DVT");
                         continue;
                     } else if (e[bllId].machineDetail[j].milepost == 3) {
                         fenjiebaoobj.name = "PVT";
-                        vm.datass.push(fenjiebaoobj);
-                        vm.tPVT = true;
-                        vm.arrayzl.push(vm.PVT);
+                        vm.fenjiebao.push(fenjiebaoobj);
+                        var indexi = vm.fenjiebao.length - 1;
+                        addyvan(indexi, "PVT");
                         continue;
                     } else if (e[bllId].machineDetail[j].milepost == 4) {
                         fenjiebaoobj.name = "PMP";
-                        vm.datass.push(fenjiebaoobj);
-                        vm.tPMP = true;
-                        vm.arrayzl.push(vm.PMP);
+                        vm.fenjiebao.push(fenjiebaoobj);
+                        var indexi = vm.fenjiebao.length - 1;
+                        addyvan(indexi, "PMP");
                         continue;
                     } else if (e[bllId].machineDetail[j].milepost == 5) {
                         fenjiebaoobj.name = "MP";
-                        vm.datass.push(fenjiebaoobj);
-                        vm.tMP = true;
-                        vm.arrayzl.push(vm.MP);
+                        vm.fenjiebao.push(fenjiebaoobj);
+                        var indexi = vm.fenjiebao.length - 1;
+                        addyvan(indexi, "MP");
                         continue;
                     }
                 }
             });
-            console.log(vm.arrayzl);
+            api.node.getWorkNodes({projecttype: 1}, function (res) { // projecttype : 项目类别
+                console.log(res);
+                for (var i = 0; i < res.length; i++) {
+                    if (res[i].name == "项目审核") {
+                        for (var j = 0; j < res[0].nodeTasks.length; j++) {
+                            var zijiedian = {};
+                            zijiedian.name = res[0].nodeTasks[j].title;
+                            vm.fenjiebao[0].yvan.push(zijiedian);
+                        }
+                    }
+                }
+
+                console.log(vm.fenjiebao);
+            });
         });
+
+        // 封装在fenjiebao哪个下标的数组里面添加yvan数组
+        var addyvan = function (indexi, jieduanname) {
+            api.node.getWorkNodes({projecttype: 1}, function (res) { // projecttype : 项目类别
+                console.log(res);
+                for (var i = 0; i < res.length; i++) {
+                    if (res[i].name == jieduanname) {
+                        for (var j = 0; j < res[i].nodeTasks.length; j++) {
+                            var zijiedian = {};
+                            zijiedian.name = res[i].nodeTasks[j].title;
+                            vm.fenjiebao[indexi].yvan.push(zijiedian);
+                        }
+                    }
+                }
+            });
+        };
 
         // 监听搜索事件提交
         form.on('submit(formSubSearchMachine)', function (data) {
