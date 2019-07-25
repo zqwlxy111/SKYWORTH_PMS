@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a3a2231d-7dd6-4462-8cc0-0deb2419bd16" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/iview/fonts/ionicons.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/iview/fonts/ionicons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/iview/fonts/ionicons.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/iview/fonts/ionicons.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/iview/fonts/ionicons.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframe/assets/libs/iview/iview.css" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/assets/libs/iview/iview.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingtest.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingtest.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,13 +22,16 @@
       <list>
         <option value="LayUI-Html" />
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/iframe/page/jixinfenjiebao/jixingtest.html" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1ORnsGo5AkODlWGy4tvJElFz7v9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -166,6 +175,7 @@
       <workItem from="1563949107895" duration="345000" />
       <workItem from="1563949487948" duration="2784000" />
       <workItem from="1563952426999" duration="8758000" />
+      <workItem from="1564014956276" duration="12728000" />
     </task>
     <servers />
   </component>
