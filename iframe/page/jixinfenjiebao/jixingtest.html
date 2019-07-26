@@ -6,27 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>项目总览</title>
 
-<!--    iview-css-->
+    <!--    iview-css-->
     <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/libs/iview/iview.css"/>
 
-<!--    iview-icon-->
+    <!--    iview-icon-->
     <link href="https://cdn.bootcss.com/ionicons/4.0.0-2/css/ionicons.css" rel="stylesheet">
 
-<!--    iview-bootcdn-->
-<!--    <link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">-->
+    <!--    iview-bootcdn-->
+    <!--    <link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">-->
 
-<!--    layui-css-->
+    <!--    layui-css-->
     <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/libs/layui/css/layui.css"/>
 
-<!--    admin-css-->
+    <!--    admin-css-->
     <link rel="stylesheet" href="/SKYWORTH_PMS/iframe/assets/module/admin.css?v=312"/>
 
 
     <style>
 
-        body{
-            font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;;
+        body {
+            font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;;
         }
+
         ul {
             display: inline;
         }
@@ -48,6 +49,9 @@
             line-height: 28px;
         }
 
+        #app li > a:hover {
+            color: #0C0C0C;
+        }
     </style>
 </head>
 <body>
@@ -94,32 +98,37 @@
             <!--            vue-->
             <div id="app" style="margin-top: 20px" class="layui-hide">
                 <template>
-                    <Steps :current="current" status="error">
-                        <Step :title="item.name" v-for="item in fenjiebao" icon="ios-cog" content="请指派人员"></Step>
-                    </Steps>
-                </template>
-                <template>
-                    <Row type="flex" justify="space-between" class="code-row-bg">
-                        <i-col span="4" v-for="(item,index) in fenjiebao">
-                            <template>
-                                <ul>
-                                    <li v-for="(item1,i) in item.yvan">
-                                        <a href="#">
-                                            <Row type="flex">
-                                                <i-col span="16" style="border: 1px solid #dddddd;background: #286077; border-radius: 3px; color: #FFF;"><span style="margin-left: 5px">{{item1.name}}</span></i-col>
-                                                <i-col span="8">
-                                                    <span>
-                                                        <i-select @on-change="change" :label-in-value="true" :v-model="item1.name">
-                                                            <i-option v-for="item in person" :value="item1.name"
-                                                              :key="item.label" :label="item.label"></i-option>
-                                                        </i-select>
-                                                    </span>
-                                                </i-col>
-                                            </Row>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </template>
+                    <Row type="flex" justify="space-around" class="code-row-bg">
+                        <i-col span="4" v-for="node in nodes">
+                            <Row>
+                                <i-col span="24">
+                                    <Card>
+                                        <p slot="title" style="font-size: 15px;text-align: center">{{node.name}}</p>
+                                        <p>
+                                        <ul>
+                                            <li v-for="(task,m) in node.nodeTasks">
+                                                <a href="#">
+                                                    <Row>
+                                                        <i-col span="14">
+                                                            <span>{{task.title}}</span>
+                                                        </i-col>
+                                                        <i-col span="10">
+                                                            <i-select size="small" v-model="task.personid"
+                                                                      @click.native="selectedUser(task,$event)"
+                                                                      style="height: 28px;border:0;background-color:#fff;padding-left: 14px">
+                                                                <i-option v-for="person in persons" :value="person.id">
+                                                                    {{person.personname}}
+                                                                </i-option>
+                                                            </i-select>
+                                                        </i-col>
+                                                    </Row>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        </p>
+                                    </Card>
+                                </i-col>
+                            </Row>
                         </i-col>
                     </Row>
                 </template>
@@ -146,15 +155,30 @@
         vm = new Vue({
             el: '#app',
             data: {
-                fenjiebao: [],
-                current: 5,
-                choice: 1,
-                person: [],
-                sss:''
+                nodes: null,
+                selectedValue: 0,
+                selectedNode: 1,
+                selectedProject: {},
+                selectedMachine: {},
+                projects: [],
+                machines: [],
+                persons: [],
+            },
+            created: function () {
+                api.project.getList("", function (e) {
+                    vm.projects = e;
+                });
+
             },
             methods: {
-                change:function(res){
-                    console.log(res);
+                selectedUser: function (task, e) {
+                    task.personid = $(e.target).val();
+                    task.username = $(e.target).find("option:selected").text();
+                    console.log("task.personid === "+task.personid);
+                    console.log("task.username === "+task.username);
+                },
+                saveAll: function () {
+
                 },
             }
         })
@@ -171,6 +195,9 @@
         var admin = layui.admin;
         var index = layui.index;
 
+        var projectid = null; // 项目id
+        var machineid = null; // 机型id
+
         // 项目选择下拉框渲染
         api.project.getList({}, function (e) {
             console.log(e);
@@ -182,17 +209,14 @@
         });
 
         // 机型选择下拉框渲染
-        var blId = null; // 项目ID
-        var machineid = null; // 机型ID
         form.on('select(xiangmuxuanze)', function (data) {
             vm.person = []; // 清空原来的person里面的数据
             console.log(data.value); //得到被选中的值
             var index = $(data.elem).find("option:selected").index() - 1; // 获取选中的项目选择的index索引值
             api.project.getList({}, function (res) {
-                var projectId = res[index].id; // 获取选择项目的id
-                blId = projectId;
-                console.log(projectId);
-                api.machine.getListByProject({projectId: projectId}, function (e) { // 根据项目id请求子项目
+                projectid = res[index].id; // 获取选择项目的id
+                console.log(projectid);
+                api.machine.getListByProject({projectId: projectid}, function (e) { // 根据项目id请求子项目
                     console.log(e);
                     var jixingxuanze = $("#jixingxuanze");
                     jixingxuanze.empty();
@@ -202,17 +226,6 @@
                     }
                     form.render();
                 });
-                // 添加人员数据到vue-data
-                api.project.getPerson({projectid:blId},function (e) {
-                    console.log(e);
-                    for (var i = 0; i < e.length; i++) {
-                        var personobj = {};
-                        personobj.personid = e[i].person;
-                        personobj.label = e[i].personname;
-                        vm.person.push(personobj);
-                    }
-                    console.log(vm.person);
-                })
             });
         });
 
@@ -221,103 +234,58 @@
             console.log(data.value); //得到被选中的值
             var bllId = $(data.elem).find("option:selected").index() - 1; // 机型选择索引值
             console.log(bllId);
+            api.machine.getListByProject({projectId: projectid}, function (e) { // 根据项目id请求子项目
+                console.log(e);
+                machineid = e[bllId].id; // 获取机型id
+            });
             // 步骤条显示和隐藏
             if (data.value) {
                 $("#app").removeClass("layui-hide");
             } else {
                 $("#app").addClass("layui-hide");
             }
-            api.machine.getListByProject({projectId: blId}, function (e) { // 根据项目id请求子项目
-                console.log(e);
-                machineid = e[bllId].id;
-                console.log(machineid);
-                vm.fenjiebao = [{name: "项目审核", yvan: []}];
-                // 动态添加步骤条
-                for (var j = 0; j < e[bllId].machineDetail.length; j++) {
-                    var fenjiebaoobj = {};
-                    fenjiebaoobj.yvan = [];
-                    if (e[bllId].machineDetail[j].milepost == 1) {
-                        fenjiebaoobj.name = "EVT";
-                        vm.fenjiebao.push(fenjiebaoobj);
-                        var indexi = vm.fenjiebao.length - 1;
-                        addyvan(indexi, "EVT");
-                        continue;
-                    } else if (e[bllId].machineDetail[j].milepost == 2) {
-                        fenjiebaoobj.name = "DVT";
-                        vm.fenjiebao.push(fenjiebaoobj);
-                        var indexi = vm.fenjiebao.length - 1;
-                        addyvan(indexi, "DVT");
-                        continue;
-                    } else if (e[bllId].machineDetail[j].milepost == 3) {
-                        fenjiebaoobj.name = "PVT";
-                        vm.fenjiebao.push(fenjiebaoobj);
-                        var indexi = vm.fenjiebao.length - 1;
-                        addyvan(indexi, "PVT");
-                        continue;
-                    } else if (e[bllId].machineDetail[j].milepost == 4) {
-                        fenjiebaoobj.name = "PMP";
-                        vm.fenjiebao.push(fenjiebaoobj);
-                        var indexi = vm.fenjiebao.length - 1;
-                        addyvan(indexi, "PMP");
-                        continue;
-                    } else if (e[bllId].machineDetail[j].milepost == 5) {
-                        fenjiebaoobj.name = "MP";
-                        vm.fenjiebao.push(fenjiebaoobj);
-                        var indexi = vm.fenjiebao.length - 1;
-                        addyvan(indexi, "MP");
-                        continue;
-                    }
-                }
-            });
-            api.node.getWorkNodes({projecttype: 1}, function (res) { // projecttype : 项目类别
+            // 获取节点任务清单
+            api.node.getWorkNodes({projecttype: 1,projectid:projectid,machineid:machineid}, function (res) { // projecttype : 项目类别
+                console.log("项目id ==== " + projectid);
+                console.log("机型id ==== " + machineid);
                 console.log(res);
-                for (var i = 0; i < res.length; i++) {
-                    if (res[i].name == "项目审核") {
-                        for (var j = 0; j < res[0].nodeTasks.length; j++) {
-                            var zijiedian = {};
-                            zijiedian.name = res[0].nodeTasks[j].title;
-                            vm.fenjiebao[0].yvan.push(zijiedian);
-                        }
-                    }
-                }
-                console.log(vm.fenjiebao);
+                vm.nodes = res; // 把节点任务清单赋值到nodes
+                // console.log(vm.fenjiebao);
             });
+            // 添加persons数据
+            api.project.getPerson({projectid: projectid}, function (persons) {
+                console.log(persons);
+                vm.persons = persons;
+            })
         });
 
-        // 封装在fenjiebao哪个下标的数组里面添加yvan数组
-        var addyvan = function (indexi, jieduanname) {
-            api.node.getWorkNodes({projecttype: 1}, function (res) { // projecttype : 项目类别
-                console.log(res);
-                for (var i = 0; i < res.length; i++) {
-                    if (res[i].name == jieduanname) {
-                        for (var j = 0; j < res[i].nodeTasks.length; j++) {
-                            var zijiedian = {};
-                            zijiedian.name = res[i].nodeTasks[j].title;
-                            vm.fenjiebao[indexi].yvan.push(zijiedian);
-                        }
-                    }
-                }
-            });
-        };
-
         // 提交保存事件监听
-            // 定义保存分解包接口
+        // 定义保存分解包接口
         var saveMachineDuty = {};
         saveMachineDuty.dutys = [];
         form.on('submit(formAddTasknodes)', function (data) {
 
             console.log(data.field);
-            console.log(vm.person);
 
-            var saveMachineDutyObj = {};
-            saveMachineDutyObj.duty = null;
-            saveMachineDutyObj.dutyname = dutyname;
-            saveMachineDutyObj.personid = null;
-            saveMachineDutyObj.projectid = blId; // 项目ID
-            saveMachineDutyObj.machineid = machineid; // 机型ID
-            console.log(saveMachineDutyObj);
-            saveMachineDuty.projectid = blId; // 项目ID
-            saveMachineDuty.machineid = machineid; // 机型ID
+            var dutys = vm.nodes.reduce(function (x, y) {
+                return { nodeTasks: x.nodeTasks.concat(y.nodeTasks) };
+            }).nodeTasks.map(function (x) {
+                return { duty: x.id, dutyname: x.title, personid: x.personid, projectid: projectid, machineid: machineid };
+            });
+
+            api.project.setMachineDuty({dutys: dutys, projectid: projectid, machineid: machineid }, function (e) {
+                if (e) {
+                    layer.msg('保存成功', {
+                        time: 550
+                    })
+                }else {
+                    layer.msg('保存失败', {
+                        time: 1000
+                    })
+                }
+            })
+
+            console.log(dutys);
             return false;
         });
 

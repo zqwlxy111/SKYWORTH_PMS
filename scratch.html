@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>节点配置</title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/dialogStyle.css" rel="stylesheet" />
+</head>
+
+
+<body>
+
+<div id="nodeList">
+    <table class="table">
+        <thead>
+        <tr>
+            <td colspan="3" class="form-inline">
+                <div class="from-group" style="display: inline-block">
+                    <label>项目:</label>
+                    <select style="width:100px" class="form-control" v-model="selectedProject"
+                            @change="selectProject()">
+                        <option v-for="project in projects" :value="project">{{project.name}}</option>
+                    </select>
+                </div>
+
+                <div class="from-group" style="display: inline-block;margin-left: 10px">
+                    <label>机型:</label>
+                    <select style="width:100px" class="form-control" v-model="selectedMachine"
+                            @change="selectMachine()">
+                        <option v-for="machine in machines" :value="machine">{{machine.machinname}}</option>
+                    </select>
+                </div>
+
+            </td>
+            <td colspan="2">
+                <div class="btn-group" style="float: right;">
+                    <button type="button" class="btn btn-default" @click="saveAll()">保存</button>
+                    <button type="button" class="btn btn-default" @click="refresh()">刷新</button>
+                </div>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td v-for="node in nodes">
+                <ul class="nav-left">
+                    <li><span class="nav-title"></span><span>{{node.name}}</span></li>
+                    <li class="nav-item" v-for="(task,m) in node.nodeTasks">
+                        <span class="tree-line"></span>
+                        <a @click.stop="editTask(task)" :style="getColor(task.tasktype)">
+                            <span class="sub-item">{{task.title}}</span>
+                            <span class="sub-item" v-if="!task.edit">{{task.username?task.username:"--"}}</span>
+                            <select class="sub-item" @click.stop="" v-if="task.edit" v-model="task.personid"
+                                    @click="selectedUser(task,$event)"
+                                    style="height: 28px;border:0;background-color:#fff;padding-left: 14px">
+                                <option v-for="person in persons" :value="person.id">{{person.personname}}
+                                </option>
+                            </select>
+                        </a>
+                    </li>
+                </ul>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <div id="successAlert" class="alert alert-success"
+         style="display: none;position:absolute;width:300px;left:40%;top:100px">
+        <strong>成功！</strong>任务保存成功！
+        <span class="myfont with-close" @click='closeAlert()'></span></div>
+
+</div>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+
+<script src="/js/util.js"></script>
+<script src="/js/api.js"></script>
+<script>
+
+    var vm;
+    $(function () {
+        vm = new Vue({
+            el: "#nodeList",
+            data: {
+                nodes: [],
+                selectedValue: 0,
+                selectedNode: 1,
+                selectedProject: {},
+                selectedMachine: {},
+                projects: [],
+                machines: [],
+                persons: [],
+            },
+            created: function () {
+                api.project.getList("", function (e) {
+                    vm.projects = e;
+                });
+
+            },
+            methods: {
+
+                getColor: function (t) {
+                    if (t === 3) return { background: "#ee5555" };
+                },
+                checkNode: function (e) {
+                    this.selectedNode = e.id;
+                    this.refresh();
+                },
+                selectProject: function () {
+                    api.machine.getListByProject({ projectId: this.selectedProject.id }, function (e) {
+                        vm.machines = e;
+                    })
+                    api.project.getPerson({ projectid: this.selectedProject.id }, function (e) {
+                        vm.persons = e;
+                    });
+                },
+                selectMachine: function () {
+                    this.refresh();
+                },
+                selectedUser: function (task, e) {
+                    task.personid = $(e.target).val();
+                    task.username = $(e.target).find("option:selected").text();
+                },
+
+                getProjectName: function () {
+                    return window.getParam().name;
+                },
+                deleteTask: function (node, m) {
+                    if (node.nodeTasks[m].id === 0) {
+                        node.nodeTasks.splice(m, 1);
+                        return;
+                    }
+                    util.dialog({
+                        content: "<div class=\"text-danger\">确认删除该任务吗?</div>",
+                        width: 400,
+                        height: 200,
+                        onOk: function (e) {
+                            api.node.deleteNode({ id: node.nodeTasks[m].id }, function (e2) {
+                                e.dialog.close();
+                                node.nodeTasks.splice(m, 1);
+                            });
+                        }
+                    });
+                },
+                editTask: function (task) {
+                    if (this.selectedValue == task) {
+                        this.selectedValue.edit = !this.selectedValue.edit;
+                        return;
+                    }
+                    if (this.selectedValue) this.selectedValue.edit = false;
+                    if (!task.edit) task.edit = true;
+                    else task.edit = false;
+                    this.selectedValue = task;
+                },
+                addTask: function (node) {
+                    if (this.selectedValue) this.selectedValue.edit = false;
+                    node.nodeTasks.push({ id: 0, title: "新建任务", nodeid: node.id, edit: true, tasktype: 2 });
+                    this.selectedValue = node.nodeTasks[node.nodeTasks.length - 1];
+                },
+                refresh: function () {
+                    api.node.getWorkNodes({ projecttype: this.selectedProject.type, projectid: this.selectedProject.id, machineid: this.selectedMachine.id }, function (e) {
+                        for (var i = 0; i < e.length; i++) {
+                            for (var j = 0; j < e[i].nodeTasks.length; j++) {
+                                e[i].nodeTasks[j].edit = false;
+                            }
+                        }
+                        vm.nodes = e;
+                    })
+                },
+                getStateName: function (m) {
+                    switch (m) {
+                        case 0:
+                        case 1: return "EVT";
+                        case 2: return "DVT";
+                        case 3: return "PVT";
+                        case 4: return "PMP";
+                        case 5: return "PM";
+                    }
+                },
+
+                saveAll: function () {
+                    var dutys = vm.nodes.reduce(function (x, y) {
+                        return { nodeTasks: x.nodeTasks.concat(y.nodeTasks) };
+                    }).nodeTasks.map(function (x) {
+                        return { duty: x.id, dutyname: x.title, personid: x.personid, projectid: vm.selectedProject.id, machineid: vm.selectedMachine.id };
+                    });
+
+                    api.project.setMachineDuty({dutys: dutys, projectid: vm.selectedProject.id, machineid: vm.selectedMachine.id }, function (e) {
+                        $("#successAlert").show();
+                        vm.refresh();
+                        setTimeout(() => {
+                            $("#successAlert").fadeOut("slow");
+                        }, 3000);
+                    })
+                },
+                closeAlert: function () {
+                    $("#successAlert").hide();
+                }
+            },
+        });
+
+        $(document).click(function (e) {
+            if (vm.selectedValue) vm.selectedValue.edit = false;
+        })
+        // EDialog();
+    });
+
+
+
+
+</script>
+
+</body>
+
+</html>
